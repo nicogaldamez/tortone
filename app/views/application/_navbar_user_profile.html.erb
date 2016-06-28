@@ -1,0 +1,23 @@
+<!-- User Account Menu -->
+<li class="dropdown user">
+  <!-- Menu Toggle Button -->
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <span> <%= @current_user %> </span>
+  </a>
+  <ul class="dropdown-menu">
+
+    <li>
+      <%= link_to profile_path do %>
+          <i class="fa fa-user"></i> Perfil
+      <% end %>
+    </li>
+
+    <!-- Menu Footer-->
+    <li>
+      <%= link_to logout_path do %>
+          <i class="fa fa-sign-out fa-fw"></i> Cerrar sesión
+      <% end %>
+    </li>
+  </ul>
+</li>
+
