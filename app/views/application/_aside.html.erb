@@ -5,22 +5,6 @@
 
       <%= side_link 'Inicio', root_path, 'home' %>
 
-      <% if is?('admin') %>
-        <%= side_link 'Reservas', reserves_path, 'file' %>
-        <%= side_link 'Agencias', agencies_path, 'building-o' %>
-        <%= side_link 'Previsión de cobros', projected_charges_path, 'money' %>
-        <%= side_link 'Próximas salidas', departures_path, 'plane' %>
-       <li class="treeview">
-          <a href="#">
-            <i class="fa fa-fw fa-lock"></i> <span>Administración</span> <i class="fa fa-fw fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <%= side_link 'Usuarios', admin_users_path, 'users' %>
-            <%= side_link 'Importaciones', imports_path, 'database' %>
-          </ul>                                                                                                                 |~
-        </li>
-      <% end %>
-
     </ul>
 
   </section>
