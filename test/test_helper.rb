@@ -29,4 +29,12 @@ class ActiveSupport::TestCase
       assert_equal value, now, error
     end
   end
+
+  module LoggedUserTestable
+    def setup
+      @user = users(:ross)
+      login_user(user = @user, route = login_path)
+      super
+    end
+  end
 end

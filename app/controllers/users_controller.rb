@@ -2,17 +2,8 @@ class UsersController < MainController
   before_action :set_user, only: [:edit, :update]
 
   def edit
-  end
 
-  # def create
-  #   @user = User.new(user_params)
-  #
-  #   if @user.save
-  #     redirect_to @user, notice: 'User was successfully created.'
-  #   else
-  #     flash[:error] = t(:error)
-  #   end
-  # end
+  end
 
   def update
     if @user.update(user_params)
