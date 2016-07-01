@@ -1,0 +1,19 @@
+es:
+  dictionary:
+    description: &description 'Descripción'
+    email: &email 'Correo'
+    status: &status 'Estado'
+    filter: &filter 'Filtrar'
+
+  activerecord:
+    models:
+      customer: "cliente"
+    attributes:
+      customer:
+        first_name: Nombre
+        last_name: Apellido
+        dni: DNI
+        email: Correo
+        phones: Teléfonos
+        address: Domicilio
+        description: *description

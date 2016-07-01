@@ -5,6 +5,10 @@
 
       <%= side_link 'Inicio', root_path, 'home' %>
 
+      <% if logged_in? %>
+        <%= side_link 'Clientes', customers_path, 'users' %>
+      <% end %>
+
     </ul>
 
   </section>

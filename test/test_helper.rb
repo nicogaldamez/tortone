@@ -30,11 +30,11 @@ class ActiveSupport::TestCase
     end
   end
 
-  module LoggedUserTestable
-    def setup
-      @user = users(:ross)
-      login_user(user = @user, route = login_path)
-      super
-    end
+end
+module LoggedUserTestable
+  def setup
+    @user = users(:ross)
+    login_user(@user)
+    super
   end
 end

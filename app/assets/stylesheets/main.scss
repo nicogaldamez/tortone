@@ -1,3 +1,7 @@
+.form-group .fake-label {
+  height: 20px;
+  margin-bottom: 5px;
+}
 .sidebar-toggle h3 {
   display: inline-block;
   margin: 0 0 0 10px;
@@ -24,3 +28,11 @@ tr.is-selected td {
   background-color: rgba(255,255,0, 0.3);
 }
 
+/* Estilo de link para volver atrás */
+.return-back {
+  font-size: 13px;
+
+  a, a:hover {
+    color: #777;
+  }
+}

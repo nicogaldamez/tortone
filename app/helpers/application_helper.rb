@@ -45,5 +45,15 @@ module ApplicationHelper
     'sidebar-mini sidebar-collapse' if content_for :hide_sidebar
   end
 
+  def back_to_link(link_text, link_path='', klass='', html_options={})
+    link_path = 'javascript:history.back()' if link_path.blank?
+    content_tag(:div, class: 'return-back ' + klass) do
+      link_to(link_path, options = {}, html_options = {}) do
+        icon('angle-left').html_safe +
+        "<span> #{link_text} </span>".html_safe
+      end
+    end
+  end
+
 end
 
