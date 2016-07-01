@@ -7,7 +7,7 @@ class UsersController < MainController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to @user, notice: 'Tu perfil ha sido actualizado con éxito'
     else
       flash[:error] = t(:error)
       render :edit
