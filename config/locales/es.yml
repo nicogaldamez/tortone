@@ -1,1 +1,9 @@
 es:
+  success: 'Accion realizada con éxito'
+  error: 'La acción no se pudo realizar'
+  login_successful: 'Inicio de sesión exitoso'
+  login_error: 'Hubo un error al iniciar sesión'
+  logout_successful: 'Cierre de sesión exitoso'
+  already_logged_in: 'Ya ha iniciado sesión'
+  back: 'Volver'
+  submit: 'Guardar'

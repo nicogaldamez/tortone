@@ -1,11 +1,20 @@
 <!-- User Account Menu -->
 <li class="dropdown user">
-  <!-- Menu Toggle Button -->
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    <span> Test </span>
-  </a>
-  <ul class="dropdown-menu">
-
-  </ul>
+  <% if current_user %>
+    <!-- Menu Toggle Button -->
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      Mi cuenta 
+      <span class="caret"> </span>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to 'Editar mis datos', edit_user_path(current_user) %>
+      </li>
+      <li>
+        <%= link_to 'Cerrar sesión', :logout, method: :post %>
+      </li>
+    </ul>
+  <% else %>    
+    <%= link_to 'Iniciar sesión', :login %>
+  <% end %>
 </li>
-
