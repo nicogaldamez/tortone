@@ -1,13 +1,13 @@
 class UsersController < MainController
-  before_action :set_user, only: [:edit, :update]
 
   def edit
-
+    @user = current_user
   end
 
   def update
+    @user = current_user
     if @user.update(user_params)
-      redirect_to @user, notice: 'Tu perfil ha sido actualizado con éxito'
+      redirect_to root_path, notice: t(:success)
     else
       flash[:error] = t(:error)
       render :edit
@@ -15,11 +15,7 @@ class UsersController < MainController
   end
 
   private
-    def set_user
-      @user = User.find(params[:id])
-    end
-
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:password, :password_confirmation)
     end
 end

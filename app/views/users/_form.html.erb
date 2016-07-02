@@ -1,7 +1,7 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user, url: update_profile_path do |f| %>
   <fieldset class="form-group">
     <%= f.label :email %><br>
-    <%= f.text_field :email, class: 'form-control' %>
+    <%= f.text_field :email, class: 'form-control', readonly: true %>
   </fieldset>
   <fieldset class="form-group">
     <%= f.label :password %><br>

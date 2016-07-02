@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   resources :user_sessions, only: [:new, :create, :destroy]
-  resources :users, only: [:edit, :update]
+
+  get 'edit_profile', to: 'users#edit', as: :edit_profile
+  patch 'update_profile', to: 'users#update', as: :update_profile
 
   resources :customers
 
