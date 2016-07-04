@@ -1,4 +1,7 @@
 class Customer < ActiveRecord::Base
+  
+  # -- Associations
+  has_many :vehicles
 
   # -- Scopes
   default_scope -> { order(:last_name, :first_name) }

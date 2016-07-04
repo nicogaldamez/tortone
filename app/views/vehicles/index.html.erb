@@ -1,0 +1,40 @@
+<header class="content-header">
+  <%= link_to 'Nuevo vehículo', new_vehicle_path, class: 'btn btn-primary pull-right' %>
+  <h1>Vehículos</h1>
+</header>
+
+<section class="content">
+
+  <article class="box box-primary">
+    <section class="box-body">
+
+      <%= render 'filter' %>
+
+      <table class="table table-custom table-hover">
+        <thead>
+          <tr>
+            <th>Vehículo</th>
+            <th>Año</th>
+            <th>Color</th>
+            <th>Patente</th>
+            <th>Fecha de ingreso</th>
+            <th>Permuta</th>
+            <th>Consignación</th>
+            
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render @presenter.vehicles %>
+        </tbody>
+      </table>
+
+      <%= paginate @presenter.vehicles %>
+
+      <%= content_tag :p, 'No se encontraron vehículos', class: 'text-center' unless @presenter.vehicles.any? %>
+
+    </section>
+  </article>
+
+</section>

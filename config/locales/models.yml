@@ -8,6 +8,7 @@ es:
   activerecord:
     models:
       customer: "cliente"
+      vehicle: "vehículo"
     attributes:
       customer:
         first_name: Nombre
@@ -17,3 +18,24 @@ es:
         phones: Teléfonos
         address: Domicilio
         description: *description
+      vehicle:
+        brand_id: 'Marca'
+        vehicle_model_id: 'Modelo'
+        version_id: 'Versión'
+        kilometers: 'Kilómetros'
+        color: 'Color'
+        cost: 'Costo'
+        price: 'Precio de venta'
+        entered_on: 'Fecha de ingreso'
+        sold_on: 'Fecha de venta'
+        details: *description
+        is_exchange: 'Permuta'
+        is_consignment: 'Consignación'
+        is_financed: 'Financiación'
+        minimum_advance: 'Adelanto mínimo'
+        transfer_amount: 'Costo transferencia'
+        plate: 'Patente'
+        year: 'Año'
+        motor_number: 'Número de motor'
+        chassis_number: 'Número de chasis'
+        

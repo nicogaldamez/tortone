@@ -1,0 +1,22 @@
+<tr id="<%= dom_id(vehicle) %>">
+
+  <td> <%= vehicle.identification %> </td>
+  <td> <%= vehicle.year %> </td>
+  <td> <%= vehicle.color %> </td>
+  <td> <%= vehicle.plate %> </td>
+  <td> <%= vehicle.entered_on %> </td>
+  <td> <%= vehicle.sold_on %> </td>
+  <td> <%= vehicle.cost %> </td>
+  <td> <%= vehicle.price %> </td>
+  <td> <%= vehicle.is_exchange %> </td>
+  <td> <%= vehicle.is_consignment %> </td>
+  <td> <%= vehicle.is_financed %> </td>
+  <td> <%= vehicle.minimum_advance %> </td>
+  <td> <%= vehicle.transfer_amount %> </td>
+  <td>
+    <%= link_to 'Editar', edit_vehicle_path(vehicle), class: 'btn btn-xs btn-primary' %>
+    <%= link_to 'Eliminar', vehicle, method: :delete,
+        data: {confirm: '¿Está seguro?'}, class: 'btn btn-xs btn-danger' %>
+  </td>
+
+</tr>

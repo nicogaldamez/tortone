@@ -33,6 +33,22 @@ App.initSnackbar = ->
   if $('.snackbar-message').length > 0
     $('.snackbar-message').snackbar 'show'
 
+App.initDatepicker = ->
+  if $('.datepicker').length > 0
+    $('.datepicker').datetimepicker
+      icons:
+        time: 'fa fa-clock-o'
+        date: 'fa fa-calendar'
+        up: 'fa fa-chevron-up'
+        down: 'fa fa-chevron-down'
+        previous: 'fa fa-chevron-left'
+        next: 'fa fa-chevron-right'
+        today: 'fa fa-bullseye'
+        clear: 'fa fa-trash'
+        close: 'fa fa-remove'
+      format: 'DD-MM-YYYY'
+      locale: 'es'
+
 # Inicializa los modals con ajax
 App.initModals = (parent) ->
   if parent
@@ -65,7 +81,10 @@ App.init = ->
 
   # Snackbar
   App.initSnackbar()
-
+  
+  # Datepicker
+  App.initDatepicker()
+  
   # Ajax Modals
   App.initModals()
 
@@ -96,6 +115,7 @@ $(document).on "page:load", ->
 $(document).on "page:change", ->
   App.initSnackbar()
   App.initModals()
+  App.initDatepicker()
   App.checkAll()
   $("select").normalSelect()
 
