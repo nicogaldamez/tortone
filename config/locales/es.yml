@@ -7,3 +7,5 @@ es:
   already_logged_in: 'Ya ha iniciado sesión'
   back: 'Volver'
   submit: 'Guardar'
+  "true": 'Si'
+  "false": 'No'

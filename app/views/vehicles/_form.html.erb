@@ -1,205 +1,28 @@
 <%= form_for @vehicle do |f| %>
 
-<article class="box box-primary">
-
-  <section class="box-body">
-
-    <div class="row">
-      <div class="col-md-6">
-        <fieldset class="form-group">
-          <%= f.label :brand_id %>
-          <%= f.select :brand_id, Brand.all.map { |b| [b.name, b.id] }, {}, {class: 'form-control select2'} %>
-        </fieldset>
-      </div>
-
-      <div class="col-md-6">
-        <fieldset class="form-group">
-          <%= f.label :vehicle_model_id %>
-          <%= f.select :vehicle_model_id, VehicleModel.all.map { |m| [m.name, m.id] }, {}, {class: 'form-control select2'} %>
-        </fieldset>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-md-8">
-        <fieldset class="form-group">
-          <%= f.label :version_id %>
-          <%= f.select :version_id, Version.all.map { |v| [v.name, v.id] }, {}, {class: 'form-control select2'} %>
-        </fieldset>
-      </div>
-      
-      <div class="col-md-4">
-        <fieldset class="form-group">
-          <%= f.label :color %>
-          <%= f.text_field :color, class: 'form-control', placeholder: 'Ingrese un color' %>
-        </fieldset>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-md-2">
-        <fieldset class="form-group">
-          <%= f.label :year %>
-          <%= f.text_field :year, class: 'form-control', placeholder: 'Ingrese el año' %>
-        </fieldset>
-      </div>
-      
-      <div class="col-md-2">
-        <fieldset class="form-group">
-          <%= f.label :kilometers %>
-          <%= f.text_field :kilometers, class: 'form-control', placeholder: 'Ingrese el kilometraje' %>
-        </fieldset>
-      </div>
-      
-      <div class="col-md-4">
-        <fieldset class="form-group">
-          <%= f.label :entered_on %>
-          <div class='input-group date datepicker'>
-            <%= f.text_field :entered_on, class: 'form-control', required: true %>
-            <span class="input-group-addon">
-              <span class="fa fa-calendar"></span>
-            </span>
-          </div>
-        </fieldset>
-      </div>
-      
-      <div class="col-md-4">
-        <fieldset class="form-group">
-          <%= f.label :sold_on %>
-          <div class='input-group date datepicker'>
-            <%= f.text_field :sold_on, class: 'form-control' %>
-            <span class="input-group-addon">
-              <span class="fa fa-calendar"></span>
-            </span>
-          </div>
-        </fieldset>
-      </div>
-    </div>
-
-
-    <div class="row">      
-      <div class="col-md-4">
-        <fieldset class="form-group">
-          <%= f.label :cost %>
-          <div class="input-group">
-            <%= f.text_field :cost, class: 'form-control', placeholder: 'Ingrese el costo del vehículo' %>
-            <span class="input-group-addon">
-              <span class="fa fa-dollar"></span>
-            </span>
-          </div>
-        </fieldset>
-      </div>
-    
-      <div class="col-md-4">
-        <fieldset class="form-group">
-          <%= f.label :price %>
-          <div class="input-group">
-            <%= f.text_field :price, class: 'form-control', placeholder: 'Ingrese el precio de venta del vehículo' %>
-            <span class="input-group-addon">
-              <span class="fa fa-dollar"></span>
-            </span>
-          </div>
-        </fieldset>
-      </div>
-      
-      <div class="col-md-4">
-        <fieldset class="form-group">
-          <%= f.label :transfer_amount %>
-          <div class="input-group">
-            <%= f.text_field :transfer_amount, class: 'form-control', placeholder: 'Ingrese el costo de la transferencia' %>
-            <span class="input-group-addon">
-              <span class="fa fa-dollar"></span>
-            </span>
-          </div>
-        </fieldset>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <br />
-      <div class="col-md-4">
-        <fieldset class="form-group">
-          <%= f.check_box :is_exchange %> <%= f.label :is_exchange, 'Permuta' %>
-        </fieldset>
-      </div>
-      
-      <div class="col-md-4">
-        <fieldset class="form-group">
-          <%= f.check_box :is_consignment %> <%= f.label :is_consignment, 'Consignación' %>
-        </fieldset>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-md-12">
-        <fieldset class="form-group">
-          <%= f.label :details %>
-          <%= f.text_area :details, class: 'form-control', placeholder: 'Ingrese una descripción' %>
-        </fieldset>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-md-12">
-        <h3>Datos de financiación</h3>
-      </div>
-    </div>
+<article>
+  <section>
     
     <div class="row">
-      <div class="col-md-4">
-        <fieldset class="form-group">
-          <div class="fake-label"></div>
-          <%= f.check_box :is_financed %> <%= f.label :is_financed, 'Permite financiación' %>
-        </fieldset>
+      
+      <div class="col-md-9">
+        <%= render partial: 'general_data', locals: {f: f} %>
       </div>
       
-      <div class="col-md-4">
-        <fieldset class="form-group">
-          <%= f.label :minimum_advance %>
-          <div class="input-group">
-            <%= f.text_field :minimum_advance, class: 'form-control', placeholder: 'Ingrese el monto mínimo' %>
-            <span class="input-group-addon">
-              <span class="fa fa-dollar"></span>
-            </span>
+      <div class="col-md-3">  
+        <div class='row'>
+          <div class="col-md-12">
+            <%= render partial: 'financial_data', locals: {f: f} %>
           </div>
-        </fieldset>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-12">
+            <%= render partial: 'register_data', locals: {f: f} %>
+          </div>
+        </div>
       </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-md-12">
-        <h3>Datos del registro</h3>
-      </div>
-    </div>
     
-    <div class="row">
-      <div class="col-md-4">
-        <fieldset class="form-group">
-          <%= f.label :plate %>
-          <%= f.text_field :plate, class: 'form-control', placeholder: 'Ingrese una patente' %>
-        </fieldset>
-      </div>
-      
-      <div class="col-md-4">
-        <fieldset class="form-group">
-          <%= f.label :motor_number %>
-          <%= f.text_field :motor_number, class: 'form-control', placeholder: 'Ingrese un número de motor' %>
-        </fieldset>
-      </div>
-      
-      <div class="col-md-4">
-        <fieldset class="form-group">
-          <%= f.label :chassis_number %>
-          <%= f.text_field :chassis_number, class: 'form-control', placeholder: 'Ingrese un número de chasis' %>
-        </fieldset>
-      </div>
-    </div>
 
   </section>
 </article>

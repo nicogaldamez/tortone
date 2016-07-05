@@ -5,5 +5,5 @@ es:
         name: "Nombre"
       vehicle_filter:
         name: "Nombre"
-        brand_id: "Marca"
-        vehicle_model_id: "Modelo"
+        brand: "Marca"
+        vehicle_model: "Modelo"

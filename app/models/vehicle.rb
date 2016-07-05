@@ -10,12 +10,12 @@ class Vehicle < ActiveRecord::Base
   belongs_to :customer
   
   # -- Validations
-  validates :brand_id, presence: true
-  validates :model_id, presence: true
-  validates :version_id, presence: true
-  validates :customer_id, presence: true
-  validates :entered_on, presence: true
-  validates :color, presence: true
+  # validates :brand_id, presence: true
+  # validates :model_id, presence: true
+  # validates :version_id, presence: true
+  # validates :customer_id, presence: true
+  # validates :entered_on, presence: true
+  # validates :color, presence: true
   
   # -- Misc
   def self.attributes_in_cents

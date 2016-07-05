@@ -1,12 +1,22 @@
 class VehicleFilter
   include ActiveModel::Model
-  attr_accessor :name, :brand_id, :vehicle_model_id
+  attr_accessor :name, :brand, :vehicle_model
 
   def call(context=false)
     vehicles = Vehicle.all
-    vehicles = vehicles.includes(:customers).where('customer.first_name like ? OR customer.last_name like ?', "%#{@name}%", "%#{@name}%") if @name.present?
-    vehicles = vehicles.where(brand_id: @brand_id ) if @brand_id.present?
-    vehicles = vehicles.where(vehicle_model_id: @vehicle_model_id) if @vehicle_model_id.present?
+
+    vehicles = vehicles.joins(:customer).where(
+        'customers.first_name LIKE ? OR customers.last_name LIKE ?', 
+          "%#{@name}%", "%#{@name}%"
+        ) if @name.present?
+
+    vehicles = vehicles.joins(:brand).where(
+        'brands.name LIKE ?', "%#{@brand}%"
+        ) if @brand.present?
+        
+    vehicles = vehicles.joins(:vehicle_model).where(
+        'vehicle_models.name LIKE ?', "%#{@vehicle_model}%"
+        ) if @vehicle_model.present?
 
     vehicles
   end

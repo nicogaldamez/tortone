@@ -8,15 +8,15 @@ class CreateVehicle < ActiveRecord::Migration
       t.integer :kilometers
       t.string :color
       t.text :details
-      t.integer :cost_in_cents
-      t.integer :price_in_cents
+      t.integer :cost_in_cents, limit: 8
+      t.integer :price_in_cents, limit: 8
       t.date :entered_on
       t.date :sold_on
       t.boolean :is_exchange
       t.boolean :is_consignment
       t.boolean :is_financed
-      t.integer :minimum_advance_in_cents
-      t.integer :transfer_amount_in_cents
+      t.integer :minimum_advance_in_cents, limit: 8
+      t.integer :transfer_amount_in_cents, limit: 8
       t.string :plate
       t.integer :year
       t.string :motor_number
