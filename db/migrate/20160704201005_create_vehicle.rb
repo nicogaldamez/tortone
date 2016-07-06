@@ -12,9 +12,9 @@ class CreateVehicle < ActiveRecord::Migration
       t.integer :price_in_cents, limit: 8
       t.date :entered_on
       t.date :sold_on
-      t.boolean :is_exchange
-      t.boolean :is_consignment
-      t.boolean :is_financed
+      t.boolean :is_exchange, default: false
+      t.boolean :is_consignment, default: false
+      t.boolean :is_financed, default: false
       t.integer :minimum_advance_in_cents, limit: 8
       t.integer :transfer_amount_in_cents, limit: 8
       t.string :plate
