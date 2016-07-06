@@ -11,9 +11,9 @@ class Vehicle < ActiveRecord::Base
 
   # -- Validations
   validates :brand_id, presence: true
-  validates :model_id, presence: true
-  validates :version_id, presence: true
-  validates :customer_id, presence: true
+  validates :vehicle_model, presence: true
+  validates :version, presence: true
+  validates :customer, presence: true
   validates :entered_on, presence: true
   validates :color, presence: true
 

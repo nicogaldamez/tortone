@@ -9,17 +9,26 @@ class CustomersController < ApplicationController
 
   # GET /customers/new
   def new
+    @modal_form = params[:modal] || false
     @customer = Customer.new
+    if @modal_form
+      render :new, layout: nil
+    else
+      render :new
+    end
   end
 
   # POST /customers
   def create
     @customer = Customer.new(customer_params)
-    if @customer.save
-      redirect_to customers_path,
-        notice: 'El cliente ha sido creado correctamente.'
-    else
-      render :new
+    respond_to do |format|
+      if @customer.save
+        format.html { redirect_to customers_path, notice: 'El cliente ha sido creado correctamente.' }
+        format.json { render json: {result: 'success', data: @customer} }
+      else
+        format.html { render :new }
+        format.json { render json: {result: 'error', error_messages: @customer.errors, full_error_messages: @customer.errors.full_messages} }
+      end
     end
   end
 
@@ -50,7 +59,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/search
   def search
-    block = ->(customer) { { id: customer.id, name: customer.first_name } }
+    block = ->(customer) { { id: customer.id, name: customer.to_s } }
     records = RecordSearcher.call(Customer, params, &block)
     render json: records.to_json, callback: params[:callback]
   end
