@@ -40,8 +40,10 @@ class VehiclesControllerTest < ActionController::TestCase
 
   test "should create vehicle" do
     assert_difference('Vehicle.count', 1) do
-      post :create, vehicle: { brand: brands(:ford),
-                               vehicle_model: vehicle_models(:focus),
+      post :create, vehicle: { brand_id: brands(:ford).id,
+                               customer_id: customers(:carlos).id,
+                               vehicle_model_id: vehicle_models(:focus).id,
+                               color: 'red',
                                kilometers: 1000,
                                entered_on: '2016-01-01',
                                year: '2010'

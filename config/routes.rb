@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'edit_profile', to: 'users#edit', as: :edit_profile
   patch 'update_profile', to: 'users#update', as: :update_profile
 
-  resources :customers
+  resources :customers do
+    get :search, on: :collection
+  end
   resources :vehicles
 
   get 'login', to: 'user_sessions#new', as: :login

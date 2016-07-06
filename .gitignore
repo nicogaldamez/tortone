@@ -69,3 +69,4 @@ bower.json
 
 public/uploads/**
 config/database.yml
+logfile

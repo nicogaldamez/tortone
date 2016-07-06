@@ -28,3 +28,5 @@
 
 //= require init
 //= require utilities
+//= require vehicles
+//= require customers

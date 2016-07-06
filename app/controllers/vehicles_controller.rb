@@ -46,10 +46,10 @@ class VehiclesController < ApplicationController
   private
 
   def vehicle_params
-    params.require(:vehicle).permit(:kilometers, :color, :details, :cost, 
+    params.require(:vehicle).permit(:kilometers, :color, :details, :cost,
             :price, :entered_on, :sold_on, :is_exchange, :is_consignment,
-            :is_financed, :minimum_advance, :transfer_amount, :plate, 
-            :year, :motor_number, :chassis_number, :vehicle_model_id, 
+            :is_financed, :minimum_advance, :transfer_amount, :plate,
+            :year, :motor_number, :chassis_number, :vehicle_model_id,
             :version_id, :brand_id, :customer_id)
   end
 
