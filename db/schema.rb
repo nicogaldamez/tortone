@@ -62,15 +62,15 @@ ActiveRecord::Schema.define(version: 20160704201005) do
     t.integer  "kilometers",               limit: 4
     t.string   "color",                    limit: 255
     t.text     "details",                  limit: 65535
-    t.integer  "cost_in_cents",            limit: 8
-    t.integer  "price_in_cents",           limit: 8
+    t.integer  "cost_in_cents",            limit: 4
+    t.integer  "price_in_cents",           limit: 4
     t.date     "entered_on"
     t.date     "sold_on"
     t.boolean  "is_exchange"
     t.boolean  "is_consignment"
     t.boolean  "is_financed"
-    t.integer  "minimum_advance_in_cents", limit: 8
-    t.integer  "transfer_amount_in_cents", limit: 8
+    t.integer  "minimum_advance_in_cents", limit: 4
+    t.integer  "transfer_amount_in_cents", limit: 4
     t.string   "plate",                    limit: 255
     t.integer  "year",                     limit: 4
     t.string   "motor_number",             limit: 255
