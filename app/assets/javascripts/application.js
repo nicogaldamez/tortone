@@ -27,4 +27,5 @@
 //= require bootstrap-datetimepicker
 
 //= require init
+//= require vehicles
 //= require utilities
