@@ -10,7 +10,7 @@ class Vehicle < ActiveRecord::Base
   belongs_to :customer
 
   # -- Validations
-  validates :brand_id, presence: true
+  validates :brand, presence: true
   validates :vehicle_model, presence: true
   validates :customer, presence: true
   validates :entered_on, presence: true

@@ -5,10 +5,18 @@
 
       <fieldset class="form-group">
 
-        <div class="col-md-5">
+        <div class="col-md-4">
           <%= f.label :name %>
           <%= f.search_field :name, class: 'form-control',
                 placeholder: 'Ingrese el nombre o apellido a buscar',
+                autofocus: true
+          %>
+        </div>
+        
+        <div class="col-md-4">
+          <%= f.label :vehicle %>
+          <%= f.search_field :vehicle, class: 'form-control',
+                placeholder: 'Ingrese marca, modelo o versión',
                 autofocus: true
           %>
         </div>

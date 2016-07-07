@@ -3,7 +3,8 @@ es:
     attributes:
       customer_filter:
         name: "Nombre"
+        vehicle: "Vehículo"
       vehicle_filter:
-        name: "Nombre"
+        name: "Cliente"
         brand: "Marca"
         vehicle_model: "Modelo"

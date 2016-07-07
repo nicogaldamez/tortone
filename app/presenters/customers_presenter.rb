@@ -17,7 +17,7 @@ class CustomersPresenter
 
   def filter_params
     if @params[:customer_filter]
-      parameters = @params.require(:customer_filter).permit(:name)
+      parameters = @params.require(:customer_filter).permit(:name, :vehicle)
     end
     parameters || {}
   end
