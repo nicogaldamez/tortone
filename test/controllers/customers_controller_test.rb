@@ -59,7 +59,7 @@ class CustomersControllerTest < ActionController::TestCase
 
   end
 
-  test 'should return customer as json' do
+  test 'should create customer and return it as json' do
     post :create, customer: @customer_new_data, format: :json
     assert_response :success
     json_response = JSON.parse(response.body)['data']
