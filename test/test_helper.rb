@@ -9,6 +9,7 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
+  # Verifica que los campos de record coincidan con los de attributes
   def assert_record_differences(record, attributes, message = nil, &block)
 
     attributes.each do |key, value|

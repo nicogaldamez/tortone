@@ -1,6 +1,6 @@
 <header class="content-header">
   <h1>Crear un nuevo cliente
-    <%= back_to_link 'Volver', customers_path, 'pull-right' %>
+    <%= back_to_link 'Volver', customers_path, 'pull-right' unless @modal_form %>
   </h1>
 </header>
 

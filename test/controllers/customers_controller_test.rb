@@ -5,6 +5,10 @@ class CustomersControllerTest < ActionController::TestCase
 
   def setup
     @customer = customers(:carlos)
+    @customer_new_data = {first_name: 'Nuevo', last_name: 'Cliente', email: 'nuevo@cliente.com',
+                               phones: '3123123213/123123123', dni: '30876960',
+                               address: '48 1488', description: 'Este es el nuevo cliente'
+                              }
     login_user(users(:ross))
   end
 
@@ -35,21 +39,33 @@ class CustomersControllerTest < ActionController::TestCase
   test "should get new customer" do
     get :new
     assert_not_nil assigns(:customer)
+    assert_template layout: 'layouts/application'
+    assert_select 'form[action=?]' , '/customers'
+
+    get :new, modal: true
+    assert_template layout: nil
+    assert_select 'form[action=?]', '/customers.json'
   end
 
   test "should create customer" do
     assert_difference('Customer.count', 1) do
-      post :create, customer: {first_name: 'Nuevo',
-                               last_name: 'Cliente',
-                               email: 'nuevo@cliente.com',
-                               phones: '3123123213/123123123',
-                               dni: '30876960',
-                               address: '48 1488',
-                               description: 'Este es el nuevo cliente'
-                              }
+      post :create, customer: @customer_new_data
+    end
+    assert_redirected_to customers_path
+
+    Customer.find_by(dni: @customer_new_data[:dni]).as_json.each do |key, value|
+      assert_equal @customer_new_data[key.to_sym], value if @customer_new_data.key?(key.to_sym)
     end
 
-    assert_redirected_to customers_path
+  end
+
+  test 'should return customer as json' do
+    post :create, customer: @customer_new_data, format: :json
+    assert_response :success
+    json_response = JSON.parse(response.body)['data']
+    Customer.find_by(dni: @customer_new_data[:dni]).as_json.each do |key, value|
+      assert_equal json_response[key], value if @customer_new_data.key?(key.to_sym)
+    end
   end
 
   test "should get edit customer" do
@@ -58,34 +74,10 @@ class CustomersControllerTest < ActionController::TestCase
   end
 
   test "should update customer" do
-    new_first_name  = 'Nuevo Nombre'
-    new_last_name   = 'Nuevo Apellido'
-    new_email       = 'Nuevo Email'
-    new_phones      = 'Nuevos Teléfonos'
-    new_dni         = 'Nuevo DNI'
-    new_address     = 'Nuevo Domicilio'
-    new_description = 'Nueva Descripción'
-
-    put :update, id: @customer.id, customer: {
-                                     first_name: new_first_name,
-                                     last_name: new_last_name,
-                                     email: new_email,
-                                     phones: new_phones,
-                                     dni: new_dni,
-                                     address: new_address,
-                                     description: new_description
-                            }
-
+    assert_record_differences(@customer, @customer_new_data) do
+      put :update, id: @customer.id, customer: @customer_new_data
+    end
     assert_redirected_to customers_path
-
-    @customer.reload
-    assert_equal new_first_name, @customer.first_name
-    assert_equal new_last_name, @customer.last_name
-    assert_equal new_email, @customer.email
-    assert_equal new_phones, @customer.phones
-    assert_equal new_dni, @customer.dni
-    assert_equal new_address, @customer.address
-    assert_equal new_description, @customer.description
   end
 
   test "should destroy customer" do
