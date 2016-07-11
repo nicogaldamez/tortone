@@ -1,8 +1,8 @@
 <tr id="<%= dom_id(customer) %>">
 
   <td> <%= customer.full_name %> </td>
-  <td> <%= customer.phones %> </td>
-  <td> <%= customer.email %> </td>
+  <td class="text-center"> <%= customer.phones %> </td>
+  <td class="text-center"> <%= customer.email %> </td>
   <td>
     <%= link_to 'Editar', edit_customer_path(customer), class: 'btn btn-xs btn-primary' %>
     <%= link_to 'Eliminar', customer, method: :delete,

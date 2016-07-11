@@ -13,6 +13,19 @@
   vertical-align: middle;
 }
 
+/* Usado en tabla de listado de registros, sirve para alinear el contenido
+   de la última columna a la derecha */
+.table-custom > tbody > tr > td:last-child {
+   text-align: right;
+}
+.table-custom > tbody > tr > td:last-child.text-center {
+   text-align: center;
+}
+
+.table-custom > thead > tr > th:last-child {
+   text-align: right;
+}
+
 td.truncate {
     max-width: 200px;
     overflow: hidden;
