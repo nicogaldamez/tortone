@@ -38,6 +38,7 @@ group :development do
   gem 'annotate' # Muestra los campos de la BD en los modelos
   gem 'hirb' # Mejora la visualización de consulas desde consola
   gem 'letter_opener'
+  gem 'quiet_assets'
 end
 
 group :production do

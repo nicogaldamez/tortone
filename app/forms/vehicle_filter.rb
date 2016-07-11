@@ -18,6 +18,6 @@ class VehicleFilter
         'vehicle_models.name LIKE ?', "%#{@vehicle_model}%"
         ) if @vehicle_model.present?
 
-    vehicles.includes(:brand, :vehicle_model, :version)
+    vehicles.includes(:brand, :vehicle_model, :version, :customer)
   end
 end
