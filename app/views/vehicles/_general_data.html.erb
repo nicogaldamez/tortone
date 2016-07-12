@@ -31,7 +31,7 @@
         <fieldset class="form-group">
           <%= f.label :brand_id %>
           <%= f.select :brand_id, Brand.all.map { |b| [b.name, b.id] }, {include_blank: true},
-                {class: 'form-control select2'} %>
+                {id: 'js-brand', class: 'form-control select2'} %>
         </fieldset>
       </div>
 
@@ -39,7 +39,8 @@
         <fieldset class="form-group">
           <%= f.label :vehicle_model_id %>
           <%= f.select :vehicle_model_id, VehicleModel.all.map { |m| [m.name, m.id] }, {include_blank: true},
-                {class: 'form-control select2'} %>
+                {id: 'js-vehicle-model', class: 'form-control select2'} %>
+          <%= f.hidden_field :vehicle_model_id, id: 'js-sss' %>
         </fieldset>
       </div>
 
