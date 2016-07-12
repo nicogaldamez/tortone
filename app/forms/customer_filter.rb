@@ -4,7 +4,7 @@ class CustomerFilter
 
   def call(context=false)
     customers = Customer.all
-    customers = customers.where('first_name like ? OR last_name like ?', "%#{@name}%", "%#{@name}%") if @name.present?
+    customers = customers.where('first_name ilike ? OR last_name ilike ?', "%#{@name}%", "%#{@name}%") if @name.present?
     customers = customers.joins(:vehicles)
                 .where('vehicles.brand_id IN
                         (SELECT brands.id
@@ -15,7 +15,7 @@ class CustomerFilter
                          (SELECT vehicle_models.id
                          FROM vehicle_models INNER JOIN vehicles
                          WHERE vehicle_models.name LIKE ?)', "%#{@vehicle}%", "%#{@vehicle}%").uniq if @vehicle.present?
-    
+
     customers
   end
 end

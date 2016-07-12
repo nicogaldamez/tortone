@@ -6,7 +6,7 @@ class Customer < ActiveRecord::Base
   # -- Scopes
   default_scope -> { order(:last_name, :first_name) }
   scope :search, ->(term) {
-    where('first_name like :term or last_name like :term', term: "#{term}%")
+    where('first_name ilike :term or last_name ilike :term', term: "#{term}%")
   }
 
   # -- Validations
