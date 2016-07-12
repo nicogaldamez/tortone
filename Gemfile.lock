@@ -111,7 +111,6 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mysql2 (0.3.21)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -124,6 +123,7 @@ GEM
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
     pdf-core (0.6.1)
+    pg (0.18.4)
     pkg-config (1.1.7)
     prawn (2.1.0)
       pdf-core (~> 0.6.1)
@@ -226,8 +226,8 @@ DEPENDENCIES
   letter_opener
   minitest-reporters
   momentjs-rails (>= 2.9.0)
-  mysql2
   non-stupid-digest-assets
+  pg
   prawn
   prawn-table
   quiet_assets

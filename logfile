@@ -2,3 +2,7 @@ LOG:  database system was shut down at 2016-06-29 11:01:07 ART
 LOG:  MultiXact member wraparound protections are now enabled
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+LOG:  database system was shut down at 2016-07-12 07:59:50 ART
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
