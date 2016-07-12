@@ -22,6 +22,11 @@
 //= require plugins/knob/jquery.knob
 //= require plugins/dist/js/app
 //= require jquery.infinitescroll
+//= require moment
+//= require moment/es
+//= require bootstrap-datetimepicker
 
 //= require init
 //= require utilities
+//= require vehicles
+//= require customers

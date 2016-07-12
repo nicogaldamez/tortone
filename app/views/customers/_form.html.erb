@@ -1,0 +1,77 @@
+<% form_remote = form_remote|| false %>
+<% form_format = form_format || '' %>
+<%= form_for @customer, format: (form_format || ''), remote: (form_remote||false)  do |f| %>
+
+<article class="box box-primary">
+
+  <section class="box-body">
+
+    <div class="row">
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, class: 'form-control', required: true %>
+        </fieldset>
+      </div>
+
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, class: 'form-control', required: true %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, class: 'form-control' %>
+        </fieldset>
+      </div>
+
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <%= f.label :phones %>
+          <%= f.text_field :phones, class: 'form-control' %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <%= f.label :dni %>
+          <%= f.text_field :dni, class: 'form-control' %>
+        </fieldset>
+      </div>
+
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <%= f.label :address %>
+          <%= f.text_field :address, class: 'form-control' %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <fieldset class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: 'form-control' %>
+        </fieldset>
+      </div>
+    </div>
+
+  </section>
+</article>
+
+<div class="row">
+  <div class="col-md-12">
+    <fieldset class="form-group">
+      <%= f.submit 'Guardar', class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
+    </fieldset>
+  </div>
+</div>
+
+<% end %>

@@ -1,0 +1,35 @@
+<header class="content-header">
+  <%= link_to 'Nuevo cliente', new_customer_path, class: 'btn btn-primary pull-right' %>
+  <h1>Clientes</h1>
+</header>
+
+<section class="content">
+
+  <article class="box box-primary">
+    <section class="box-body">
+
+      <%= render 'filter' %>
+
+      <table class="table table-custom table-hover">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Teléfonos</th>
+            <th>Correo</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render @presenter.customers %>
+        </tbody>
+      </table>
+
+      <%= paginate @presenter.customers %>
+
+      <%= content_tag :p, 'No se encontraron clientes', class: 'text-center' unless @presenter.customers.any? %>
+
+    </section>
+  </article>
+
+</section>

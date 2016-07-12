@@ -1,0 +1,35 @@
+<%= form_for @presenter.filter, url: :customers, method: :get do |f| %>
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <fieldset class="form-group">
+
+        <div class="col-md-4">
+          <%= f.label :name %>
+          <%= f.search_field :name, class: 'form-control',
+                placeholder: 'Ingrese el nombre o apellido a buscar',
+                autofocus: true
+          %>
+        </div>
+        
+        <div class="col-md-4">
+          <%= f.label :vehicle %>
+          <%= f.search_field :vehicle, class: 'form-control',
+                placeholder: 'Ingrese marca, modelo o versión',
+                autofocus: true
+          %>
+        </div>
+
+        <div class="col-md-2">
+          <div class="fake-label"></div>
+          <%= f.submit 'Filtrar', class: 'btn btn-primary',
+                  'data-disable-with' => 'Filtrando...' %>
+        </div>
+
+      </fieldset>
+
+    </div>
+  </div>
+
+<% end %>

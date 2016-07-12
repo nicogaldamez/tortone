@@ -1,0 +1,177 @@
+<div class="box box-primary">
+
+  <div class="box-header with-border">
+    <h3 class="box-title">
+      <span class="fa fa-car"></span>
+      Datos generales
+    </h3>
+  </div>
+
+  <div class="box-body">
+
+    <div class="row">
+      <div class="col-md-10">
+        <fieldset class="form-group">
+          <%= f.label :customer_id %>
+          <%= f.hidden_field :customer_id, class: 'select2', required: true,
+            data: { behavior: 'searchCustomer', url: search_customers_path, 'record-id' => @vehicle.customer.try(:customer_id),
+                    'record-text' => @vehicle.customer.try(:to_s) } %>
+        </fieldset>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <div class="fake-label"></div>
+          <%= link_to 'Nuevo', new_customer_path(modal: true), class: 'btn btn-primary',
+            data: { behavior: 'ajax-modal', target: '#js-modal' } %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <fieldset class="form-group">
+          <%= f.label :brand_id %>
+          <%= f.select :brand_id, Brand.all.map { |b| [b.name, b.id] }, {include_blank: true},
+                {class: 'form-control select2'} %>
+        </fieldset>
+      </div>
+
+      <div class="col-md-4">
+        <fieldset class="form-group">
+          <%= f.label :vehicle_model_id %>
+          <%= f.select :vehicle_model_id, VehicleModel.all.map { |m| [m.name, m.id] }, {include_blank: true},
+                {class: 'form-control select2'} %>
+        </fieldset>
+      </div>
+
+      <div class="col-md-4">
+        <fieldset class="form-group">
+          <%= f.label :version_id %>
+          <%= f.select :version_id, Version.all.map { |v| [v.name, v.id] }, {include_blank: true},
+                {class: 'form-control select2'} %>
+        </fieldset>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-4">
+        <fieldset class="form-group">
+          <%= f.label :color %>
+          <%= f.text_field :color, class: 'form-control', placeholder: 'Ingrese un color', required: true %>
+        </fieldset>
+      </div>
+
+      <div class="col-md-4">
+        <fieldset class="form-group">
+          <%= f.label :year %>
+          <%= f.text_field :year, class: 'form-control', placeholder: 'Ingrese el año' %>
+        </fieldset>
+      </div>
+
+      <div class="col-md-4">
+        <fieldset class="form-group">
+          <%= f.label :kilometers %>
+          <%= f.text_field :kilometers, class: 'form-control',
+                placeholder: 'Ingrese el kilometraje' %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <fieldset class="form-group">
+          <%= f.label :cost %>
+          <div class="input-group">
+            <%= f.text_field :cost, class: 'form-control',
+                  placeholder: 'Ingrese el costo' %>
+            <span class="input-group-addon">
+              <span class="fa fa-dollar"></span>
+            </span>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="col-md-4">
+        <fieldset class="form-group">
+          <%= f.label :price %>
+          <div class="input-group">
+            <%= f.text_field :price, class: 'form-control',
+                  placeholder: 'Ingrese el precio de venta' %>
+            <span class="input-group-addon">
+              <span class="fa fa-dollar"></span>
+            </span>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="col-md-4">
+        <fieldset class="form-group">
+          <%= f.label :transfer_amount %>
+          <div class="input-group">
+            <%= f.text_field :transfer_amount, class: 'form-control',
+                  placeholder: 'Ingrese el costo de la transferencia' %>
+            <span class="input-group-addon">
+              <span class="fa fa-dollar"></span>
+            </span>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <fieldset class="form-group">
+          <%= f.label :entered_on %>
+          <div class='input-group date datepicker'>
+            <%= f.text_field :entered_on, class: 'form-control',
+                  required: true %>
+            <span class="input-group-addon">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="col-md-4">
+        <fieldset class="form-group">
+          <%= f.label :sold_on %>
+          <div class='input-group date datepicker'>
+            <%= f.text_field :sold_on, class: 'form-control' %>
+            <span class="input-group-addon">
+              <span class="fa fa-calendar"></span>
+            </span>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <br />
+      <div class="col-md-4">
+        <fieldset class="form-group">
+          <%= f.check_box :is_exchange %>
+          <%= f.label :is_exchange, 'Permuta' %>
+        </fieldset>
+      </div>
+
+      <div class="col-md-4">
+        <fieldset class="form-group">
+          <%= f.check_box :is_consignment %>
+          <%= f.label :is_consignment, 'Consignación' %>
+        </fieldset>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <fieldset class="form-group">
+          <%= f.label :details %>
+          <%= f.text_area :details, class: 'form-control',
+                placeholder: 'Ingrese una descripción' %>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>

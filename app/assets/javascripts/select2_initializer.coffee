@@ -3,6 +3,7 @@ jQuery.fn.ajaxSelect = (options) ->
 
   defaults =
     placeholder: "Buscar..."
+    allow_clear: true
     formatNoMatches: 'No hay resultados'
     formatter: (record) ->
       record.full_text || record.name
@@ -21,7 +22,6 @@ jQuery.fn.ajaxSelect = (options) ->
     format_extra: (record) ->
       return "<small class='select2-extra-text'> #{record.extra} </small>"
 
-    allow_clear: true
     selectData: (term, page)->
       query: term
       limit: 10
@@ -57,6 +57,7 @@ jQuery.fn.normalSelect = (options) ->
   url = $(this).data('url')
 
   defaults =
+    placeholder: 'Buscar...'
     allow_clear: true
 
   settings = $.extend(defaults, options)

@@ -1,0 +1,10 @@
+<header class="content-header">
+  <h1>Crear un nuevo cliente
+    <%= back_to_link 'Volver', customers_path, 'pull-right' unless @modal_form %>
+  </h1>
+</header>
+
+<section class="content">
+<%= render 'form', form_format: (@modal_form ? :json : ''),
+      form_remote: @modal_form ? true : false %>
+</section>

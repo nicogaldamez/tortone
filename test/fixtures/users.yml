@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ross:
+  email:            ross@geller.com
+  salt:             <%= salt = "gnndfkngdfkgndfpk" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("friends", salt) %>
+
+rachel:
+  email:            rachel@green.com
+  salt:             <%= salt = "oasnfionasdoinf" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("secret", salt) %>

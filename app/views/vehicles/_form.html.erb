@@ -1,0 +1,44 @@
+<%= form_for @vehicle do |f| %>
+
+<div class="row">
+  <div class="col-md-12">
+    <fieldset class="form-group">
+      <%= f.submit 'Guardar vehículo', class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
+    </fieldset>
+  </div>
+</div>
+<article>
+  <section>
+
+    <div class="row">
+
+      <div class="col-md-9">
+        <%= render partial: 'general_data', locals: {f: f} %>
+      </div>
+
+      <div class="col-md-3">
+        <div class='row'>
+          <div class="col-md-12">
+            <%= render partial: 'financial_data', locals: {f: f} %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <%= render partial: 'register_data', locals: {f: f} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</article>
+
+<div class="row">
+  <div class="col-md-12">
+    <fieldset class="form-group">
+      <%= f.submit 'Guardar vehículo', class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
+    </fieldset>
+  </div>
+</div>
+
+<% end %>

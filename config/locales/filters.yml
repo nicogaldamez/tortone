@@ -1,0 +1,10 @@
+es:
+  activemodel:
+    attributes:
+      customer_filter:
+        name: "Nombre"
+        vehicle: "Vehículo"
+      vehicle_filter:
+        name: "Cliente"
+        brand: "Marca"
+        vehicle_model: "Modelo"

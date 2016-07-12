@@ -15,13 +15,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'kaminari'
 
-gem 'sorcery'
+gem 'sorcery', '~> 0.9.0'
 gem 'draper' # Decorators
 gem 'non-stupid-digest-assets'
 gem 'cocoon' # Nested forms
 gem 'prawn' # PDF Generator
 gem 'prawn-table' # Tables for Prawn
-
+gem 'momentjs-rails', '>= 2.9.0' # Datetimepicker dependency
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37' # Datetimepicker
 
 group :development, :test do
   gem 'byebug'
@@ -37,6 +38,7 @@ group :development do
   gem 'annotate' # Muestra los campos de la BD en los modelos
   gem 'hirb' # Mejora la visualización de consulas desde consola
   gem 'letter_opener'
+  gem 'quiet_assets'
 end
 
 group :production do

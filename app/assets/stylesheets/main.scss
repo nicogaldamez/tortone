@@ -1,0 +1,47 @@
+.form-group .fake-label {
+  height: 20px;
+  margin-bottom: 5px;
+}
+.sidebar-toggle h3 {
+  display: inline-block;
+  margin: 0 0 0 10px;
+  font-size: 18px;
+}
+
+.table > thead > tr > th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Usado en tabla de listado de registros, sirve para alinear el contenido
+   de la última columna a la derecha */
+.table-custom > tbody > tr > td:last-child {
+   text-align: right;
+}
+.table-custom > tbody > tr > td:last-child.text-center {
+   text-align: center;
+}
+
+.table-custom > thead > tr > th:last-child {
+   text-align: right;
+}
+
+td.truncate {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+tr.is-selected td {
+  background-color: rgba(255,255,0, 0.3);
+}
+
+/* Estilo de link para volver atrás */
+.return-back {
+  font-size: 13px;
+
+  a, a:hover {
+    color: #777;
+  }
+}

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+carlos:
+  first_name:  Carlos
+  last_name:   Galdámez
+  dni:         10793482
+  phones:      4209601
+  address:     47 Nro 1419
+  email:       galdamezc@gmail.com
+  description: Padre
+
+silvia:
+  first_name:  Silvia
+  last_name:   Dante
+  dni:         11431811
+  phones:      4703639
+  address:     47 Nro 1419
+  email:       dantesilvia@gmail.com
+  description: Madre
