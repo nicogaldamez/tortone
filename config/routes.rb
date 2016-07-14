@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
   resources :vehicles
+  resources :brands, only: [:create]
   resources :vehicle_models, only: [:index]
   resources :versions, only: [:index]
 
