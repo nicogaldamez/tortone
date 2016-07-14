@@ -5,6 +5,10 @@ class VehiclesController < ApplicationController
   def index
     @presenter = VehiclesPresenter.new(params)
   end
+  
+  def show
+    # @presenter = VehiclePresenter.new(params)
+  end
 
   def new
     @vehicle = Vehicle.new
