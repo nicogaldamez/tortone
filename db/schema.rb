@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704201005) do
+ActiveRecord::Schema.define(version: 20160714001447) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,11 +94,15 @@ ActiveRecord::Schema.define(version: 20160704201005) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "vehicle_model_id"
   end
+
+  add_index "versions", ["vehicle_model_id"], name: "index_versions_on_vehicle_model_id", using: :btree
 
   add_foreign_key "vehicle_models", "brands"
   add_foreign_key "vehicles", "brands"
   add_foreign_key "vehicles", "customers"
   add_foreign_key "vehicles", "vehicle_models"
   add_foreign_key "vehicles", "versions"
+  add_foreign_key "versions", "vehicle_models"
 end
