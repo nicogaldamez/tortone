@@ -11,24 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704201005) do
+ActiveRecord::Schema.define(version: 20160714001447) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "brands", force: :cascade do |t|
-    t.string   "name",       limit: 255
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string   "first_name",  limit: 255,   null: false
-    t.string   "last_name",   limit: 255,   null: false
-    t.string   "dni",         limit: 255
-    t.string   "phones",      limit: 255
-    t.string   "address",     limit: 255
-    t.string   "email",       limit: 255
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "first_name",  null: false
+    t.string   "last_name",   null: false
+    t.string   "dni"
+    t.string   "phones"
+    t.string   "address"
+    t.string   "email"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", using: :btree
@@ -36,9 +39,9 @@ ActiveRecord::Schema.define(version: 20160704201005) do
   add_index "customers", ["last_name"], name: "index_customers_on_last_name", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",            limit: 255, null: false
-    t.string   "crypted_password", limit: 255
-    t.string   "salt",             limit: 255
+    t.string   "email",            null: false
+    t.string   "crypted_password"
+    t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,8 +49,8 @@ ActiveRecord::Schema.define(version: 20160704201005) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   create_table "vehicle_models", force: :cascade do |t|
-    t.integer  "brand_id",   limit: 4
-    t.string   "name",       limit: 255
+    t.integer  "brand_id"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -55,26 +58,26 @@ ActiveRecord::Schema.define(version: 20160704201005) do
   add_index "vehicle_models", ["brand_id"], name: "index_vehicle_models_on_brand_id", using: :btree
 
   create_table "vehicles", force: :cascade do |t|
-    t.integer  "brand_id",                 limit: 4
-    t.integer  "vehicle_model_id",         limit: 4
-    t.integer  "version_id",               limit: 4
-    t.integer  "customer_id",              limit: 4
-    t.integer  "kilometers",               limit: 4
-    t.string   "color",                    limit: 255
-    t.text     "details",                  limit: 65535
-    t.integer  "cost_in_cents",            limit: 4
-    t.integer  "price_in_cents",           limit: 4
+    t.integer  "brand_id"
+    t.integer  "vehicle_model_id"
+    t.integer  "version_id"
+    t.integer  "customer_id"
+    t.integer  "kilometers"
+    t.string   "color"
+    t.text     "details"
+    t.integer  "cost_in_cents",            limit: 8
+    t.integer  "price_in_cents",           limit: 8
     t.date     "entered_on"
     t.date     "sold_on"
-    t.boolean  "is_exchange"
-    t.boolean  "is_consignment"
-    t.boolean  "is_financed"
-    t.integer  "minimum_advance_in_cents", limit: 4
-    t.integer  "transfer_amount_in_cents", limit: 4
-    t.string   "plate",                    limit: 255
-    t.integer  "year",                     limit: 4
-    t.string   "motor_number",             limit: 255
-    t.string   "chassis_number",           limit: 255
+    t.boolean  "is_exchange",                        default: false
+    t.boolean  "is_consignment",                     default: false
+    t.boolean  "is_financed",                        default: false
+    t.integer  "minimum_advance_in_cents", limit: 8
+    t.integer  "transfer_amount_in_cents", limit: 8
+    t.string   "plate"
+    t.integer  "year"
+    t.string   "motor_number"
+    t.string   "chassis_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -85,14 +88,18 @@ ActiveRecord::Schema.define(version: 20160704201005) do
   add_index "vehicles", ["version_id"], name: "index_vehicles_on_version_id", using: :btree
 
   create_table "versions", force: :cascade do |t|
-    t.string   "name",       limit: 255
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "vehicle_model_id"
   end
+
+  add_index "versions", ["vehicle_model_id"], name: "index_versions_on_vehicle_model_id", using: :btree
 
   add_foreign_key "vehicle_models", "brands"
   add_foreign_key "vehicles", "brands"
   add_foreign_key "vehicles", "customers"
   add_foreign_key "vehicles", "vehicle_models"
   add_foreign_key "vehicles", "versions"
+  add_foreign_key "versions", "vehicle_models"
 end

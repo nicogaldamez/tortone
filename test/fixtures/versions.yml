@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+trend:
+  name: 'Trend 1.6'
+  vehicle_model: focus
+
+edge:
+  name: 'Edge 1.6 5P'
+  vehicle_model: focus
+
+
+

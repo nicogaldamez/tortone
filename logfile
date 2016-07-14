@@ -2,3 +2,12 @@ LOG:  database system was shut down at 2016-06-29 11:01:07 ART
 LOG:  MultiXact member wraparound protections are now enabled
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+LOG:  database system was shut down at 2016-07-12 16:35:31 ART
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  column versions.vehicel_model_id does not exist at character 43
+STATEMENT:  SELECT "versions".* FROM "versions" WHERE "versions"."vehicel_model_id" = '583027434'
+ERROR:  column versions.vehicel_model_id does not exist at character 43
+STATEMENT:  SELECT "versions".* FROM "versions" WHERE "versions"."vehicel_model_id" = '583027434'
+LOG:  unexpected EOF on client connection with an open transaction

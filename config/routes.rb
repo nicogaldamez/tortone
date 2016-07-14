@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   resources :vehicles
   resources :vehicle_models, only: [:index]
+  resources :versions, only: [:index]
 
   get 'login', to: 'user_sessions#new', as: :login
   post 'logout', to: 'user_sessions#destroy', as: :logout
