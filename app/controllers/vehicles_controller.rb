@@ -7,7 +7,11 @@ class VehiclesController < ApplicationController
   end
   
   def show
-    # @presenter = VehiclePresenter.new(params)
+    @vehicle = Vehicle.find(params[:id]).decorate
+
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = 'El vehículo buscado no existe'
+      render :index
   end
 
   def new

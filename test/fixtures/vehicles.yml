@@ -3,7 +3,7 @@
 delorean:
   brand:          ford
   vehicle_model:  focus
-  version:        Hdi 2.0
+  version:        kinetic
   kilometers:     20000
   color:          Gris perla
   cost_in_cents:  300000

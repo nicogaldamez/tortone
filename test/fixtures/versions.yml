@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+cc:
+  name: 'HDI 2.0 Coupé Cabriolet'
+
+kinetic:
+  name: 'Kinetic 1.8 Titanium'
