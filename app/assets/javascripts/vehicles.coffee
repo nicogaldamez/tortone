@@ -11,36 +11,37 @@ class App.VehicleForm
     $("[data-behavior~=searchCustomer]").ajaxSelect()
 
     $('#js-brand').change (e)=>
-      @vehicle_model_select.update($(e.target).val())
-      $('#js-vehicle-model').val('')
+      @onBrandChanged $(e.target).val()
 
     $('#js-vehicle-model').change (e)=>
-      if $(e.target).select2('data')
-        text = $(e.target).select2('data').text
-      else
-        text = ''
-
-      value = $(e.target).val()
-      isNew = text.match(/.*\(Nuevo\)/)
-      if isNew
-        @createVehicleModel(value)
-
-      @version_select.update(value)
-      $('#js-version').val('')
+      @onVehicleModelChanged $(e.target).val()
 
     $('#js-version').change (e)=>
-      if $(e.target).select2('data')
-        text = $(e.target).select2('data').text
-      else
-        text = ''
+      @onVersionChanged $(e.target).val()
 
-      value = $(e.target).val()
-      isNew = text.match(/.*\(Nuevo\)/)
-      if isNew
-        @createVersion(value)
 
-  onBrandChanged: ->
-    brand_id = $('#js-brand')
+  onBrandChanged: (brand_id)->
+    @vehicle_model_select.update(brand_id)
+    $('#js-vehicle-model').val('')
+
+  onVehicleModelChanged: (model_id)->
+    data = $('#js-vehicle-model').select2('data')
+    text = if data then data.text else ''
+
+    isNew = text.match(/.*\(Nuevo\)/)
+    if isNew
+      @createVehicleModel(model_id)
+
+    @version_select.update(model_id)
+    $('#js-version').val('')
+
+  onVersionChanged: (version_id)->
+    data = $('#js-version').select2('data')
+    text = if data then data.text else ''
+
+    isNew = text.match(/.*\(Nuevo\)/)
+    if isNew
+      @createVersion(version_id)
 
   onCustomerCreated: (data) ->
     $('input[data-behavior~=searchCustomer]').select2('data', data)
