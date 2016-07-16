@@ -5,7 +5,7 @@ class Brand < ActiveRecord::Base
 
   # -- Associations
   has_many :vehicles
-  has_many :vehicle_models
+  has_many :vehicle_models, dependent: :destroy
 
   # -- Methods
   def to_s

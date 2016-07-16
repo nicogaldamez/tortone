@@ -1,0 +1,28 @@
+FATAL:  pre-existing shared memory block (key 5432001, ID 65536) is still in use
+HINT:  If you're sure there are no old server processes still running, remove the shared memory block or just delete the file "postmaster.pid".
+FATAL:  pre-existing shared memory block (key 5432001, ID 65536) is still in use
+HINT:  If you're sure there are no old server processes still running, remove the shared memory block or just delete the file "postmaster.pid".
+LOG:  database system was interrupted; last known up at 2016-07-13 22:30:27 ART
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  redo starts at 0/19A5C938
+LOG:  record with zero length at 0/19A70028
+LOG:  redo done at 0/19A6FFE0
+LOG:  last completed transaction was at log time 2016-07-13 22:32:52.441683-03
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  autovacuum launcher shutting down
+FATAL:  terminating connection due to administrator command
+FATAL:  terminating connection due to administrator command
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2016-07-14 17:30:07 ART
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  terminating connection due to administrator command
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down

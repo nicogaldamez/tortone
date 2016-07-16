@@ -65,7 +65,7 @@ jQuery.fn.ajaxSelect = (options) ->
 jQuery.fn.normalSelect = (options) ->
   defaults =
     placeholder: 'Buscar...'
-    allow_clear: true
+    allowClear: true
     formatNoMatches: 'No hay resultados'
     formatSearching: "Buscando..."
     formatAjaxError: 'Falló la carga'

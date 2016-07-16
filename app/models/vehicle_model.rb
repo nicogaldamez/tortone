@@ -1,8 +1,11 @@
 class VehicleModel < ActiveRecord::Base
 
+  # Scopes
+  default_scope -> { order(:name) }
+
   # -- Associations
   has_many :vehicles
-  has_many :versions
+  has_many :versions, dependent: :destroy
   belongs_to :brand
 
   # -- Validations
