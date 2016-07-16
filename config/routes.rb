@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   end
   resources :vehicles
   resources :brands, only: [:create]
-  resources :vehicle_models, only: [:index]
-  resources :versions, only: [:index]
+  resources :vehicle_models, only: [:index, :create]
+  resources :versions, only: [:index, :create]
 
   get 'login', to: 'user_sessions#new', as: :login
   post 'logout', to: 'user_sessions#destroy', as: :logout

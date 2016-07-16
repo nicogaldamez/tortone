@@ -9,14 +9,35 @@ class App.VehicleForm
   # Binding de Eventos
   bindEvents: () ->
     $("[data-behavior~=searchCustomer]").ajaxSelect()
-    $('#js-vehicle-model').normalSelect({data:[]})
-    $('#js-version').normalSelect({data:[]})
+
     $('#js-brand').change (e)=>
       @vehicle_model_select.update($(e.target).val())
       $('#js-vehicle-model').val('')
+
     $('#js-vehicle-model').change (e)=>
-      @version_select.update($(e.target).val())
+      if $(e.target).select2('data')
+        text = $(e.target).select2('data').text
+      else
+        text = ''
+
+      value = $(e.target).val()
+      isNew = text.match(/.*\(Nuevo\)/)
+      if isNew
+        @createVehicleModel(value)
+
+      @version_select.update(value)
       $('#js-version').val('')
+
+    $('#js-version').change (e)=>
+      if $(e.target).select2('data')
+        text = $(e.target).select2('data').text
+      else
+        text = ''
+
+      value = $(e.target).val()
+      isNew = text.match(/.*\(Nuevo\)/)
+      if isNew
+        @createVersion(value)
 
   onBrandChanged: ->
     brand_id = $('#js-brand')
@@ -24,41 +45,92 @@ class App.VehicleForm
   onCustomerCreated: (data) ->
     $('input[data-behavior~=searchCustomer]').select2('data', data)
 
+  createVehicleModel: (name)->
+    $.ajax
+      url: '/vehicle_models'
+      method: 'post'
+      data:
+        vehicle_model:
+          brand_id: $('#js-brand').val()
+          name: name
+      success: (data) =>
+        @vehicle_model_select.update(
+          $('#js-brand').val()
+          data.data.id
+        )
+
+  createVersion: (name)->
+    $.ajax
+      url: '/versions'
+      method: 'post'
+      data:
+        version:
+          vehicle_model_id: $('#js-vehicle-model').val()
+          name: name
+      success: (data) =>
+        @version_select.update(
+          $('#js-vehicle-model').val()
+          data.data.id
+        )
+
 # ---------------------------------
 class App.VehicleModelSelect
 
   constructor: (element_id) ->
+    $('#js-vehicle-model').normalSelect @options_with_data()
     @element = $(element_id)
     if $('#js-brand').val()
       @update($('#js-brand').val())
 
-  update: (brand_id) ->
+  options_with_data: (data=[]) ->
+    data: data
+    placeholder: 'Buscar Versión...'
+    createSearchChoice: (term)->
+      id: term
+      text: "#{term} (Nuevo)"
+
+  update: (brand_id, option_selected) ->
     $.ajax
       url: '/vehicle_models.json'
       data:
         brand_id: brand_id
       success: (data) =>
-        select_data = data.map (vehicle_model)-> { id: vehicle_model['id'], text: vehicle_model['name'] }
-        @element.normalSelect { 'data': select_data }
-        @element.trigger('change')
+        vehicle_models = data.map (vehicle_model)-> { id: vehicle_model['id'], text: vehicle_model['name'] }
+        @element.normalSelect @options_with_data(vehicle_models)
+        if option_selected
+          @element.select2('val', option_selected)
+        else
+          @element.trigger('change')
 
 
 # ---------------------------------
 class App.VersionSelect
 
   constructor: (element_id) ->
+    $('#js-version').normalSelect({data:[]})
     @element = $(element_id)
     if $('#js-vehicle-model').val()
-      @update($('#js-vehicle-model').val())
+      @update($('#js-vehicle-model').val(), @element.val())
 
-  update: (vehicle_model_id) ->
+  options_with_data: (data=[]) ->
+      data: data
+      placeholder: 'Buscar Modelo...'
+      createSearchChoice: (term)->
+        id: term
+        text: "#{term} (Nuevo)"
+
+  update: (vehicle_model_id, option_selected) ->
     $.ajax
       url: '/versions.json'
       data:
         vehicle_model_id: vehicle_model_id
       success: (data) =>
-        select_data = data.map (version)-> { id: version['id'], text: version['name'] }
-        @element.normalSelect { 'data': select_data }
+        versions = data.map (version)-> { id: version['id'], text: version['name'] }
+        @element.normalSelect @options_with_data(versions)
+        if option_selected
+          @element.select2('val', option_selected)
+        else
+          @element.trigger('change')
 
 
 

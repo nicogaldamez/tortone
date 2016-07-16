@@ -1,5 +1,8 @@
 class Version < ActiveRecord::Base
 
+  # Scopes
+  default_scope -> { order(:name) }
+
   # Validations
   validates :vehicle_model, presence: true
 
