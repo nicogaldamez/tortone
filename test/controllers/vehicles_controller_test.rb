@@ -43,6 +43,7 @@ class VehiclesControllerTest < ActionController::TestCase
       post :create, vehicle: { brand_id: brands(:ford).id,
                                customer_id: customers(:carlos).id,
                                vehicle_model_id: vehicle_models(:focus).id,
+                               version_id: versions(:kinetic).id,
                                color: 'red',
                                kilometers: 1000,
                                entered_on: '2016-01-01',

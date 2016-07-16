@@ -13,6 +13,8 @@ class Customer < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :dni, uniqueness: true, allow_blank: true
+  validates :phones, presence: true
+  validates :email, presence: true
 
   def to_s
     "#{last_name}, #{first_name}"

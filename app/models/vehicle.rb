@@ -12,9 +12,12 @@ class Vehicle < ActiveRecord::Base
   # -- Validations
   validates :brand, presence: true
   validates :vehicle_model, presence: true
+  validates :version, presence: true
   validates :customer, presence: true
-  validates :entered_on, presence: true
+  validates :year, presence: true
+  validates :kilometers, presence: true
   validates :color, presence: true
+  validates :year, presence: true
 
   # -- Misc
   def self.attributes_in_cents

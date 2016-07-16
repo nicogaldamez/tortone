@@ -8,5 +8,8 @@ edge:
   name: 'Edge 1.6 5P'
   vehicle_model: focus
 
+cc:
+  name: 'HDI 2.0 Coupé Cabriolet'
 
-
+kinetic:
+  name: 'Kinetic 1.8 Titanium'
