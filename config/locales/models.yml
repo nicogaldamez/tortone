@@ -20,7 +20,7 @@ es:
         description: *description
       vehicle:
         brand_id: 'Marca'
-        customer_id: 'Cliente'
+        customer_id: 'Dueño'
         vehicle_model_id: 'Modelo'
         version_id: 'Versión'
         kilometers: 'Kilómetros'

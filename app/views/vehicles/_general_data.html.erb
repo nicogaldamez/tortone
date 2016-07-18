@@ -13,7 +13,7 @@
       <div class="col-md-10">
         <fieldset class="form-group">
           <%= f.label :customer_id %>
-          <%= f.hidden_field :customer_id, class: 'select2', required: true,
+          <%= f.hidden_field :customer_id, class: 'select2',
             data: { behavior: 'searchCustomer', url: search_customers_path, 'record-id' => @vehicle.customer.try(:customer_id),
                     'record-text' => @vehicle.customer.try(:to_s) } %>
         </fieldset>
@@ -32,9 +32,7 @@
           <%= f.label :brand_id %>
           <%= f.text_field :brand_id, id: 'js-brand',
             data: { data: Brand.all.map { |b| { id: b.id, text: b.name } } },
-                  class: 'form-control', required: true %>
-          <%# f.select :brand_id, Brand.all.map { |b| [b.name, b.id] }, {},
-                {id: 'js-brand', class: 'form-control select2'} %>
+                  class: 'form-control' %>
         </fieldset>
       </div>
 
@@ -42,7 +40,7 @@
         <fieldset class="form-group">
           <%= f.label :vehicle_model_id %>
           <%= f.text_field :vehicle_model_id, id: 'js-vehicle-model',
-                class: 'form-control', required: true %>
+                class: 'form-control' %>
         </fieldset>
       </div>
 
@@ -126,8 +124,7 @@
         <fieldset class="form-group">
           <%= f.label :entered_on %>
           <div class='input-group date datepicker'>
-            <%= f.text_field :entered_on, class: 'form-control',
-                  required: true %>
+            <%= f.text_field :entered_on, class: 'form-control' %>
             <span class="input-group-addon">
               <span class="fa fa-calendar"></span>
             </span>

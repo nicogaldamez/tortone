@@ -22,7 +22,8 @@ class App.VehicleForm
 
 
   onBrandChanged: (brand_id)->
-    text = $('#js-brand').select2('data').text
+    data = $('#js-brand').select2('data')
+    text = if data then data.text else ''
 
     isNew = text.match(/.*\(Nuevo\)/)
     if isNew
@@ -178,4 +179,4 @@ class App.VersionSelect
 # --------------------------------
 # --------------------------------
 $(document).on "page:change", ->
-  new App.VehicleForm() unless $(".vehicles.new, .vehicles.edit").length == 0
+  new App.VehicleForm() unless $(".vehicles.new, .vehicles.edit, .vehicles.create, .vehicles.update").length == 0
