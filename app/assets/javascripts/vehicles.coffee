@@ -5,6 +5,7 @@ class App.VehicleForm
     @customer_modal       = new App.CustomerModalForm('#js-modal', @onCustomerCreated)
     @vehicle_model_select = new App.VehicleModelSelect('#js-vehicle-model')
     @version_select       = new App.VersionSelect('#js-version')
+    @brand_select       = new App.BrandSelect('#js-brand')
 
   # Binding de Eventos
   bindEvents: () ->
@@ -21,6 +22,12 @@ class App.VehicleForm
 
 
   onBrandChanged: (brand_id)->
+    text = $('#js-brand').select2('data').text
+
+    isNew = text.match(/.*\(Nuevo\)/)
+    if isNew
+      @createBrand(brand_id)
+
     @vehicle_model_select.update(brand_id)
     $('#js-vehicle-model').val('')
 
@@ -45,6 +52,17 @@ class App.VehicleForm
 
   onCustomerCreated: (data) ->
     $('input[data-behavior~=searchCustomer]').select2('data', data)
+
+
+  createBrand: (name)->
+    $.ajax
+      url: '/brands'
+      method: 'post'
+      data:
+        brand:
+          name: name
+      success: (data) =>
+        @brand_select.update data.data.id, name
 
   createVehicleModel: (name)->
     $.ajax
@@ -74,6 +92,27 @@ class App.VehicleForm
           data.data.id
         )
 
+# ---------------------------------
+class App.BrandSelect
+
+  constructor: (element_id) ->
+    @element = $(element_id)
+    @build_select()
+
+  build_select: ->
+    @element.normalSelect
+      data: @element.data('data')
+      placeholder: 'Buscar Marca...'
+      createSearchChoice: (term)->
+        id: term
+        text: "#{term} (Nuevo)"
+  update: (brand_id, brand_name) ->
+    brands = @element.data 'data'
+    brands.push { id: brand_id, text: brand_name }
+    @element.data('data', brands)
+    @build_select()
+    @element.select2('val', brand_id)
+#
 # ---------------------------------
 class App.VehicleModelSelect
 
