@@ -1,18 +1,16 @@
-<li id="<%= dom_id(attachment) %>" class="col-xs-3 text-center">
-  <%= link_to attachment.file.url, class: 'img-thumbnail', target: '_blank' do %>
-    <% if /image/ =~ attachment.file.mime_type %>
-      <%= image_tag(attachment.file.thumb('180x180#').url, class: 'img-thumbnail') %>
-    <% else %>
-      <div class="document-thumbnail">
-        <%= icon 'file-text-o' %>
-        <br>
-        <%= attachment.file.name %>
-      </div>
-    <% end %>
+<div id="<%= dom_id(attachment) %>" class="item text-center">
+  <% if /image/ =~ attachment.file.mime_type %>
+    <%= image_tag(attachment.file.thumb('700x400#').url, class: 'img-thumbnail') %>
+  <% else %>
+    <%= image_tag("http://placehold.it/700x400/3c8dbc/ffffff&amp;text=#{attachment.file.name}",
+                    class: 'img-thumbnail') %>
   <% end %>
+  <div class="carousel-actions">
+    <%= link_to icon('external-link'), attachment.file.url, class: 'btn btn-sm btn-primary',
+           target: :blank %>
+    <%= link_to icon('trash'), attachment, method: :delete, class: 'btn btn-sm btn-danger',
+      data: { confirm: '¿Seguro?', 'disable-with' => 'eliminando' }, remote: true  %>
+  </div>
 
-  <p>
-  <%= link_to 'eliminar', attachment, method: :delete, class: 'btn btn-md btn-danger',
-    data: { confirm: '¿Seguro?', 'disable-with' => 'eliminando' }, remote: true  %>
-  </p>
-</li>
+</div>
+

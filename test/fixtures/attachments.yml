@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  image_uid: MyString
-  vehicle_id: 
+  file_uid: MyString
+  vehicle_id:
 
 two:
-  image_uid: MyString
-  vehicle_id: 
+  file_uid: MyString
+  vehicle_id:

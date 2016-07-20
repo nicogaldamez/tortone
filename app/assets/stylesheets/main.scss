@@ -45,3 +45,11 @@ tr.is-selected td {
     color: #777;
   }
 }
+
+/* Carousel */
+.carousel-inner > .item > img {
+  margin: 0 auto;
+}
+.carousel-actions > a {
+  margin-top: -75px;
+}

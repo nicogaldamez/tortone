@@ -1,3 +1,34 @@
+# --------------------------------
+# SHOW
+# --------------------------------
+class App.VehicleShow
+  constructor: () ->
+    @element = $('#js-attachments')
+    @bindEvents()
+    @selectAttachment()
+
+  bindEvents: ->
+    $('.carousel-control.left').click (e)=>
+      @element.carousel('prev')
+    $('.carousel-control.right').click (e)=>
+      e.preventDefault()
+      @element.carousel('next')
+
+  selectAttachment: (attachment_id)->
+    @element.find('.item').removeClass('active')
+    if attachment_id
+      item = $("#attachment_#{attachment_id}")
+    else
+      item = $('#js-attachments').find('.item').first()
+    item.addClass('active')
+
+  removeAttachment: (attachment_id)->
+    $("#attachment_#{attachment_id}").remove()
+    @selectAttachment()
+
+# --------------------------------
+# FORM
+# --------------------------------
 class App.VehicleForm
 
   constructor: () ->
@@ -179,4 +210,5 @@ class App.VersionSelect
 # --------------------------------
 # --------------------------------
 $(document).on "page:change", ->
-  new App.VehicleForm() unless $(".vehicles.new, .vehicles.edit, .vehicles.create, .vehicles.update").length == 0
+  vehicle_form = new App.VehicleForm() unless $(".vehicles.new, .vehicles.edit, .vehicles.create, .vehicles.update").length == 0
+  App.vehicle_show = new App.VehicleShow() unless $(".vehicles.show").length == 0
