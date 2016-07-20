@@ -41,14 +41,14 @@
     <div class="row">
       <div class="col-md-6">
         <fieldset class="form-group">
-          <%= f.label :dni %>
+          <%= optional_label f, :dni %>
           <%= f.text_field :dni, class: 'form-control' %>
         </fieldset>
       </div>
 
       <div class="col-md-6">
         <fieldset class="form-group">
-          <%= f.label :address %>
+          <%= optional_label f, :address %>
           <%= f.text_field :address, class: 'form-control' %>
         </fieldset>
       </div>
@@ -57,7 +57,7 @@
     <div class="row">
       <div class="col-md-12">
         <fieldset class="form-group">
-          <%= f.label :description %>
+          <%= optional_label f, :description %>
           <%= f.text_area :description, class: 'form-control' %>
         </fieldset>
       </div>

@@ -7,6 +7,14 @@ class VehicleDecorator < Draper::Decorator
     "#{object.brand} #{object.vehicle_model} - #{object.version}"
   end
 
+  def brand_and_model
+    "#{object.brand} #{object.vehicle_model}"
+  end
+
+  def price_label
+    object.is_owner ? "Precio" : "Monto pretendido por el dueño"
+  end
+
   def price
     number_to_currency(object.price, precision: 2) || '-'
   end
@@ -39,6 +47,14 @@ class VehicleDecorator < Draper::Decorator
     object.details.blank? ? '-' : object.details
   end
   
+  def kilometers
+    "#{object.kilometers} km"
+  end
+
+  def specs
+    "#{object.year} | #{kilometers} | #{object.color}"
+  end
+  
   def plate
     object.plate.present? ? object.plate.upcase : '-'
   end
@@ -49,6 +65,11 @@ class VehicleDecorator < Draper::Decorator
   
   def chassis_number
     object.chassis_number.present? ? object.chassis_number : '-'
+  end
+
+  # TODO: add a class for owned vehicles
+  def klass
+    object.is_owner ? 'some_class' : ''
   end
 
   def customer

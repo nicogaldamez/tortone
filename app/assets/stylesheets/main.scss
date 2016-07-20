@@ -53,3 +53,16 @@ tr.is-selected td {
 .carousel-actions > a {
   margin-top: -75px;
 }
+
+/* Mensaje de ayuda en formularios */
+.help-message {
+  color: #777;
+  font-weight: 200;
+  font-style: italic;
+}
+
+/* Mensaje de Opcional en los labels */
+.optional-input {
+  color: #888;
+  font-weight: 600;
+}

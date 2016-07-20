@@ -8,6 +8,8 @@ class App.VehicleShow
     @selectAttachment()
 
   bindEvents: ->
+    $('#fileupload').fileupload
+      dataType: 'script'
     $('.carousel-control.left').click (e)=>
       @element.carousel('prev')
     $('.carousel-control.right').click (e)=>
