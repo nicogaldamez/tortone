@@ -1,6 +1,7 @@
 window.App ||= {}
 
 App.flash_snackbar_render = (flashMessages) ->
+  flashMessages = [flashMessages] unless Array.isArray(flashMessages)
   $.each flashMessages, (key, value) ->
     style = ''
     switch key

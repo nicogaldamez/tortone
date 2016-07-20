@@ -20,13 +20,13 @@ es:
         description: *description
       vehicle:
         brand_id: 'Marca'
-        customer_id: 'Cliente'
+        customer_id: 'Dueño'
         vehicle_model_id: 'Modelo'
         version_id: 'Versión'
         kilometers: 'Kilómetros'
         color: 'Color'
         cost: 'Costo'
-        price: 'Precio de venta'
+        price: 'Precio de venta al público'
         entered_on: 'Fecha de ingreso'
         sold_on: 'Fecha de venta'
         details: *description
@@ -39,4 +39,5 @@ es:
         year: 'Año'
         motor_number: 'Número de motor'
         chassis_number: 'Número de chasis'
+        is_owner: 'Vehículo propio'
 

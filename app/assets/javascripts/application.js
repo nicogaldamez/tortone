@@ -22,6 +22,8 @@
 //= require plugins/knob/jquery.knob
 //= require plugins/dist/js/app
 //= require jquery.infinitescroll
+//= require jquery.ui.widget.js
+//= require jquery.fileupload
 //= require moment
 //= require moment/es
 //= require bootstrap-datetimepicker

@@ -1,0 +1,19 @@
+<p class="text-muted">
+  Arrastrá los archivos o hacé click en examinar
+</p>
+<input id="fileupload" type="file" name="attachment[file]"
+    data-url="<%= url_for([vehicle, :attachments]) %>" multiple>
+
+<br />
+
+<div id="js-attachments" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <%= render vehicle.attachments %>
+  </div>
+  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+    <span class="fa fa-angle-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+    <span class="fa fa-angle-right"></span>
+  </a>
+</div>

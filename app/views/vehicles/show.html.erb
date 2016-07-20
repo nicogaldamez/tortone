@@ -1,0 +1,27 @@
+<header class="content-header">
+  <h1>
+    Detalle del vehículo
+    <%= back_to_link 'Volver', '', 'pull-right' %>
+  </h1>
+</header>
+
+<section class="content">
+
+  <div class="row">
+
+    <div class="col-md-4">
+      <%= render partial: 'vehicles/show/profile',
+                      locals: { vehicle: @vehicle } %>
+      <%= render partial: 'vehicles/show/financial_data',
+                      locals: { vehicle: @vehicle } %>
+      <%= render partial: 'vehicles/show/register_data',
+                      locals: { vehicle: @vehicle } %>
+    </div>
+
+    <div class="col-md-8">
+      <%= render partial: "attachments", locals: { vehicle: @vehicle } %>
+    </div>
+
+  </div>
+</section>
+

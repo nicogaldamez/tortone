@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-md-12">
         <fieldset class="form-group">
-          <%= f.label :plate %>
+          <%= optional_label f, :plate %>
           <%= f.text_field :plate, class: 'form-control', placeholder: 'Ingrese una patente' %>
         </fieldset>
       </div>
@@ -21,7 +21,7 @@
     <div class="row">
       <div class="col-md-12">
         <fieldset class="form-group">
-          <%= f.label :motor_number %>
+          <%= optional_label f, :motor_number %>
           <%= f.text_field :motor_number, class: 'form-control', placeholder: 'Ingrese un número de motor' %>
         </fieldset>
       </div>
@@ -30,7 +30,7 @@
     <div class="row">
       <div class="col-md-12">
         <fieldset class="form-group">
-          <%= f.label :chassis_number %>
+          <%= optional_label f, :chassis_number %>
           <%= f.text_field :chassis_number, class: 'form-control', placeholder: 'Ingrese un número de chasis' %>
         </fieldset>
       </div>

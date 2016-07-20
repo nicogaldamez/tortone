@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704201005) do
+ActiveRecord::Schema.define(version: 20160720200417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachments", force: :cascade do |t|
+    t.string   "file_uid"
+    t.string   "file_name"
+    t.integer  "vehicle_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "attachments", ["vehicle_id"], name: "index_attachments_on_vehicle_id", using: :btree
 
   create_table "brands", force: :cascade do |t|
     t.string   "name"
@@ -80,6 +90,7 @@ ActiveRecord::Schema.define(version: 20160704201005) do
     t.string   "chassis_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_owner",                           default: false
   end
 
   add_index "vehicles", ["brand_id"], name: "index_vehicles_on_brand_id", using: :btree
@@ -91,11 +102,16 @@ ActiveRecord::Schema.define(version: 20160704201005) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "vehicle_model_id"
   end
 
+  add_index "versions", ["vehicle_model_id"], name: "index_versions_on_vehicle_model_id", using: :btree
+
+  add_foreign_key "attachments", "vehicles"
   add_foreign_key "vehicle_models", "brands"
   add_foreign_key "vehicles", "brands"
   add_foreign_key "vehicles", "customers"
   add_foreign_key "vehicles", "vehicle_models"
   add_foreign_key "vehicles", "versions"
+  add_foreign_key "versions", "vehicle_models"
 end

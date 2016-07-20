@@ -3,6 +3,11 @@ jQuery.fn.ajaxSelect = (options) ->
 
   defaults =
     placeholder: "Buscar..."
+    formatNoMatches: 'No hay resultados'
+    formatSearching: "Buscando..."
+    formatAjaxError: 'Falló la carga'
+    formatInputTooShort: (term, minimum)->
+      "Por favor ingrese al menos #{minimum} caracteres"
     allow_clear: true
     formatNoMatches: 'No hay resultados'
     formatter: (record) ->
@@ -36,6 +41,10 @@ jQuery.fn.ajaxSelect = (options) ->
         name: $(elm).data "record-text"
       callback(data)
     placeholder: settings.placeholder
+    formatNoMatches: settings.formatNoMatches
+    formatSearching: settings.formatSearching
+    formatAjaxError: settings.formatAjaxError
+    formatInputTooShort: settings.formatInputTooShort
     allowClear: settings.allow_clear
     minimumInputLength: 3
     ajax:
@@ -54,15 +63,15 @@ jQuery.fn.ajaxSelect = (options) ->
 
 
 jQuery.fn.normalSelect = (options) ->
-  url = $(this).data('url')
-
   defaults =
     placeholder: 'Buscar...'
-    allow_clear: true
+    allowClear: true
+    formatNoMatches: 'No hay resultados'
+    formatSearching: "Buscando..."
+    formatAjaxError: 'Falló la carga'
+    formatInputTooShort: (term, minimum)->
+      "Por favor ingrese al menos #{minimum} caracteres"
 
   settings = $.extend(defaults, options)
-
-  this.select2
-    placeholder: settings.placeholder
-    allowClear: settings.allow_clear
+  $(this).select2 settings
 

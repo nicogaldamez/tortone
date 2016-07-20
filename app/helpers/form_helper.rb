@@ -11,6 +11,12 @@ module FormHelper
       concat content_tag :span, (form.label attribute, icon(icon_name)), id: "#{form.object.class}-#{attribute}", class: 'input-group-addon'
     end
   end
+  
+  def optional_label(form, name, html_options = {})
+    @content = form.label name
+    @content << content_tag(:span, ' - opcional', class: 'optional-input')
+  end
+  
 
 end
 

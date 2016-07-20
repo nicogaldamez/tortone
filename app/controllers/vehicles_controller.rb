@@ -5,9 +5,17 @@ class VehiclesController < ApplicationController
   def index
     @presenter = VehiclesPresenter.new(params)
   end
+  
+  def show
+    @vehicle = Vehicle.find(params[:id]).decorate
+
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = 'El vehículo buscado no existe'
+      render :index
+  end
 
   def new
-    @vehicle = Vehicle.new
+    @vehicle = Vehicle.new(vehicle_params)
   end
 
   def create
@@ -50,7 +58,7 @@ class VehiclesController < ApplicationController
             :price, :entered_on, :sold_on, :is_exchange, :is_consignment,
             :is_financed, :minimum_advance, :transfer_amount, :plate,
             :year, :motor_number, :chassis_number, :vehicle_model_id,
-            :version_id, :brand_id, :customer_id)
+            :version_id, :brand_id, :customer_id, :is_owner) if params[:vehicle].present?
   end
 
   def set_vehicle

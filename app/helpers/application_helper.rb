@@ -28,14 +28,14 @@ module ApplicationHelper
   end
 
   # Link del menú lateral
-  def side_link(link_text, link_path, icon_class='', klass='', html_options={}, extra='')
+  def side_link(text:'', path:'', icon_class:'', klass:'', html_options:{}, extra:'')
     link_class = html_options[:class]
     html_options[:class] = link_class
-    html_options[:title] = link_text
-    klass += current_page?(link_path) ? 'active' : url_for(link_path)
+    html_options[:title] = text
+    klass += current_page?(path) ? 'active' : url_for(path)
     content_tag(:li, class: klass) do
-      (link_to link_path, html_options do
-        "<i class='fa fa-fw fa-#{icon_class}'></i> <span> #{link_text} </span>".html_safe
+      (link_to path, html_options do
+        "<i class='fa fa-fw fa-#{icon_class}'></i> <span> #{text} </span>".html_safe
       end) +
           extra.html_safe
     end
@@ -43,6 +43,20 @@ module ApplicationHelper
 
   def sidebar_state
     'sidebar-mini sidebar-collapse' if content_for :hide_sidebar
+  end
+
+  def sub_menu(klass = '', &block)
+    klass += ' ' if klass.present?
+    klass += 'treeview-menu'
+    tree = ''
+
+    if block_given?
+      tree = content_tag(:ul, class: klass) do
+        capture(&block)
+      end
+    end
+
+    return tree
   end
 
   def back_to_link(link_text, link_path='', klass='', html_options={})

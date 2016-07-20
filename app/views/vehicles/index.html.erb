@@ -1,6 +1,7 @@
 <header class="content-header">
   <%= link_to 'Nuevo vehículo', new_vehicle_path, class: 'btn btn-primary pull-right' %>
-  <h1>Vehículos</h1>
+  <%= link_to 'Nuevo vehículo propio', new_vehicle_path(vehicle: {is_owner: true}), class: 'btn btn-primary pull-right', style: 'margin-right: 10px;' %>
+  <h1> <%= @presenter.title %> </h1>
 </header>
 
 <section class="content">
@@ -14,14 +15,11 @@
         <thead>
           <tr>
             <th>Vehículo</th>
-            <th>Año</th>
             <th>Color</th>
-            <th>Fecha de ingreso</th>
-            <th>Precio</th>
-            <th>Permuta</th>
-            <th>Consignación</th>
-            <th>Dueño</th>
-            
+            <th>Año</th>
+            <th>Kilómetros</th>
+            <th>Precio público</th>
+
             <th></th>
           </tr>
         </thead>

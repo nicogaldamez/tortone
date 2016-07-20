@@ -8,7 +8,13 @@ Rails.application.routes.draw do
   resources :customers do
     get :search, on: :collection
   end
-  resources :vehicles
+  resources :vehicles do
+    resources :attachments, only: [:create]
+  end
+  resources :attachments, only: [:destroy]
+  resources :brands, only: [:create]
+  resources :vehicle_models, only: [:index, :create]
+  resources :versions, only: [:index, :create]
 
   get 'login', to: 'user_sessions#new', as: :login
   post 'logout', to: 'user_sessions#destroy', as: :logout
