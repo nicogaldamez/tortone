@@ -42,45 +42,34 @@ class App.VehicleForm
   bindEvents: () ->
     $("[data-behavior~=searchCustomer]").ajaxSelect()
 
-    $('#js-brand').change (e)=>
-      @onBrandChanged $(e.target).val()
+    $('#js-brand').on 'select2-selecting', (e)=>
+      @onBrandChanged e.object
 
-    $('#js-vehicle-model').change (e)=>
-      @onVehicleModelChanged $(e.target).val()
+    $('#js-vehicle-model').on 'select2-selecting', (e)=>
+      @onVehicleModelChanged e.object
 
-    $('#js-version').change (e)=>
-      @onVersionChanged $(e.target).val()
+    $('#js-version').on 'select2-selecting', (e)=>
+      @onVersionChanged e.object
 
+  onBrandChanged: (brand)->
+    if brand.isNew
+      @createBrand(brand.name)
 
-  onBrandChanged: (brand_id)->
-    data = $('#js-brand').select2('data')
-    text = if data then data.text else ''
-
-    isNew = text.match(/.*\(Nuevo\)/)
-    if isNew
-      @createBrand(brand_id)
-
-    @vehicle_model_select.update(brand_id)
+    @vehicle_model_select.update(brand.id)
     $('#js-vehicle-model').val('')
-
-  onVehicleModelChanged: (model_id)->
-    data = $('#js-vehicle-model').select2('data')
-    text = if data then data.text else ''
-
-    isNew = text.match(/.*\(Nuevo\)/)
-    if isNew
-      @createVehicleModel(model_id)
-
-    @version_select.update(model_id)
+    @version_select.update $('#js-vehicle-model').val()
     $('#js-version').val('')
 
-  onVersionChanged: (version_id)->
-    data = $('#js-version').select2('data')
-    text = if data then data.text else ''
+  onVehicleModelChanged: (model)->
+    if model.isNew
+      @createVehicleModel(model.name)
 
-    isNew = text.match(/.*\(Nuevo\)/)
-    if isNew
-      @createVersion(version_id)
+    @version_select.update(model.id)
+    $('#js-version').val('')
+
+  onVersionChanged: (version)->
+    if version.isNew
+      @createVersion(version.name)
 
   onCustomerCreated: (data) ->
     $('input[data-behavior~=searchCustomer]').select2('data', data)
@@ -135,9 +124,17 @@ class App.BrandSelect
     @element.normalSelect
       data: @element.data('data')
       placeholder: 'Buscar Marca...'
-      createSearchChoice: (term)->
-        id: term
-        text: "#{term} (Nuevo)"
+      createSearchChoicePosition: 'bottom'
+      createSearchChoice: (term, page) ->
+        unless page.some(((item) ->
+            item.text.toLowerCase() == term.toLowerCase()
+          ))
+          return {
+            id: term
+            text: "#{term} (Nuevo)"
+            name: term
+            isNew: true
+          }
   update: (brand_id, brand_name) ->
     brands = @element.data 'data'
     brands.push { id: brand_id, text: brand_name }
@@ -157,9 +154,17 @@ class App.VehicleModelSelect
   options_with_data: (data=[]) ->
     data: data
     placeholder: 'Buscar Versión...'
-    createSearchChoice: (term)->
-      id: term
-      text: "#{term} (Nuevo)"
+    createSearchChoicePosition: 'bottom'
+    createSearchChoice: (term, page)->
+      unless page.some(((item) ->
+          item.text.toLowerCase() == term.toLowerCase()
+        ))
+        return {
+          id: term
+          text: "#{term} (Nuevo)"
+          name: term
+          isNew: true
+        }
 
   update: (brand_id, option_selected) ->
     $.ajax
@@ -187,9 +192,17 @@ class App.VersionSelect
   options_with_data: (data=[]) ->
       data: data
       placeholder: 'Buscar Modelo...'
-      createSearchChoice: (term)->
-        id: term
-        text: "#{term} (Nuevo)"
+      createSearchChoicePosition: 'bottom'
+      createSearchChoice: (term, page)->
+        unless page.some(((item) ->
+            item.text.toLowerCase() == term.toLowerCase()
+          ))
+          return {
+            id: term
+            text: "#{term} (Nuevo)"
+            name: term
+            isNew: true
+          }
 
   update: (vehicle_model_id, option_selected) ->
     $.ajax

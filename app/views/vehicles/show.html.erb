@@ -6,7 +6,7 @@
 </header>
 
 <section class="content">
-  <%= render "attachments" %>
+  <%= render partial: "attachments", locals: { vehicle: @vehicle }  %>
 
 <div class="row">
 <div class="col-md-9">

@@ -2,12 +2,12 @@
   Arrastrá los archivos o hacé click en examinar
 </p>
 <input id="fileupload" type="file" name="attachment[file]"
-    data-url="<%= url_for([@vehicle, :attachments]) %>" multiple>
+    data-url="<%= url_for([vehicle, :attachments]) %>" multiple>
 
 <div id="js-attachments" class="carousel slide" data-ride="carousel"
           >
   <div class="carousel-inner">
-    <%= render @vehicle.attachments %>
+    <%= render vehicle.attachments %>
   </div>
   <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
     <span class="fa fa-angle-left"></span>
