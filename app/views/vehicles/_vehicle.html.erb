@@ -1,13 +1,12 @@
 <tr id="<%= dom_id(vehicle) %>" class="<%= vehicle.klass %>">
 
-  <td align="left">   <%= vehicle.identification %> </td>
+  <td align="left"> <%= link_to vehicle.identification, vehicle  %> </td>
   <td align="center"> <%= vehicle.color %> </td>
   <td align="center"> <%= vehicle.year %> </td>
   <td align="center"> <%= vehicle.kilometers %> </td>
   <td align="right">  <%= vehicle.price %> </td>
-    
+
   <td align="right">
-    <%= link_to 'Ver', vehicle_path(vehicle), class: 'btn btn-xs btn-primary' %>    
     <%= link_to 'Editar', edit_vehicle_path(vehicle), class: 'btn btn-xs btn-default' %>
     <%= link_to 'Eliminar', vehicle, method: :delete,
         data: {confirm: '¿Está seguro?'}, class: 'btn btn-xs btn-danger' %>

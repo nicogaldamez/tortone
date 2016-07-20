@@ -17,12 +17,20 @@ class App.VehicleShow
       @element.carousel('next')
 
   selectAttachment: (attachment_id)->
+    @showOrHideCarousel()
+
     @element.find('.item').removeClass('active')
     if attachment_id
       item = $("#attachment_#{attachment_id}")
     else
       item = $('#js-attachments').find('.item').first()
     item.addClass('active')
+
+  showOrHideCarousel: ->
+    if @element.find('.item').length == 0
+      @element.hide()
+    else
+      @element.show()
 
   removeAttachment: (attachment_id)->
     $("#attachment_#{attachment_id}").remove()
