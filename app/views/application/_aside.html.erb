@@ -8,6 +8,8 @@
       <% if logged_in? %>
         <%= side_link 'Clientes', customers_path, 'users' %>
         <%= side_link 'Vehículos', vehicles_path, 'car' %>
+        <%= side_link 'Mis vehículos', 
+                  vehicles_path(vehicle_filter: {is_owner: true}), 'car' %>
       <% end %>
 
     </ul>

@@ -4,6 +4,7 @@ class VehicleTest < ActiveSupport::TestCase
   
   def setup
     @vehicle = vehicles(:delorean)
+    @owned_vehicle = vehicles(:batmobile)
   end
   
   test "should not save vehicle without brand" do
@@ -51,6 +52,12 @@ class VehicleTest < ActiveSupport::TestCase
   test "should save vehicle with valid params" do
     @vehicle.valid?
     assert_empty @vehicle.errors
+  end
+  
+  test "should save owned vehicle without customer" do
+    @owned_vehicle.customer = nil    
+    @owned_vehicle.valid?
+    assert_empty @owned_vehicle.errors
   end
 
 end

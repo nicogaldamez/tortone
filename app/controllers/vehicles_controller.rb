@@ -15,7 +15,7 @@ class VehiclesController < ApplicationController
   end
 
   def new
-    @vehicle = Vehicle.new
+    @vehicle = Vehicle.new(vehicle_params)
   end
 
   def create
@@ -58,7 +58,7 @@ class VehiclesController < ApplicationController
             :price, :entered_on, :sold_on, :is_exchange, :is_consignment,
             :is_financed, :minimum_advance, :transfer_amount, :plate,
             :year, :motor_number, :chassis_number, :vehicle_model_id,
-            :version_id, :brand_id, :customer_id)
+            :version_id, :brand_id, :customer_id, :is_owner) if params[:vehicle].present?
   end
 
   def set_vehicle

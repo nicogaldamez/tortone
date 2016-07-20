@@ -18,7 +18,7 @@ class VehiclesPresenter
   def filter_params
     if @params[:vehicle_filter]
       parameters = @params.require(:vehicle_filter).permit(
-                                              :brand, :vehicle_model, :name)
+                                :brand, :vehicle_model, :name, :is_owner)
     end
     parameters || {}
   end

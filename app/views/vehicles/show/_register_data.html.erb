@@ -5,34 +5,29 @@
       <span class="fa fa-file-text-o"></span>
       Datos del registro
     </h3>
+    <div class="box-tools pull-right">
+      <button type="button" class="btn btn-box-tool" data-widget="collapse">
+        <i class="fa fa-minus"></i>
+      </button>
+    </div>
   </div>
 
   <div class="box-body">
 
-    <div class="row">
-      <div class="col-md-12">
-        <dt>Patente:</dt>
-        <dd><%= vehicle.plate %></dd>
-      </div>
-    </div>
-
-    <br />
-
-    <div class="row">
-      <div class="col-md-12">
-        <dt>Número de motor:</dt>
-        <dd><%= vehicle.motor_number %></dd>
-      </div>
-    </div>
-
-    <br/>
-
-    <div class="row">
-      <div class="col-md-12">
-        <dt>Número de chasis:</dt>
-        <dd><%= vehicle.chassis_number %></dd>
-      </div>
-    </div>
+    <ul class="list-group list-group-unbordered">
+      <li class="list-group-item" style="margin-top: 10px;">
+        <b>Patente</b>
+        <span class="text-muted pull-right"><%= vehicle.plate %></span>
+      </li>
+      <li class="list-group-item">
+        <b>Número de motor</b>
+        <span class="text-muted pull-right"><%= vehicle.motor_number %></span>
+      </li>
+      <li class="list-group-item">
+        <b>Número de chasis</b>
+        <span class="text-muted pull-right"><%= vehicle.chassis_number %></span>
+      </li>
+    </ul>
 
   </div>
 

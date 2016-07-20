@@ -13,3 +13,18 @@ delorean:
   is_exchange:    false
   is_consignment: true
   customer:       carlos
+
+batmobile:
+  brand:          volkswagen
+  vehicle_model:  bora
+  version:        cc
+  kilometers:     50000
+  color:          Rojo
+  cost_in_cents:  200000
+  price_in_cents: 250000
+  entered_on:     2016-01-01
+  year:           2010
+  is_exchange:    false
+  is_consignment: true
+  is_owner:       true
+  customer:       silvia
