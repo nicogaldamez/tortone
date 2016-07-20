@@ -71,6 +71,7 @@ public/uploads/**
 config/database.yml
 logfile
 config/initializers/settings.rb
+/config/local_env.yml
 
 ## Dragonfly
 public/system/dragonfly
