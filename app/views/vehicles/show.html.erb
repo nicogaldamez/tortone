@@ -6,9 +6,15 @@
 </header>
 
 <section class="content">
+  <ul id="js-attachments">
+    <%= render @vehicle.attachments %>
+  </ul>
+  <% # jquery upload template # %>
+  <input id="fileupload" type="file" name="attachment[file]"
+      data-url="<%= url_for([@vehicle, :attachments]) %>" multiple>
 
-  <div class="row">
-    <div class="col-md-9">
+<div class="row">
+<div class="col-md-9">
       <%= render partial: 'vehicles/show/general_data', locals: { vehicle: @vehicle } %>
     </div>
     <div class="col-md-3">
@@ -27,3 +33,10 @@
 
 </section>
 
+<script type="text/javascript">
+  $(function () {
+    $('#fileupload').fileupload({
+      dataType: 'script'
+    });
+  });
+</script>

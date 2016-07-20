@@ -1,0 +1,18 @@
+<li id="<%= dom_id(attachment) %>" class="col-xs-3 text-center">
+  <%= link_to attachment.file.url, class: 'img-thumbnail', target: '_blank' do %>
+    <% if /image/ =~ attachment.file.mime_type %>
+      <%= image_tag(attachment.file.thumb('180x180#').url, class: 'img-thumbnail') %>
+    <% else %>
+      <div class="document-thumbnail">
+        <%= icon 'file-text-o' %>
+        <br>
+        <%= attachment.file.name %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <p>
+  <%= link_to 'eliminar', attachment, method: :delete, class: 'btn btn-md btn-danger',
+    data: { confirm: '¿Seguro?', 'disable-with' => 'eliminando' }, remote: true  %>
+  </p>
+</li>

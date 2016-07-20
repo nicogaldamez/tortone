@@ -26,3 +26,18 @@ LOG:  received smart shutdown request
 LOG:  autovacuum launcher shutting down
 LOG:  shutting down
 LOG:  database system is shut down
+LOG:  database system was shut down at 2016-07-18 17:27:24 ART
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+FATAL:  terminating connection due to administrator command
+FATAL:  terminating connection due to administrator command
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2016-07-19 17:56:34 ART
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
