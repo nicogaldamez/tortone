@@ -70,3 +70,6 @@ bower.json
 public/uploads/**
 config/database.yml
 logfile
+
+## Dragonfly
+public/system/dragonfly

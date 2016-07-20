@@ -8,6 +8,7 @@ class Vehicle < ActiveRecord::Base
   belongs_to :version
   belongs_to :vehicle_model
   belongs_to :customer
+  has_many :attachments, dependent: :destroy
 
   # -- Validations
   validates :brand, presence: true
