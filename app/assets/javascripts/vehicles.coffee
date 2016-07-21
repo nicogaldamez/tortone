@@ -4,12 +4,25 @@
 class App.VehicleShow
   constructor: () ->
     @element = $('#js-attachments')
+    $('#js-progress-bar').hide()
     @bindEvents()
     @selectAttachment()
 
   bindEvents: ->
     $('#fileupload').fileupload
       dataType: 'script'
+      start: ->
+        $('#js-progress-bar').show()
+        $('#js-progress-bar').find('.progress-bar').css('width', '0%')
+      progressall: (e, data)->
+        progress = parseInt(data.loaded / data.total * 100, 10)
+        $('#js-progress-bar').find('.progress-bar').css('width', "#{progress}%")
+      fail: ->
+        App.flash_snackbar_render
+          danger: 'Falló la carga de imágenes'
+      always: ->
+        $('#js-progress-bar').hide()
+
     $('.carousel-control.left').click (e)=>
       @element.carousel('prev')
     $('.carousel-control.right').click (e)=>
