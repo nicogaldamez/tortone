@@ -5,13 +5,13 @@ class VehiclesController < ApplicationController
   def index
     @presenter = VehiclesPresenter.new(params)
   end
-  
+
   def show
     @vehicle = Vehicle.find(params[:id]).decorate
 
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'El vehículo buscado no existe'
-      render :index
+      redirect_to vehicles_path
   end
 
   def new
