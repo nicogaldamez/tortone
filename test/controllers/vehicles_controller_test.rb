@@ -53,9 +53,11 @@ class VehiclesControllerTest < ActionController::TestCase
     assert_difference('Vehicle.count', 1) do
       post :create, vehicle: @vehicle_new_data
     end
-    assert_redirected_to vehicles_path
+    new_vehicle = Vehicle.find_by(plate: @vehicle_new_data[:plate])
 
-    Vehicle.find_by(plate: @vehicle_new_data[:plate]).as_json.each do |key, value|
+    assert_redirected_to new_vehicle
+
+    new_vehicle.as_json.each do |key, value|
       assert_equal @vehicle_new_data[key.to_sym], value if @vehicle_new_data.key?(key.to_sym)
     end
   end
