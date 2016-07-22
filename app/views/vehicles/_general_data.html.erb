@@ -30,7 +30,7 @@
         </div>
       </div>
     <% end %>
-    
+
     <div class="row">
       <div class="col-md-4">
         <fieldset class="form-group">
@@ -92,11 +92,11 @@
             <%= optional_label f, "Monto pretendido por el dueño" %>
           <% end %>
           <div class="input-group">
-            <%= f.text_field :cost, class: 'form-control',
-                  placeholder: 'Ingrese el costo' %>
             <span class="input-group-addon">
               <span class="fa fa-dollar"></span>
             </span>
+            <%= f.text_field :cost, class: 'form-control',
+                  placeholder: 'Ingrese el costo' %>
           </div>
           <p class="help-message">Este valor quedará oculto</p>
         </fieldset>
@@ -106,11 +106,11 @@
         <fieldset class="form-group">
           <%= optional_label f, :price %>
           <div class="input-group">
-            <%= f.text_field :price, class: 'form-control',
-                  placeholder: 'Ingrese el precio de venta' %>
             <span class="input-group-addon">
               <span class="fa fa-dollar"></span>
             </span>
+            <%= f.text_field :price, class: 'form-control',
+                  placeholder: 'Ingrese el precio de venta' %>
           </div>
           <p class="help-message">Este valor será visible para los cliente</p>
         </fieldset>
@@ -120,11 +120,11 @@
         <fieldset class="form-group">
           <%= optional_label f, :transfer_amount %>
           <div class="input-group">
-            <%= f.text_field :transfer_amount, class: 'form-control',
-                  placeholder: 'Ingrese el costo de la transferencia' %>
             <span class="input-group-addon">
               <span class="fa fa-dollar"></span>
             </span>
+            <%= f.text_field :transfer_amount, class: 'form-control',
+                  placeholder: 'Ingrese el costo de la transferencia' %>
           </div>
         </fieldset>
       </div>
