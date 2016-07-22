@@ -1,6 +1,13 @@
 <header class="content-header">
-  <%= link_to 'Nuevo vehículo', new_vehicle_path, class: 'btn btn-primary pull-right' %>
-  <%= link_to 'Nuevo vehículo propio', new_vehicle_path(vehicle: {is_owner: true}), class: 'btn btn-primary pull-right', style: 'margin-right: 10px;' %>
+  <%= link_to new_vehicle_path, class: 'btn btn-primary pull-right' do %>
+    <%= icon :plus %>
+    Vehiculo para la venta
+  <% end %>
+  <%= link_to new_vehicle_path(vehicle: {is_owner: true}),
+        class: 'btn btn-primary pull-right', style: 'margin-right: 10px;' do %>
+    <%= icon :plus %>
+    Vehiculo propio
+  <% end %>
   <h1> <%= @presenter.title %> </h1>
 </header>
 
