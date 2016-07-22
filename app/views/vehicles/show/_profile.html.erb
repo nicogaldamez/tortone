@@ -21,6 +21,9 @@
         <h2 class="text-center"><b><%= vehicle.price %></b></h2>
       </li>
     </ul>
+
+    <%= link_to '<b>Editar</b>'.html_safe, edit_vehicle_path(vehicle),
+      class: 'btn btn-primary btn-block' %>
   </div>
 
 </div>
