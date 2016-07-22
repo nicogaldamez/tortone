@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  phone: MyString
+  email: MyString
+  is_hdi: false
+  has_automatic_transmission: false
+  min_price_in_cents: 1
+  max_price_in_cents: 1
+
+two:
+  first_name: MyString
+  last_name: MyString
+  phone: MyString
+  email: MyString
+  is_hdi: false
+  has_automatic_transmission: false
+  min_price_in_cents: 1
+  max_price_in_cents: 1
