@@ -9,6 +9,7 @@ edge:
   vehicle_model: focus
 
 cc:
+  vehicle_model: bora
   name: 'HDI 2.0 Coupé Cabriolet'
 
 kinetic:

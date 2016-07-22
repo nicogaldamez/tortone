@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720200417) do
+ActiveRecord::Schema.define(version: 20160722103942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,22 +75,24 @@ ActiveRecord::Schema.define(version: 20160720200417) do
     t.integer  "kilometers"
     t.string   "color"
     t.text     "details"
-    t.integer  "cost_in_cents",            limit: 8
-    t.integer  "price_in_cents",           limit: 8
+    t.integer  "cost_in_cents",              limit: 8
+    t.integer  "price_in_cents",             limit: 8
     t.date     "entered_on"
     t.date     "sold_on"
-    t.boolean  "is_exchange",                        default: false
-    t.boolean  "is_consignment",                     default: false
-    t.boolean  "is_financed",                        default: false
-    t.integer  "minimum_advance_in_cents", limit: 8
-    t.integer  "transfer_amount_in_cents", limit: 8
+    t.boolean  "is_exchange",                          default: false
+    t.boolean  "is_consignment",                       default: false
+    t.boolean  "is_financed",                          default: false
+    t.integer  "minimum_advance_in_cents",   limit: 8
+    t.integer  "transfer_amount_in_cents",   limit: 8
     t.string   "plate"
     t.integer  "year"
     t.string   "motor_number"
     t.string   "chassis_number"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_owner",                           default: false
+    t.boolean  "is_owner",                             default: false
+    t.boolean  "has_automatic_transmission",           default: false
+    t.boolean  "is_hdi",                               default: false
   end
 
   add_index "vehicles", ["brand_id"], name: "index_vehicles_on_brand_id", using: :btree

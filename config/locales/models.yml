@@ -40,4 +40,6 @@ es:
         motor_number: 'Número de motor'
         chassis_number: 'Número de chasis'
         is_owner: 'Vehículo propio'
+        is_hdi: HDI
+        has_automatic_transmission: Caja Automática
 
