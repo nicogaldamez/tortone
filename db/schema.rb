@@ -33,17 +33,17 @@ ActiveRecord::Schema.define(version: 20160722120628) do
   end
 
   create_table "buyers", force: :cascade do |t|
-    t.string   "first_name",                                 null: false
+    t.string   "first_name",                                           null: false
     t.string   "last_name"
-    t.string   "phone",                                      null: false
+    t.string   "phones",                                               null: false
     t.string   "email"
-    t.boolean  "is_hdi",                     default: false
-    t.boolean  "has_automatic_transmission", default: false
-    t.integer  "min_price_in_cents",         default: 0
-    t.integer  "max_price_in_cents",                         null: false
+    t.boolean  "is_hdi",                               default: false
+    t.boolean  "has_automatic_transmission",           default: false
+    t.integer  "min_price_in_cents",         limit: 8, default: 0
+    t.integer  "max_price_in_cents",         limit: 8
     t.text     "notes"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
   end
 
   create_table "customers", force: :cascade do |t|

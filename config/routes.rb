@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :brands, only: [:create]
   resources :vehicle_models, only: [:index, :create]
   resources :versions, only: [:index, :create]
+  resources :buyers
 
   get 'login', to: 'user_sessions#new', as: :login
   post 'logout', to: 'user_sessions#destroy', as: :logout

@@ -8,3 +8,5 @@ es:
         name: "Cliente"
         brand: "Marca"
         vehicle_model: "Modelo"
+      buyer_filter:
+        name: "Nombre"

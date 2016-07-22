@@ -9,21 +9,15 @@ class BuyerTest < ActiveSupport::TestCase
   end
 
   test "should not save buyer without phone" do
-    buyer = Buyer.new(phone: '')
+    buyer = Buyer.new(phones: '')
     buyer.valid?
-    assert_includes buyer.errors[:phone], 'no puede estar en blanco'
+    assert_includes buyer.errors[:phones], 'no puede estar en blanco'
   end
 
   test "should save min price with 0 when empty" do
     buyer = Buyer.new(min_price: '')
     buyer.valid?
     assert_equal buyer.min_price, 0
-  end
-
-  test "should not save buyer without maximum price" do
-    buyer = Buyer.new(max_price: '')
-    buyer.valid?
-    assert_includes buyer.errors[:max_price], 'no puede estar en blanco'
   end
 
 end

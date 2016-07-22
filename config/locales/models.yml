@@ -42,4 +42,12 @@ es:
         is_owner: 'Vehículo propio'
         is_hdi: HDI
         has_automatic_transmission: Caja Automática
+      buyer:
+        first_name: Nombre
+        last_name: Apellido
+        phones: Teléfonos
+        min_price: Precio mínimo
+        max_price: Precio máximo
+        is_hdi: HDI
+        has_automatic_transmission: Caja Automática
 

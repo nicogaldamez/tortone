@@ -1,0 +1,12 @@
+<tr id="<%= dom_id(buyer) %>">
+  <% # TODO Change edit path %>
+  <td> <%= link_to buyer.full_name, edit_buyer_path(buyer) %> </td>
+  <td class="text-center"> <%= buyer.phones %> </td>
+  <td class="text-center"> <%= buyer.email %> </td>
+  <td>
+    <%= link_to 'Editar', edit_buyer_path(buyer), class: 'btn btn-xs btn-primary' %>
+    <%= link_to 'Eliminar', buyer, method: :delete,
+        data: {confirm: '¿Está seguro?'}, class: 'btn btn-xs btn-danger' %>
+  </td>
+
+</tr>
