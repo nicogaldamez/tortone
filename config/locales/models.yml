@@ -40,4 +40,9 @@ es:
         motor_number: 'Número de motor'
         chassis_number: 'Número de chasis'
         is_owner: 'Vehículo propio'
+      expense:
+        expense_category_id: 'Categoría'
+        incurred_on: 'Fecha'
+        amount: 'Monto'
+        description: 'Descripción'
 

@@ -2,18 +2,18 @@ puts 'BEGIN Seed Vehicle Models'
 puts '----------------'
 
 PEUGEOT = ['206', '207', '208', '307', '308', '407', '408']
-FORD    = ['Fiesta', 'Ranger', 'Focus']
+FORD    = ['FIESTA', 'RANGER', 'FOCUS']
 
 PEUGEOT.each do |model_name| 
   VehicleModel.where(name: model_name).first_or_create do |model|
-    model.name  = model_name.upcase
+    model.name  = model_name
     model.brand = Brand.find_by(name: 'PEUGEOT') 
   end
 end
 
 FORD.each do |model_name| 
   VehicleModel.where(name: model_name).first_or_create do |model|
-    model.name  = model_name.upcase
+    model.name  = model_name
     model.brand = Brand.find_by(name: 'FORD') 
   end
 end

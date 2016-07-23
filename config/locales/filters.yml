@@ -8,3 +8,7 @@ es:
         name: "Cliente"
         brand: "Marca"
         vehicle_model: "Modelo"
+      expense_filter:
+        expense_category: 'Categoría'
+        from: 'Desde'
+        to: 'Hasta'
