@@ -45,4 +45,7 @@ es:
         incurred_on: 'Fecha'
         amount: 'Monto'
         description: 'Descripción'
+      expense_category:
+        name: 'Nombre'
+        description: 'Descripción'
 
