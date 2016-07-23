@@ -20,10 +20,13 @@
         <%= side_link text: 'Nuevo Interesado', path: '#' %>
         <%= side_link text: 'Listado de Interesados', path: '#' %>
 
-        <li class="header"> VENTAS / GASTOS </li>
-        <%= side_link text: 'Nuevo Gasto', path: '#' %>
-        <%= side_link text: 'Listado de Ventas', path: '#' %>
-        <%= side_link text: 'Listado de Movimientos', path: '#' %>
+        <li class="header"> GASTOS </li>
+        <%= side_link text: 'Nuevo Gasto', path: new_expense_path %>
+        <%= side_link text: 'Listado de Gastos', path: expenses_path %>
+        
+        <li class="header"> VENTAS </li>
+        <%= side_link text: 'Listado de ventas', path: '#' %>
+        <%= side_link text: 'Generar presupuesto', path: '#' %>
 
       <% end %>
 

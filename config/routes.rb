@@ -8,9 +8,16 @@ Rails.application.routes.draw do
   resources :customers do
     get :search, on: :collection
   end
+
   resources :vehicles do
     resources :attachments, only: [:create]
   end
+  
+  resources :expenses
+  resources :expense_categories do
+    get :search, on: :collection
+  end
+  
   resources :attachments, only: [:destroy]
   resources :brands, only: [:create]
   resources :vehicle_models, only: [:index, :create]

@@ -1,0 +1,53 @@
+<%= form_for @expenses_presenter.filter, url: :expenses, method: :get do |f| %>
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <fieldset class="form-group">
+
+        <div class="col-md-3">
+          <%= f.label :expense_category %>
+          <%= f.search_field :expense_category, class: 'form-control',
+                placeholder: 'Ingrese la categoría a buscar',
+                autofocus: true
+          %>
+        </div>
+
+        <div class="col-md-3">
+          <fieldset class="form-group">
+            <%= f.label :from %>
+            <div class='input-group date datepicker'>
+              <span class="input-group-addon">
+                <span class="fa fa-calendar"></span>
+              </span>
+              <%= f.text_field :from, class: 'form-control' %>
+            </div>
+          </fieldset>
+        </div>
+        
+        <div class="col-md-3">
+          <fieldset class="form-group">
+            <%= f.label :to %>
+            <div class='input-group date datepicker'>
+              <span class="input-group-addon">
+                <span class="fa fa-calendar"></span>
+              </span>
+              <%= f.text_field :to, class: 'form-control' %>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="col-md-3">
+          <div class="fake-label"></div>
+          <%= f.submit 'Filtrar', class: 'btn btn-primary',
+                  'data-disable-with' => 'Filtrando...' %>
+          <%= link_to 'Limpiar', [:expenses], class: 'btn btn-default',
+                'data-disable-with' => 'Espere...' %>
+        </div>
+
+      </fieldset>
+
+    </div>
+  </div>
+
+<% end %>

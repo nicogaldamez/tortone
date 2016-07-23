@@ -32,3 +32,4 @@
 //= require utilities
 //= require vehicles
 //= require customers
+//= require expenses

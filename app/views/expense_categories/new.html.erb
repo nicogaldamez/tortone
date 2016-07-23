@@ -1,0 +1,15 @@
+<header class="content-header">
+  <% if @modal_form %>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  <% end %>
+  <h1>Crear nueva categoría de gasto
+    <%= back_to_link 'Volver', expense_categories_path, 'pull-right' unless @modal_form %>
+  </h1>
+</header>
+
+<section class="content">
+<%= render 'form', form_format: (@modal_form ? :json : ''),
+      form_remote: @modal_form ? true : false %>
+</section>
