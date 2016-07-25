@@ -8,7 +8,7 @@ class ExpensesControllerTest < ActionController::TestCase
     @expense_new_data = {  
                           amount: 100.0,
                           expense_category_id: expense_categories(:advertising).id,
-                          incurred_on: Date.today
+                          incurred_on: Date.yesterday
                         }
     login_user(users(:ross))
   end
@@ -18,16 +18,16 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns(:expenses_presenter)
 
-    assert_equal Expense.count, assigns(:expenses_presenter).send(:expenses).send(:count)
+    assert_equal assigns(:expenses_presenter).send(:expenses).send(:count), 1
   end
 
 
   test "should filter expenses by category" do
-    get :index, expense_filter: {expense_category: @expense.expense_category.name}
+    get :index, expense_filter: { expense_category: @expense.expense_category.name }
     assert_response :success
     
     assert_equal 1, assigns(:expenses_presenter).send(:expenses).send(:count)
-    assert_includes assigns(:expenses_presenter).send(:expenses), @expenses.decorate
+    assert_includes assigns(:expenses_presenter).send(:expenses), @expense.decorate
   end
 
   test "should filter expenses by date" do

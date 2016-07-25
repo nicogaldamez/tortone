@@ -3,11 +3,11 @@
 peugeot_wash:
   amount_in_cents: 100
   expense_category: car_wash
-  incurred_on: '2016-10-01'
+  incurred_on: <%= Time.zone.today.strftime('%Y-%m-%d') %>
   description: 'Lavado de auto'
   
 chevrolet_ad:
   amount_in_cents: 200
   expense_category: advertising
-  incurred_on: '2016-10-03'
+  incurred_on: <%= 2.month.ago.strftime('%Y-%m-%d') %>
   description: 'Publicidad del chevrolet'
