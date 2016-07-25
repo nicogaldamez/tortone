@@ -25,7 +25,10 @@
             <span class="input-group-addon">
               <span class="fa fa-dollar"></span>
             </span>
-            <%= f.text_field :minimum_advance, class: 'form-control', placeholder: 'Ingrese el monto mínimo' %>
+            <%= f.text_field :minimum_advance, class: 'form-control',
+                  placeholder: 'Ingrese el monto mínimo',
+                  'data-price-format' => true
+            %>
           </div>
         </fieldset>
       </div>

@@ -96,7 +96,9 @@
               <span class="fa fa-dollar"></span>
             </span>
             <%= f.text_field :cost, class: 'form-control',
-                  placeholder: 'Ingrese el monto' %>
+              placeholder: 'Ingrese el monto',
+              'data-price-format' => true
+            %>
           </div>
           <p class="help-message">Este valor quedará oculto</p>
         </fieldset>
@@ -110,7 +112,9 @@
               <span class="fa fa-dollar"></span>
             </span>
             <%= f.text_field :price, class: 'form-control',
-                  placeholder: 'Ingrese el precio de venta' %>
+                placeholder: 'Ingrese el precio de venta',
+                'data-price-format' => true
+             %>
           </div>
           <p class="help-message">Este valor será visible para los cliente</p>
         </fieldset>

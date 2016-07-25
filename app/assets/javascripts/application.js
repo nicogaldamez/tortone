@@ -24,6 +24,7 @@
 //= require jquery.infinitescroll
 //= require jquery.ui.widget.js
 //= require jquery.fileupload
+//= require jquery.price_format.min
 //= require moment
 //= require moment/es
 //= require bootstrap-datetimepicker

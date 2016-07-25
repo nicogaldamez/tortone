@@ -95,6 +95,13 @@ App.initTooltips = (parent) ->
   elements = if parent then parent.find("a, span, i, div, td, h5") else $("a, span, i, div, td, h5")
   elements.tooltip()
 
+App.initPriceFormatInputs = (parent) ->
+  elements = if parent then parent.find("[data-price-format]") else $("[data-price-format]")
+  elements.priceFormat
+    prefix: ''
+    centsSeparator: ','
+    thousandsSeparator: '.'
+
 App.init = ->
   # Turbolinks progress bar
   Turbolinks.enableProgressBar()
@@ -120,6 +127,9 @@ App.init = ->
   # Select2
   $("select").normalSelect()
 
+  # Price format
+  App.initPriceFormatInputs()
+
   # Reactivo eventos de AdminLTE porque se pierden con turbolinks
   $.AdminLTE.layout.activate()
   $.AdminLTE.tree('.sidebar')
@@ -137,6 +147,7 @@ $(document).on "page:change", ->
   App.initModals()
   App.initDatepicker()
   App.checkAll()
+  App.initPriceFormatInputs()
   $("select").normalSelect()
 
 $(document).on 'flash:send', (e, flashMessages) ->
