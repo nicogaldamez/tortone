@@ -89,14 +89,14 @@
           <% if @vehicle.is_owner %>
             <%= optional_label f, :cost %>
           <% else %>
-            <%= optional_label f, "Monto pretendido por el dueño" %>
+            <%= optional_label f, "Pretendido por el dueño" %>
           <% end %>
           <div class="input-group">
             <span class="input-group-addon">
               <span class="fa fa-dollar"></span>
             </span>
             <%= f.text_field :cost, class: 'form-control',
-                  placeholder: 'Ingrese el costo' %>
+                  placeholder: 'Ingrese el monto' %>
           </div>
           <p class="help-message">Este valor quedará oculto</p>
         </fieldset>
@@ -135,10 +135,10 @@
         <fieldset class="form-group">
           <%= optional_label f, :entered_on %>
           <div class='input-group date datepicker'>
-            <%= f.text_field :entered_on, class: 'form-control' %>
             <span class="input-group-addon">
               <span class="fa fa-calendar"></span>
             </span>
+            <%= f.text_field :entered_on, class: 'form-control' %>
           </div>
         </fieldset>
       </div>
@@ -147,10 +147,10 @@
         <fieldset class="form-group">
           <%= optional_label f, :sold_on %>
           <div class='input-group date datepicker'>
-            <%= f.text_field :sold_on, class: 'form-control' %>
             <span class="input-group-addon">
               <span class="fa fa-calendar"></span>
             </span>
+            <%= f.text_field :sold_on, class: 'form-control' %>
           </div>
         </fieldset>
       </div>

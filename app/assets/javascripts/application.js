@@ -34,3 +34,4 @@
 //= require vehicles
 //= require customers
 //= require buyers
+//= require expenses

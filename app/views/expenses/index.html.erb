@@ -1,0 +1,36 @@
+<header class="content-header">
+  <%= link_to 'Nuevo gasto', new_expense_path, class: 'btn btn-primary pull-right' %>
+  <h1>Gastos</h1>
+</header>
+
+<section class="content">
+
+  <article class="box box-primary">
+    <section class="box-body">
+
+      <%= render 'filter' %>
+
+      <table class="table table-custom table-hover">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Categoría</th>
+            <th>Monto</th>
+            <th>Descripción</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render @expenses_presenter.expenses %>
+        </tbody>
+      </table>
+
+      <%= paginate @expenses_presenter.expenses %>
+
+      <%= content_tag :p, 'No se encontraron gastos', class: 'text-center' unless @expenses_presenter.expenses.any? %>
+
+    </section>
+  </article>
+
+</section>

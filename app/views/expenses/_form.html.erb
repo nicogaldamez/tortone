@@ -1,0 +1,95 @@
+<%= form_for @expense do |f| %>
+
+<div class="row">
+  <div class="col-md-12">
+    <fieldset class="form-group">
+      <%= f.submit 'Guardar gasto', class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
+    </fieldset>
+  </div>
+</div>
+<article>
+  <section>
+
+    <div class="row">
+
+      <div class="col-md-9">
+        <div class="box box-primary">
+
+          <div class="box-body">
+    
+            <div class="row">
+            
+              <div class="col-md-5">
+                <fieldset class="form-group">
+                  <%= f.label :amount %>
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <span class="fa fa-dollar"></span>
+                    </span>
+                    <%= f.text_field :amount, class: 'form-control',
+                          placeholder: 'Ingrese el monto del gasto' %>
+                  </div>
+                </fieldset>
+              </div>
+              
+              <div class="col-md-5">
+                <fieldset class="form-group">
+                  <%= f.label :expense_category_id %>
+                  <%= f.hidden_field :expense_category_id, class: 'select2', required: true,
+                    data: { behavior: 'searchExpenseCategory', url: search_expense_categories_path, 'record-id' => @expense.expense_category.try(:expense_category_id),
+                            'record-text' => @expense.expense_category.try(:name) } %>
+                </fieldset>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <div class="fake-label"></div>
+                  <%= link_to 'Nuevo', new_expense_category_path(modal: true), class: 'btn btn-primary',
+                    data: { behavior: 'ajax-modal', target: '#js-modal' } %>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              
+              <div class="col-md-5">
+                <fieldset class="form-group">
+                  <%= f.label :incurred_on %>
+                  <div class='input-group date datepicker'>
+                    <span class="input-group-addon">
+                      <span class="fa fa-calendar"></span>
+                    </span>
+                    <%= f.text_field :incurred_on, class: 'form-control' %>
+                  </div>
+                </fieldset>
+              </div>
+              
+            </div>
+    
+            <div class="row">
+              <div class="col-md-12">
+                <fieldset class="form-group">
+                  <%= optional_label f, :description %>
+                  <%= f.text_area :description, class: 'form-control',
+                        placeholder: 'Ingrese una descripción' %>
+                </fieldset>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      </div>
+  </section>
+</article>
+
+<div class="row">
+  <div class="col-md-12">
+    <fieldset class="form-group">
+      <%= f.submit 'Guardar gasto', class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
+    </fieldset>
+  </div>
+</div>
+
+<% end %>

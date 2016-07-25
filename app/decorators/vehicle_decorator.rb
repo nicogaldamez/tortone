@@ -11,10 +11,6 @@ class VehicleDecorator < Draper::Decorator
     "#{object.brand} #{object.vehicle_model}"
   end
 
-  def price_label
-    object.is_owner ? "Precio" : "Monto pretendido por el dueño"
-  end
-
   def price
     number_to_currency(object.price, precision: 2) || '-'
   end

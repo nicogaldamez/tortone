@@ -53,4 +53,12 @@ es:
       buyer_interest:
         year: Año
         max_kilometers: Km Máximo
+      expense:
+        expense_category_id: 'Categoría'
+        incurred_on: 'Fecha'
+        amount: 'Monto'
+        description: 'Descripción'
+      expense_category:
+        name: 'Nombre'
+        description: 'Descripción'
 
