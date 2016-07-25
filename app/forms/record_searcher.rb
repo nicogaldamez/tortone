@@ -3,9 +3,9 @@
 class RecordSearcher
   attr_reader :records
 
-  def initialize(records, params = {})
-    unless records.respond_to? :search
-      raise ArgumentError, "records must repond to .search"
+  def initialize(records, params = {}, scope = :search)
+    unless records.respond_to? scope
+      raise ArgumentError, "records must repond to #{scope}"
     end
 
     default_params = {
@@ -15,7 +15,7 @@ class RecordSearcher
     }
 
     params.reverse_merge!(default_params)
-    @records = records.search(params[:query]).page(params[:page]).per(params[:limit])
+    @records = records.send(scope, params[:query]).page(params[:page]).per(params[:limit])
   end
 
   def call(&block)

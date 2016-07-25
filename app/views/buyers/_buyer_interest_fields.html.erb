@@ -1,0 +1,29 @@
+<div class="nested-fields row">
+
+  <fieldset class="form-group col-md-3">
+    <%= f.label :vehicle_model, 'Marca y Modelo' %>
+    <%= f.hidden_field :vehicle_model_id, class: 'select2 js-vehicle-model',
+          data: { behavior: 'searchBrandAndModel', url: search_vehicle_models_path(with_brand: true),
+                  record_id: f.object.vehicle_model.try(:id),
+                  record_text: "#{f.object.brand.try(:name)} #{f.object.vehicle_model.try(:name)}" } %>
+    <%= f.hidden_field :brand_id, class: 'js-brand' %>
+  </fieldset>
+
+  <fieldset class="form-group col-md-2">
+    <%= f.label :year %>
+    <%= f.number_field :year, class: 'form-control' %>
+  </fieldset>
+
+  <fieldset class="form-group col-md-2">
+    <%= f.label :max_kilometers %>
+    <%= f.number_field :max_kilometers, class: 'form-control' %>
+  </fieldset>
+
+  <div class="col-md-1">
+    <div class="fake-label"></div>
+    <%= link_to_remove_association 'quitar', f,
+          class: 'btn btn-danger' %>
+  </div>
+</div>
+
+

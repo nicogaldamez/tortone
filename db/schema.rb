@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722103942) do
+ActiveRecord::Schema.define(version: 20160722141909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,34 @@ ActiveRecord::Schema.define(version: 20160722103942) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "buyer_interests", force: :cascade do |t|
+    t.integer  "buyer_id"
+    t.integer  "brand_id"
+    t.integer  "vehicle_model_id"
+    t.integer  "year",             null: false
+    t.integer  "max_kilometers"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "buyer_interests", ["brand_id"], name: "index_buyer_interests_on_brand_id", using: :btree
+  add_index "buyer_interests", ["buyer_id"], name: "index_buyer_interests_on_buyer_id", using: :btree
+  add_index "buyer_interests", ["vehicle_model_id"], name: "index_buyer_interests_on_vehicle_model_id", using: :btree
+
+  create_table "buyers", force: :cascade do |t|
+    t.string   "first_name",                                           null: false
+    t.string   "last_name"
+    t.string   "phones",                                               null: false
+    t.string   "email"
+    t.boolean  "is_hdi",                               default: false
+    t.boolean  "has_automatic_transmission",           default: false
+    t.integer  "min_price_in_cents",         limit: 8, default: 0
+    t.integer  "max_price_in_cents",         limit: 8
+    t.text     "notes"
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -110,6 +138,9 @@ ActiveRecord::Schema.define(version: 20160722103942) do
   add_index "versions", ["vehicle_model_id"], name: "index_versions_on_vehicle_model_id", using: :btree
 
   add_foreign_key "attachments", "vehicles"
+  add_foreign_key "buyer_interests", "brands"
+  add_foreign_key "buyer_interests", "buyers"
+  add_foreign_key "buyer_interests", "vehicle_models"
   add_foreign_key "vehicle_models", "brands"
   add_foreign_key "vehicles", "brands"
   add_foreign_key "vehicles", "customers"

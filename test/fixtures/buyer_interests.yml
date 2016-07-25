@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+bora:
+  buyer: carlos
+  brand: volkswagen
+  vehicle_model: bora
+  year: 2010
+  max_kilometers: 100000
+
+focus:
+  buyer: carlos
+  brand: ford
+  vehicle_model: focus
+  year: 2011
+  max_kilometers: 60000

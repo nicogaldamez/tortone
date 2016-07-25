@@ -1,0 +1,35 @@
+<header class="content-header">
+  <%= link_to 'Nuevo interesado', new_buyer_path, class: 'btn btn-primary pull-right' %>
+  <h1>Interesados</h1>
+</header>
+
+<section class="content">
+
+  <article class="box box-primary">
+    <section class="box-body">
+
+      <%= render 'filter' %>
+
+      <table class="table table-custom table-hover">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Teléfonos</th>
+            <th>Correo</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render @presenter.buyers %>
+        </tbody>
+      </table>
+
+      <%= paginate @presenter.buyers %>
+
+      <%= content_tag :p, 'No se encontraron interesados', class: 'text-center' unless @presenter.buyers.any? %>
+
+    </section>
+  </article>
+
+</section>
