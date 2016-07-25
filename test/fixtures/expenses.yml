@@ -3,7 +3,7 @@
 peugeot_wash:
   amount_in_cents: 100
   expense_category: car_wash
-  incurred_on: <%= Time.zone.today.strftime('%Y-%m-%d') %>
+  incurred_on: <%= Date.today.strftime('%Y-%m-%d') %>
   description: 'Lavado de auto'
   
 chevrolet_ad:
