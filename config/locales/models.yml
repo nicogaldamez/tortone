@@ -50,4 +50,7 @@ es:
         max_price: Precio máximo
         is_hdi: HDI
         has_automatic_transmission: Caja Automática
+      buyer_interest:
+        year: Año
+        max_kilometers: Km Máximo
 

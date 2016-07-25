@@ -1,5 +1,6 @@
 class VehicleModelsController < ApplicationController
 
+  # GET /vehicle_models
   def index
     vehicle_models = VehicleModel.all
     vehicle_models = VehicleModel.where(brand_id: params[:brand_id]) if params[:brand_id]
@@ -17,6 +18,21 @@ class VehicleModelsController < ApplicationController
         format.json { render json: {result: 'error', error_messages: @vehicle_model.errors, full_error_messages: @vehicle_model.errors.full_messages} }
       end
     end
+  end
+
+  # GET /vehicle_models/search
+  def search
+    if params[:with_brand]
+      scope = :search_in_model_and_brand
+      block = ->(vehicle_model) { { id: vehicle_model.id, name: "#{vehicle_model.brand.to_s} #{vehicle_model.to_s}",
+                                    brand_id: vehicle_model.brand_id } }
+    else
+      scope = :search
+      block = ->(vehicle_model) { { id: vehicle_model.id, name: vehicle_model.to_s } }
+    end
+
+    records = RecordSearcher.new(VehicleModel, params, scope).call(&block)
+    render json: records.to_json, callback: params[:callback]
   end
 
   private

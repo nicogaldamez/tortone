@@ -75,6 +75,20 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-12">
+        <h3> Vehículos </h3>
+        <div id="js-buyer-interests">
+          <%= f.fields_for :buyer_interests do |interest| %>
+            <%= render 'buyer_interest_fields', f: interest %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association 'Nuevo interés', f, :buyer_interests %>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   </section>
 </article>

@@ -30,4 +30,22 @@ class VehicleModelsControllerTest < ActionController::TestCase
     end
   end
 
+  test "should search vehicle model" do
+    get :search, query: @vehicle_model.name
+    assert_response :success
+
+    body = JSON.parse(response.body)
+    assert_equal [{ 'id' => @vehicle_model.id, 'name' => @vehicle_model.name }],
+                   body['records']
+  end
+
+  test "should search vehicle model and return it with the brand" do
+    get :search, query: @vehicle_model.name, with_brand: true
+    assert_response :success
+
+    body = JSON.parse(response.body)
+    assert_equal [{ 'id' => @vehicle_model.id, 'name' => "#{@vehicle_model.brand.name} #{@vehicle_model.name}",
+                    'brand_id' => @vehicle_model.brand_id }], body['records']
+  end
+
 end

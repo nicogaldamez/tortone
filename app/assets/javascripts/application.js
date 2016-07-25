@@ -27,8 +27,10 @@
 //= require moment
 //= require moment/es
 //= require bootstrap-datetimepicker
+//= require cocoon
 
 //= require init
 //= require utilities
 //= require vehicles
 //= require customers
+//= require buyers

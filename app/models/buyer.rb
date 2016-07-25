@@ -1,5 +1,9 @@
 class Buyer < ActiveRecord::Base
 
+  # -- Associations
+  has_many :buyer_interests, dependent: :destroy
+  accepts_nested_attributes_for :buyer_interests, allow_destroy: true
+
   # -- Validations
   validates :first_name, presence: true
   validates :min_price, presence: true
