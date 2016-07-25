@@ -15,9 +15,14 @@ class VehicleModel < ActiveRecord::Base
 
   # -- Validations
   validates :brand, presence: true
+  validates :name, presence: true
 
   # -- Methods
   def to_s
     name
+  end
+
+  def name=(s)
+    s.nil? ? super(s) : super(s.titleize)
   end
 end

@@ -20,4 +20,11 @@ class Customer < ActiveRecord::Base
     "#{last_name}, #{first_name}"
   end
 
+  def first_name=(s)
+    s.nil? ? super(s) : super(s.titleize)
+  end
+
+  def last_name=(s)
+    s.nil? ? super(s) : super(s.titleize)
+  end
 end

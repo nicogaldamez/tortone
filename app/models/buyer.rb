@@ -16,4 +16,12 @@ class Buyer < ActiveRecord::Base
 
   include IntegerInCents
 
+  def last_name=(s)
+    s.nil? ? super(s) : super(s.titleize)
+  end
+
+  def first_name=(s)
+    s.nil? ? super(s) : super(s.titleize)
+  end
+
 end
