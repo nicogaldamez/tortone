@@ -1,3 +1,4 @@
+# Decorates an individual expense
 class ExpenseDecorator < Draper::Decorator
   delegate_all
 

@@ -26,7 +26,7 @@ es:
         kilometers: 'Kilómetros'
         color: 'Color'
         cost: 'Costo'
-        price: 'Precio de venta al público'
+        price: 'Precio al público'
         entered_on: 'Fecha de ingreso'
         sold_on: 'Fecha de venta'
         details: *description
