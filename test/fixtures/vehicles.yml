@@ -10,7 +10,6 @@ delorean:
   price_in_cents: 350000
   entered_on:     2016-01-01
   year:           2010
-  is_exchange:    false
   is_consignment: true
   customer:       carlos
 
@@ -24,7 +23,6 @@ batmobile:
   price_in_cents: 250000
   entered_on:     2016-01-01
   year:           2010
-  is_exchange:    false
   is_consignment: true
   is_owner:       true
   customer:       silvia

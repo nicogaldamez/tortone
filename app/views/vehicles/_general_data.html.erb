@@ -96,9 +96,7 @@
               <span class="fa fa-dollar"></span>
             </span>
             <%= f.text_field :cost, class: 'form-control',
-              placeholder: 'Ingrese el monto',
-              'data-price-format' => true
-            %>
+              placeholder: 'Ingrese el monto' %>
           </div>
           <p class="help-message">Este valor quedará oculto</p>
         </fieldset>
@@ -112,9 +110,7 @@
               <span class="fa fa-dollar"></span>
             </span>
             <%= f.text_field :price, class: 'form-control',
-                placeholder: 'Ingrese el precio de venta',
-                'data-price-format' => true
-             %>
+                placeholder: 'Ingrese el precio de venta' %>
           </div>
           <p class="help-message">Este valor será visible para los cliente</p>
         </fieldset>
@@ -163,12 +159,6 @@
 
     <div class="row">
       <br />
-      <div class="col-md-4">
-        <fieldset class="form-group">
-          <%= f.check_box :is_exchange %>
-          <%= f.label :is_exchange, 'Permuta' %>
-        </fieldset>
-      </div>
 
       <div class="col-md-4">
         <fieldset class="form-group">

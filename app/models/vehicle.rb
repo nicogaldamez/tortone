@@ -25,7 +25,7 @@ class Vehicle < ActiveRecord::Base
   def not_owner?
     !is_owner?
   end
-  
+
   # Para usar field_in_cents, etc.
   def self.attributes_in_cents
     ['cost', 'price', 'minimum_advance', 'transfer_amount']

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723131540) do
+ActiveRecord::Schema.define(version: 20160725133748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(version: 20160723131540) do
     t.integer  "price_in_cents",             limit: 8
     t.date     "entered_on"
     t.date     "sold_on"
-    t.boolean  "is_exchange",                          default: false
     t.boolean  "is_consignment",                       default: false
     t.boolean  "is_financed",                          default: false
     t.integer  "minimum_advance_in_cents",   limit: 8
