@@ -12,6 +12,7 @@ delorean:
   year:           2010
   is_consignment: true
   customer:       carlos
+  minimum_advance_in_cents: 200
 
 batmobile:
   brand:          volkswagen
@@ -26,3 +27,4 @@ batmobile:
   is_consignment: true
   is_owner:       true
   customer:       silvia
+  minimum_advance_in_cents: 100

@@ -41,3 +41,26 @@ LOG:  database system was shut down at 2016-07-19 17:56:34 ART
 LOG:  MultiXact member wraparound protections are now enabled
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+LOG:  database system was shut down at 2016-07-25 15:13:17 ART
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2016-07-25 17:02:04 ART
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+ERROR:  update or delete on table "vehicles" violates foreign key constraint "fk_rails_f4be3c2bef" on table "budgets"
+DETAIL:  Key (id)=(362760885) is still referenced from table "budgets".
+STATEMENT:  DELETE FROM "vehicles" WHERE "vehicles"."id" = $1
+ERROR:  update or delete on table "vehicles" violates foreign key constraint "fk_rails_f4be3c2bef" on table "budgets"
+DETAIL:  Key (id)=(362760885) is still referenced from table "budgets".
+STATEMENT:  DELETE FROM "vehicles" WHERE "vehicles"."id" = $1
+LOG:  autovacuum launcher shutting down
+FATAL:  terminating connection due to administrator command
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down

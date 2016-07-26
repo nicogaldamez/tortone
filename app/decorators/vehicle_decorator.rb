@@ -15,8 +15,8 @@ class VehicleDecorator < Draper::Decorator
     number_to_currency(object.price, precision: 2) || '-'
   end
 
-  def is_exchange
-    I18n.t(object.is_exchange.to_s)
+  def unformatted_price
+    object.price
   end
 
   def is_consignment
@@ -41,6 +41,10 @@ class VehicleDecorator < Draper::Decorator
 
   def minimum_advance
     number_to_currency(object.minimum_advance, precision: 2) || '-'
+  end
+
+  def unformatted_minimum_advance
+    object.minimum_advance
   end
 
   def sold_on

@@ -10,10 +10,6 @@
 
     <ul class="list-group list-group-unbordered">
       <li class="list-group-item">
-        <b>Permuta</b>
-        <span class="text-muted pull-right"><%= vehicle.is_exchange %></span>
-      </li>
-      <li class="list-group-item">
         <b>Consignación</b>
         <span class="text-muted pull-right"><%= vehicle.is_consignment %></span>
       </li>
@@ -22,8 +18,15 @@
       </li>
     </ul>
 
-    <%= link_to '<b>Editar</b>'.html_safe, edit_vehicle_path(vehicle),
-      class: 'btn btn-primary btn-block' %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= link_to '<b>Editar</b>'.html_safe, edit_vehicle_path(vehicle),
+          class: 'btn btn-primary btn-block' %>
+      </div>
+      <div class="col-md-6">
+        <%= link_to '<b>Presupuestar</b>'.html_safe, new_budget_path(vehicle_id: vehicle.id),
+          class: 'btn btn-warning btn-block' %>
+      </div>
+    </div>
   </div>
-
 </div>

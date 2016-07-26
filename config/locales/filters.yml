@@ -14,3 +14,6 @@ es:
         expense_category: 'Categoría'
         from: 'Desde'
         to: 'Hasta'
+      budget_filter:
+        from: 'Desde'
+        to: 'Hasta'

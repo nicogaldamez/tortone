@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725133748) do
+ActiveRecord::Schema.define(version: 20160725150143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,24 @@ ActiveRecord::Schema.define(version: 20160725133748) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "budgets", force: :cascade do |t|
+    t.integer  "vehicle_id"
+    t.string   "vehicle_description"
+    t.integer  "year"
+    t.integer  "price_in_cents",      limit: 8
+    t.integer  "minimum_advance",     limit: 8
+    t.string   "financed"
+    t.string   "installments"
+    t.string   "installments_cost"
+    t.string   "expenses"
+    t.string   "notes"
+    t.date     "budgeted_on"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "budgets", ["vehicle_id"], name: "index_budgets_on_vehicle_id", using: :btree
 
   create_table "buyer_interests", force: :cascade do |t|
     t.integer  "buyer_id"
@@ -151,6 +169,7 @@ ActiveRecord::Schema.define(version: 20160725133748) do
   add_index "versions", ["vehicle_model_id"], name: "index_versions_on_vehicle_model_id", using: :btree
 
   add_foreign_key "attachments", "vehicles"
+  add_foreign_key "budgets", "vehicles"
   add_foreign_key "buyer_interests", "brands"
   add_foreign_key "buyer_interests", "buyers"
   add_foreign_key "buyer_interests", "vehicle_models"

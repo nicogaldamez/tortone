@@ -49,6 +49,11 @@ class VehiclesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:vehicle)
   end
 
+  test "should show vehicle" do
+    get :show, id: @vehicle.id
+    assert_not_nil assigns(:vehicle)
+  end
+
   test "should create vehicle" do
     assert_difference('Vehicle.count', 1) do
       post :create, vehicle: @vehicle_new_data

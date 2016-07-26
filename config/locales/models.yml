@@ -61,4 +61,15 @@ es:
       expense_category:
         name: 'Nombre'
         description: 'Descripción'
+      budget:
+        budgeted_on: Fecha
+        year: Año
+        vehicle_description: Vehículo
+        price: Precio
+        minimum_advance: Adelanto Mínimo
+        financed: Financiado
+        installments: Cuotas
+        installments_cost: Precio Cuota
+        expenses: Gastos
+        notes: Descripción
 
