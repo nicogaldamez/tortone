@@ -4,6 +4,7 @@ class BudgetsControllerTest < ActionController::TestCase
   include Sorcery::TestHelpers::Rails::Controller
 
   def setup
+    Prawn::Font::AFM.hide_m17n_warning = true
     @budget = budgets(:my_car)
     @budget_new_data = {
       vehicle_id: vehicles(:batmobile).id,
@@ -73,11 +74,16 @@ class BudgetsControllerTest < ActionController::TestCase
     assert_difference('Budget.count', 1) do
       post :create, budget: @budget_new_data
     end
-    assert_redirected_to budgets_path
+    assert_redirected_to budgets_path(print: Budget.last.id)
 
     Budget.find_by(vehicle_description: @budget_new_data[:vehicle_description]).as_json.each do |key, value|
       assert_equal @budget_new_data[key.to_sym], value if @budget_new_data.key?(key.to_sym)
     end
+  end
+
+  test "should get budget" do
+    get :show, id: @budget
+    assert_equal @budget, assigns(:budget)
   end
 
   test "should get edit budget" do
@@ -89,7 +95,7 @@ class BudgetsControllerTest < ActionController::TestCase
     assert_record_differences(@budget, @budget_new_data) do
       put :update, id: @budget.id, budget: @budget_new_data
     end
-    assert_redirected_to budgets_path
+    assert_redirected_to budgets_path(print: @budget.id)
   end
 
   test "should destroy budget" do
