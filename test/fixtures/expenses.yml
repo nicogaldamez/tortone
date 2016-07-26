@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+peugeot_wash:
+  amount_in_cents: 100
+  expense_category: car_wash
+  incurred_on: <%= Date.today.strftime('%Y-%m-%d') %>
+  description: 'Lavado de auto'
+  
+chevrolet_ad:
+  amount_in_cents: 200
+  expense_category: advertising
+  incurred_on: <%= 2.month.ago.strftime('%Y-%m-%d') %>
+  description: 'Publicidad del chevrolet'

@@ -1,6 +1,6 @@
 <tr id="<%= dom_id(budget) %>">
 
-  <td> <%= link_to budget.budgeted_on, '#' %> </td>
+  <td> <%= link_to budget.budgeted_on, budget_path(budget, format: :pdf), target: :blank %> </td>
   <td class="text-center"> <%= budget.vehicle_description %> </td>
   <td class="text-center"> <%= budget.year %> </td>
   <td>

@@ -5,6 +5,15 @@ class BudgetsController < ApplicationController
   # GET /budgets
   def index
     @presenter = BudgetsPresenter.new(params)
+    @budget_to_print = params[:print]
+  end
+
+  def show
+    @budget = Budget.find(params[:id])
+    pdf = BudgetPdf.new(@budget, view_context)
+    send_data pdf.render, filename: "presupuesto_#{@budget.budgeted_on}",
+              type: 'application/pdf',
+              disposition: 'inline'
   end
 
   # GET /budgets/new
@@ -16,7 +25,7 @@ class BudgetsController < ApplicationController
   def create
     @budget = Budget.new(budget_params)
     if @budget.save
-      redirect_to budgets_path, notice: 'El presupuesto ha sido creado con éxito'
+      redirect_to budgets_path(print: @budget.id), notice: 'El presupuesto ha sido creado con éxito'
     else
       render :new
     end
@@ -29,7 +38,7 @@ class BudgetsController < ApplicationController
   # PUT /budgets/:id
   def update
     if @budget.update(budget_params)
-      redirect_to budgets_path,
+      redirect_to budgets_path(print: @budget.id),
         notice: 'El presupuesto ha sido actualizado correctamente.'
     else
       render :edit

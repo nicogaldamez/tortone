@@ -35,3 +35,4 @@
 //= require customers
 //= require buyers
 //= require expenses
+//= require budgets

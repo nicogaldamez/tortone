@@ -9,5 +9,21 @@ class BudgetDecorator < Draper::Decorator
     end
   end
 
+  def expenses
+    object.expenses || '--'
+  end
+
+  def financed
+    object.financed || 0
+  end
+
+  def minimum_advance
+    object.minimum_advance || 0
+  end
+
+  def notes
+    object.notes || '--'
+  end
+
 
 end

@@ -98,7 +98,7 @@
             <%= f.text_field :cost, class: 'form-control',
               placeholder: 'Ingrese el monto' %>
           </div>
-          <p class="help-message">Este valor quedará oculto</p>
+          <p class="help-message">Este valor quedará oculto para los clientes</p>
         </fieldset>
       </div>
 
@@ -112,7 +112,7 @@
             <%= f.text_field :price, class: 'form-control',
                 placeholder: 'Ingrese el precio de venta' %>
           </div>
-          <p class="help-message">Este valor será visible para los cliente</p>
+          <p class="help-message">Este valor será visible para los clientes</p>
         </fieldset>
       </div>
 
@@ -133,7 +133,11 @@
     <div class="row">
       <div class="col-md-4">
         <fieldset class="form-group">
-          <%= optional_label f, :entered_on %>
+          <% if f.object.is_owner? %>
+            <%= f.label :entered_on %>
+          <% else %>
+            <%= optional_label f, :entered_on %>
+          <% end %>
           <div class='input-group date datepicker'>
             <span class="input-group-addon">
               <span class="fa fa-calendar"></span>
@@ -167,7 +171,6 @@
         </fieldset>
       </div>
     </div>
-
 
     <div class="row">
       <div class="col-md-12">

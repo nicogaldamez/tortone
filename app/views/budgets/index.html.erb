@@ -34,3 +34,7 @@
   </article>
 
 </section>
+
+<% if @budget_to_print %>
+  <%= hidden_field_tag :print_url, budget_url(@budget_to_print, format: :pdf), id: 'js-print-budget' %>
+<% end %>

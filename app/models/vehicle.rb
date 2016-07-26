@@ -16,6 +16,7 @@ class Vehicle < ActiveRecord::Base
   validates :vehicle_model, presence: true
   validates :version, presence: true
   validates :customer, presence: true, if: :not_owner?
+  # validates :entered_on, presence: true, if: :is_owner?
   validates :year, presence: true
   validates :kilometers, presence: true
   validates :color, presence: true
