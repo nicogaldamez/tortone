@@ -1,0 +1,38 @@
+<% form_remote = form_remote|| false %>
+<% form_format = form_format || '' %>
+<%= form_for @expense_category, format: (form_format || ''), remote: (form_remote||false)  do |f| %>
+
+<article class="box box-primary">
+
+  <section class="box-body">
+
+    <div class="row">
+      <div class="col-md-12">
+        <fieldset class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control', required: true %>
+        </fieldset>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <fieldset class="form-group">
+          <%= optional_label f, :description%>
+          <%= f.text_field :description, class: 'form-control' %>
+        </fieldset>
+      </div>
+    </div>
+
+  </section>
+</article>
+
+<div class="row">
+  <div class="col-md-12">
+    <fieldset class="form-group">
+      <%= f.submit 'Guardar categoría', class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
+    </fieldset>
+  </div>
+</div>
+
+<% end %>

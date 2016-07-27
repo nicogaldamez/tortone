@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+car_wash:
+  name: 'Lavadero'
+  description: 'Lavado y pulido de autos'
+  
+advertising:
+  name: 'Publicidad'
+  description: 'Aviso en diarios'
+
+
+

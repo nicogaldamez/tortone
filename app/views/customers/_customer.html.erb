@@ -1,6 +1,6 @@
 <tr id="<%= dom_id(customer) %>">
 
-  <td> <%= customer.full_name %> </td>
+  <td> <%= link_to customer.full_name, edit_customer_path(customer) %> </td>
   <td class="text-center"> <%= customer.phones %> </td>
   <td class="text-center"> <%= customer.email %> </td>
   <td>

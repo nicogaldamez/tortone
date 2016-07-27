@@ -1,3 +1,25 @@
+0.3
+Hacer link el nombre del cliente
+Agregar botón Editar al show de vehículo
+Los vehículos no propios son "Vehículos para la venta"
+Ir al show de vehículo después del create
+Agregar campo bool 'Caja automática'
+Agregar campo 'HDI'
+Alta de Gasto
+Baja de Gasto
+Modificación de Gasto
+Mover signo $ en los inputs
+Alta de interesado
+Baja de Interesado
+Modificación de Interesado
+Capitalizar nombres
+Alta de presupuesto
+Baja de presupuesto
+Modificación de presupuesto
+Listado de presupuestos
+Sacar permuta
+Pdf de presupuesto
+
 0.2.1
 Loading para la carga de adjuntos
 

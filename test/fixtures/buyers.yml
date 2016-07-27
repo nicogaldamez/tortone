@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+carlos:
+  first_name: Carlos
+  last_name: Galdámez
+  phones: 4209601
+  email: carlos@galdamez.com
+  is_hdi: false
+  has_automatic_transmission: false
+  min_price_in_cents: 50000
+  max_price_in_cents: 60000
+
+silvia:
+  first_name: Silvia
+  last_name: Dante
+  phones: 4703639
+  email: silvia@dante.com
+  is_hdi: false
+  has_automatic_transmission: false
+  min_price_in_cents: 120000
+  max_price_in_cents: 180000
+

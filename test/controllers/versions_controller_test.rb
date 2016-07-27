@@ -7,7 +7,7 @@ class VersionsControllerTest < ActionController::TestCase
   def setup
     @version = versions(:trend)
     @vehicle_model = vehicle_models(:focus)
-    @version_new_data = { name: 'New version', vehicle_model_id: @vehicle_model.id }
+    @version_new_data = { name: 'New Version', vehicle_model_id: @vehicle_model.id }
     login_user(users(:ross))
   end
 
@@ -27,7 +27,6 @@ class VersionsControllerTest < ActionController::TestCase
     json_response = JSON.parse(response.body)['data']
     Version.find_by(name: @version_new_data[:name]).as_json.each do |key, value|
       assert_equal json_response[key], value if @version_new_data.key?(key.to_sym)
-
     end
   end
 

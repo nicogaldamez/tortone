@@ -1,0 +1,24 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+my_car:
+  vehicle: delorean
+  vehicle_description: Delorean
+  price_in_cents: 100000
+  minimum_advance: 50000
+  financed: 50000
+  installments: 5
+  installments_cost: 10000
+  expenses: 0
+  notes: 'Gran presupuesto'
+  budgeted_on: 2016-05-25
+
+zero_km:
+  vehicle_description: Cero Km
+  price_in_cents: 200000
+  minimum_advance: 100000
+  financed: 10000
+  installments: 2
+  installments_cost: 100000
+  expenses: 200
+  notes: 'Presupuesto para 0 km'
+  budgeted_on: <%= Time.zone.today.strftime('%Y-%m-%d') %>

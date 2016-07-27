@@ -8,3 +8,12 @@ es:
         name: "Cliente"
         brand: "Marca"
         vehicle_model: "Modelo"
+      buyer_filter:
+        name: "Nombre"
+      expense_filter:
+        expense_category: 'Categoría'
+        from: 'Desde'
+        to: 'Hasta'
+      budget_filter:
+        from: 'Desde'
+        to: 'Hasta'

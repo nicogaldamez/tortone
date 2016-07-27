@@ -7,7 +7,7 @@
   <td align="right">  <%= vehicle.price %> </td>
 
   <td align="right">
-    <%= link_to 'Editar', edit_vehicle_path(vehicle), class: 'btn btn-xs btn-default' %>
+    <%= link_to 'Editar', edit_vehicle_path(vehicle), class: 'btn btn-xs btn-primary' %>
     <%= link_to 'Eliminar', vehicle, method: :delete,
         data: {confirm: '¿Está seguro?'}, class: 'btn btn-xs btn-danger' %>
   </td>

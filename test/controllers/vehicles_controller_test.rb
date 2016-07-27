@@ -1,11 +1,22 @@
 require 'test_helper'
-require 'pp'
 
 class VehiclesControllerTest < ActionController::TestCase
   include Sorcery::TestHelpers::Rails::Controller
 
   def setup
     @vehicle = vehicles(:delorean)
+    @vehicle_new_data = {  brand_id: brands(:volkswagen).id,
+                           customer_id: customers(:silvia).id,
+                           vehicle_model_id: vehicle_models(:bora).id,
+                           version_id: versions(:cc).id,
+                           color: 'red',
+                           kilometers: 1000,
+                           entered_on: Date.today,
+                           year: 2014,
+                           is_hdi: true,
+                           has_automatic_transmission: true,
+                           plate: 'NEW123'
+                          }
     login_user(users(:ross))
   end
 
@@ -38,20 +49,22 @@ class VehiclesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:vehicle)
   end
 
+  test "should show vehicle" do
+    get :show, id: @vehicle.id
+    assert_not_nil assigns(:vehicle)
+  end
+
   test "should create vehicle" do
     assert_difference('Vehicle.count', 1) do
-      post :create, vehicle: { brand_id: brands(:ford).id,
-                               customer_id: customers(:carlos).id,
-                               vehicle_model_id: vehicle_models(:focus).id,
-                               version_id: versions(:kinetic).id,
-                               color: 'red',
-                               kilometers: 1000,
-                               entered_on: '2016-01-01',
-                               year: '2010'
-                              }
+      post :create, vehicle: @vehicle_new_data
     end
+    new_vehicle = Vehicle.find_by(plate: @vehicle_new_data[:plate])
 
-    assert_redirected_to vehicles_path
+    assert_redirected_to new_vehicle
+
+    new_vehicle.as_json.each do |key, value|
+      assert_equal @vehicle_new_data[key.to_sym], value if @vehicle_new_data.key?(key.to_sym)
+    end
   end
 
   test "should get edit vehicle" do
@@ -60,22 +73,10 @@ class VehiclesControllerTest < ActionController::TestCase
   end
 
   test "should update vehicle" do
-    new_brand_id         = brands(:ford).id
-    new_vehicle_model_id = vehicle_models(:focus).id
-    new_kilometers       = 2000
-
-    put :update, id: @vehicle.id, vehicle: {
-                                     brand_id: new_brand_id,
-                                     vehicle_model_id: new_vehicle_model_id,
-                                     kilometers: new_kilometers
-                            }
-
+    assert_record_differences(@vehicle, @vehicle_new_data) do
+      put :update, id: @vehicle.id, vehicle: @vehicle_new_data
+    end
     assert_redirected_to vehicles_path
-
-    @vehicle.reload
-    assert_equal new_brand_id, @vehicle.brand_id
-    assert_equal new_vehicle_model_id, @vehicle.vehicle_model_id
-    assert_equal new_kilometers, @vehicle.kilometers
   end
 
   test "should destroy vehicle" do

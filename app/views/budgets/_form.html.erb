@@ -1,0 +1,132 @@
+<%= form_for @budget do |f| %>
+
+  <%= f.hidden_field :vehicle_id %>
+
+<article class="box box-primary">
+
+  <section class="box-body">
+
+    <div class="row">
+      <div class="col-md-3">
+        <fieldset class="form-group">
+          <%= f.label :budgeted_on %>
+          <div class='input-group date datepicker'>
+            <span class="input-group-addon">
+              <span class="fa fa-calendar"></span>
+            </span>
+            <%= f.text_field :budgeted_on, class: 'form-control' %>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <fieldset class="form-group">
+          <%= f.label :vehicle_description %>
+          <%= f.text_field :vehicle_description, class: 'form-control', required: true %>
+        </fieldset>
+      </div>
+      <div class="col-md-3">
+        <fieldset class="form-group">
+          <%= f.label :year %>
+          <%= f.number_field :year, class: 'form-control', required: true %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <fieldset class="form-group">
+          <%= f.label :price %>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="fa fa-dollar"></span>
+            </span>
+            <%= f.text_field :price, class: 'form-control',
+              placeholder: 'Ingrese el monto', required: true %>
+          </div>
+        </fieldset>
+      </div>
+      <div class="col-md-3">
+        <fieldset class="form-group">
+          <%= f.label :minimum_advance %>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="fa fa-dollar"></span>
+            </span>
+            <%= f.text_field :minimum_advance, class: 'form-control',
+              placeholder: 'Ingrese el monto', required: true %>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <fieldset class="form-group">
+          <%= f.label :financed %>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="fa fa-dollar"></span>
+            </span>
+            <%= f.text_field :financed, class: 'form-control',
+              placeholder: 'Ingrese el monto' %>
+          </div>
+        </fieldset>
+      </div>
+      <div class="col-md-2">
+        <fieldset class="form-group">
+          <%= f.label :installments %>
+          <%= f.number_field :installments, class: 'form-control' %>
+        </fieldset>
+      </div>
+      <div class="col-md-3">
+        <fieldset class="form-group">
+          <%= f.label :installments_cost %>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="fa fa-dollar"></span>
+            </span>
+            <%= f.text_field :installments_cost, class: 'form-control',
+              placeholder: 'Ingrese el monto' %>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <fieldset class="form-group">
+          <%= f.label :expenses %>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="fa fa-dollar"></span>
+            </span>
+            <%= f.text_field :expenses, class: 'form-control',
+              placeholder: 'Ingrese el monto' %>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <fieldset class="form-group">
+          <%= f.label :notes %>
+          <%= f.text_area :notes, class: 'form-control' %>
+        </fieldset>
+      </div>
+    </div>
+
+  </section>
+</article>
+
+<div class="row">
+  <div class="col-md-12">
+    <fieldset class="form-group">
+      <%= f.submit 'Guardar', class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
+    </fieldset>
+  </div>
+</div>
+
+<% end %>

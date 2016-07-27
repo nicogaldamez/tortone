@@ -26,7 +26,7 @@ es:
         kilometers: 'Kilómetros'
         color: 'Color'
         cost: 'Costo'
-        price: 'Precio de venta al público'
+        price: 'Precio al público'
         entered_on: 'Fecha de ingreso'
         sold_on: 'Fecha de venta'
         details: *description
@@ -40,4 +40,36 @@ es:
         motor_number: 'Número de motor'
         chassis_number: 'Número de chasis'
         is_owner: 'Vehículo propio'
+        is_hdi: HDI
+        has_automatic_transmission: Caja Automática
+      buyer:
+        first_name: Nombre
+        last_name: Apellido
+        phones: Teléfonos
+        min_price: Precio mínimo
+        max_price: Precio máximo
+        is_hdi: HDI
+        has_automatic_transmission: Caja Automática
+      buyer_interest:
+        year: Año
+        max_kilometers: Km Máximo
+      expense:
+        expense_category_id: 'Categoría'
+        incurred_on: 'Fecha'
+        amount: 'Monto'
+        description: 'Descripción'
+      expense_category:
+        name: 'Nombre'
+        description: 'Descripción'
+      budget:
+        budgeted_on: Fecha
+        year: Año
+        vehicle_description: Vehículo
+        price: Precio
+        minimum_advance: Adelanto Mínimo
+        financed: Financiado
+        installments: Cuotas
+        installments_cost: Precio Cuota
+        expenses: Gastos
+        notes: Descripción
 

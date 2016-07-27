@@ -30,7 +30,7 @@
         </div>
       </div>
     <% end %>
-    
+
     <div class="row">
       <div class="col-md-4">
         <fieldset class="form-group">
@@ -89,16 +89,16 @@
           <% if @vehicle.is_owner %>
             <%= optional_label f, :cost %>
           <% else %>
-            <%= optional_label f, "Monto pretendido por el dueño" %>
+            <%= optional_label f, "Pretendido por el dueño" %>
           <% end %>
           <div class="input-group">
-            <%= f.text_field :cost, class: 'form-control',
-                  placeholder: 'Ingrese el costo' %>
             <span class="input-group-addon">
               <span class="fa fa-dollar"></span>
             </span>
+            <%= f.text_field :cost, class: 'form-control',
+              placeholder: 'Ingrese el monto' %>
           </div>
-          <p class="help-message">Este valor quedará oculto</p>
+          <p class="help-message">Este valor quedará oculto para los clientes</p>
         </fieldset>
       </div>
 
@@ -106,13 +106,13 @@
         <fieldset class="form-group">
           <%= optional_label f, :price %>
           <div class="input-group">
-            <%= f.text_field :price, class: 'form-control',
-                  placeholder: 'Ingrese el precio de venta' %>
             <span class="input-group-addon">
               <span class="fa fa-dollar"></span>
             </span>
+            <%= f.text_field :price, class: 'form-control',
+                placeholder: 'Ingrese el precio de venta' %>
           </div>
-          <p class="help-message">Este valor será visible para los cliente</p>
+          <p class="help-message">Este valor será visible para los clientes</p>
         </fieldset>
       </div>
 
@@ -120,11 +120,11 @@
         <fieldset class="form-group">
           <%= optional_label f, :transfer_amount %>
           <div class="input-group">
-            <%= f.text_field :transfer_amount, class: 'form-control',
-                  placeholder: 'Ingrese el costo de la transferencia' %>
             <span class="input-group-addon">
               <span class="fa fa-dollar"></span>
             </span>
+            <%= f.text_field :transfer_amount, class: 'form-control',
+                  placeholder: 'Ingrese el costo de la transferencia' %>
           </div>
         </fieldset>
       </div>
@@ -133,12 +133,16 @@
     <div class="row">
       <div class="col-md-4">
         <fieldset class="form-group">
-          <%= optional_label f, :entered_on %>
+          <% if f.object.is_owner? %>
+            <%= f.label :entered_on %>
+          <% else %>
+            <%= optional_label f, :entered_on %>
+          <% end %>
           <div class='input-group date datepicker'>
-            <%= f.text_field :entered_on, class: 'form-control' %>
             <span class="input-group-addon">
               <span class="fa fa-calendar"></span>
             </span>
+            <%= f.text_field :entered_on, class: 'form-control' %>
           </div>
         </fieldset>
       </div>
@@ -147,10 +151,10 @@
         <fieldset class="form-group">
           <%= optional_label f, :sold_on %>
           <div class='input-group date datepicker'>
-            <%= f.text_field :sold_on, class: 'form-control' %>
             <span class="input-group-addon">
               <span class="fa fa-calendar"></span>
             </span>
+            <%= f.text_field :sold_on, class: 'form-control' %>
           </div>
         </fieldset>
       </div>
@@ -159,12 +163,6 @@
 
     <div class="row">
       <br />
-      <div class="col-md-4">
-        <fieldset class="form-group">
-          <%= f.check_box :is_exchange %>
-          <%= f.label :is_exchange, 'Permuta' %>
-        </fieldset>
-      </div>
 
       <div class="col-md-4">
         <fieldset class="form-group">
@@ -173,7 +171,6 @@
         </fieldset>
       </div>
     </div>
-
 
     <div class="row">
       <div class="col-md-12">

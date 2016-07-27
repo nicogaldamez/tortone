@@ -12,5 +12,11 @@ class VersionTest < ActiveSupport::TestCase
     assert_includes @version.errors[:vehicle_model], 'no puede estar en blanco'
   end
 
+  test 'should titleize name on save' do
+    @version. name = 'trend'
+    @version.save
+    assert_equal 'Trend', @version.name
+  end
+
 end
 

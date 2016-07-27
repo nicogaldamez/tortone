@@ -23,6 +23,21 @@
 
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <%= link_to vehicles_path, class: 'dropdown-toggle',
+              'data-toggle' => 'dropdown', title: 'Nuevo Vehículo'  do %>
+            <%= icon 'car' %> +
+          <% end %>
+          <ul class="dropdown-menu">
+            <li> <%= link_to 'Vehículo propio', new_vehicle_path(is_owner: true) %>  </li>
+            <li> <%= link_to 'Vehículo para la venta', new_vehicle_path %>  </li>
+          </ul>
+        </li>
+        <li>
+          <%= link_to new_budget_path, title: 'Generar Presupuesto' do %>
+            <%= icon 'file-text-o' %> +
+          <% end %>
+        </li>
         <%= render 'application/navbar_user_profile' %>
       </ul>
     </div>

@@ -1,0 +1,13 @@
+<tr id="<%= dom_id(expense) %>">
+
+  <td class="text-center"> <%= expense.incurred_on %> </td>
+  <td class="text-center"> <%= expense.expense_category %> </td>
+  <td class="text-center"> <%= expense.description %> </td>
+  <td class="text-right"> <%= expense.amount %> </td>
+  <td>
+    <%= link_to 'Editar', edit_expense_path(expense), class: 'btn btn-xs btn-primary' %>
+    <%= link_to 'Eliminar', expense, method: :delete,
+        data: {confirm: '¿Está seguro?'}, class: 'btn btn-xs btn-danger' %>
+  </td>
+
+</tr>

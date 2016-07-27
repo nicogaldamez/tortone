@@ -12,18 +12,21 @@
         <%= side_link text: 'Sólo mis vehículos',
               path: vehicles_path(vehicle_filter: {is_owner: true}) %>
 
+        <li class="header"> INTERESADOS EN COMPRAR </li>
+        <%= side_link text: 'Nuevo Interesado', path: new_buyer_path %>
+        <%= side_link text: 'Listado de Interesados', path: buyers_path %>
+
+        <li class="header"> GASTOS </li>
+        <%= side_link text: 'Nuevo Gasto', path: new_expense_path %>
+        <%= side_link text: 'Listado de Gastos', path: expenses_path %>
+
+        <li class="header"> VENTAS </li>
+        <%= side_link text: 'Listado de ventas', path: '#' %>
+        <%= side_link text: 'Presupuestos', path: budgets_path %>
+
         <li class="header"> CLIENTES </li>
         <%= side_link text: 'Nuevo Cliente', path: new_customer_path %>
         <%= side_link text: 'Listado de Clientes', path: customers_path %>
-
-        <li class="header"> INTERESADOS EN COMPRAR </li>
-        <%= side_link text: 'Nuevo Interesado', path: '#' %>
-        <%= side_link text: 'Listado de Interesados', path: '#' %>
-
-        <li class="header"> VENTAS / GASTOS </li>
-        <%= side_link text: 'Nuevo Gasto', path: '#' %>
-        <%= side_link text: 'Listado de Ventas', path: '#' %>
-        <%= side_link text: 'Listado de Movimientos', path: '#' %>
 
       <% end %>
 

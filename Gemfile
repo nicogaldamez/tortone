@@ -23,6 +23,7 @@ gem 'prawn' # PDF Generator
 gem 'prawn-table' # Tables for Prawn
 gem 'momentjs-rails', '>= 2.9.0' # Datetimepicker dependency
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37' # Datetimepicker
+gem 'prawn' # Generación de PDFs
 
 # File uploader
 gem "jquery-fileupload-rails"
@@ -31,6 +32,7 @@ gem 'dragonfly-s3_data_store'
 
 group :development, :test do
   gem 'byebug'
+  gem 'pry'
 end
 
 group :test do
