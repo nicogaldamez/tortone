@@ -30,5 +30,5 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new', as: :login
   post 'logout', to: 'user_sessions#destroy', as: :logout
 
-  root 'main#index'
+  root 'vehicles#index'
 end

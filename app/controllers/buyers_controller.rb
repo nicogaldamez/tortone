@@ -10,6 +10,7 @@ class BuyersController < ApplicationController
   # GET /buyers/new
   def new
     @buyer = Buyer.new
+    @buyer.buyer_interests.new
   end
 
   # POST /buyers
@@ -18,8 +19,6 @@ class BuyersController < ApplicationController
     if @buyer.save
       redirect_to buyers_path, notice: 'El interesado ha sido creado correctamente.'
     else
-      pp buyer_params
-      pp @buyer.errors
       render :new
     end
   end
