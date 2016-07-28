@@ -5,11 +5,11 @@
   </fieldset>
   <fieldset class="form-group">
     <%= f.label :password %><br>
-    <%= f.text_field :password, class: 'form-control' %>
+    <%= f.text_field :password, class: 'form-control', placeholder: 'Ingrese una nueva clave' %>
   </fieldset>
   <fieldset class="form-group">
     <%= f.label :password_confirmation %><br>
-    <%= f.text_field :password_confirmation, class: 'form-control' %>
+    <%= f.text_field :password_confirmation, class: 'form-control', placeholder: 'Vuelva a ingresar la nueva clave' %>
   </fieldset>
   <div class="actions">
     <%= link_to t(:back), root_path, class: 'btn btn-default', data: {'disable-with' => 'Espere...'} %>

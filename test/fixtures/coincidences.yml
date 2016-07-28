@@ -1,29 +1,26 @@
 # == Schema Information
 #
-# Table name: buyer_interests
+# Table name: coincidences
 #
 #  id               :integer          not null, primary key
 #  buyer_id         :integer
-#  brand_id         :integer
 #  vehicle_model_id :integer
-#  year             :integer          not null
-#  max_kilometers   :integer
+#  brand_id         :integer
+#  is_ignored       :boolean          default(FALSE)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-bora:
-  buyer: carlos
-  brand: volkswagen
-  vehicle_model: bora
-  year: 2010
-  max_kilometers: 100000
+one:
+  buyer_id: 
+  vehicle_model_id: 
+  brand_id: 
+  is_ignored: false
 
-focus:
-  buyer: carlos
-  brand: ford
-  vehicle_model: focus
-  year: 2011
-  max_kilometers: 60000
+two:
+  buyer_id: 
+  vehicle_model_id: 
+  brand_id: 
+  is_ignored: false

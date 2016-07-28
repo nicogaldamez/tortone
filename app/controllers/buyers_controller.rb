@@ -16,6 +16,7 @@ class BuyersController < ApplicationController
   def create
     @buyer = Buyer.new(buyer_params)
     if @buyer.save
+      # CoincidenceManager.call(buyer: @buyer)
       redirect_to buyers_path, notice: 'El interesado ha sido creado correctamente.'
     else
       pp buyer_params

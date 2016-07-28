@@ -1,7 +1,39 @@
+# == Schema Information
+#
+# Table name: vehicles
+#
+#  id                         :integer          not null, primary key
+#  brand_id                   :integer
+#  vehicle_model_id           :integer
+#  version_id                 :integer
+#  customer_id                :integer
+#  kilometers                 :integer
+#  color                      :string
+#  details                    :text
+#  cost_in_cents              :integer
+#  price_in_cents             :integer
+#  entered_on                 :date
+#  sold_on                    :date
+#  is_consignment             :boolean          default(FALSE)
+#  is_financed                :boolean          default(FALSE)
+#  minimum_advance_in_cents   :integer
+#  transfer_amount_in_cents   :integer
+#  plate                      :string
+#  year                       :integer
+#  motor_number               :string
+#  chassis_number             :string
+#  created_at                 :datetime
+#  updated_at                 :datetime
+#  is_owner                   :boolean          default(FALSE)
+#  has_automatic_transmission :boolean          default(FALSE)
+#  is_hdi                     :boolean          default(FALSE)
+#
+
 class Vehicle < ActiveRecord::Base
 
   # -- Scopes
   default_scope -> { order(:created_at) }
+  scope :from_brand_and_model, -> (brand, model) { where(brand: brand, vehicle_model: model) }
 
   # -- Associations
   belongs_to :brand

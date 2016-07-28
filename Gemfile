@@ -46,6 +46,7 @@ group :development do
   gem 'hirb' # Mejora la visualización de consulas desde consola
   gem 'letter_opener'
   gem 'quiet_assets'
+  gem 'annotate'
 end
 
 group :production do

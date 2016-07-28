@@ -21,6 +21,8 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(vehicle_params)
     if @vehicle.save
+      # CoincidenceManager.call(vehicle: @vehicle)
+      
       redirect_to @vehicle,
         notice: 'El vehículo ha sido creado correctamente.'
     else

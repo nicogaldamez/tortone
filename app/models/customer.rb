@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: customers
+#
+#  id          :integer          not null, primary key
+#  first_name  :string           not null
+#  last_name   :string           not null
+#  dni         :string
+#  phones      :string
+#  address     :string
+#  email       :string
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class Customer < ActiveRecord::Base
 
   # -- Associations

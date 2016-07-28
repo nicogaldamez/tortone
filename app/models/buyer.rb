@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: buyers
+#
+#  id                         :integer          not null, primary key
+#  first_name                 :string           not null
+#  last_name                  :string
+#  phones                     :string           not null
+#  email                      :string
+#  is_hdi                     :boolean          default(FALSE)
+#  has_automatic_transmission :boolean          default(FALSE)
+#  min_price_in_cents         :integer          default(0)
+#  max_price_in_cents         :integer
+#  notes                      :text
+#  created_at                 :datetime         not null
+#  updated_at                 :datetime         not null
+#
+
 class Buyer < ActiveRecord::Base
 
   # -- Associations
