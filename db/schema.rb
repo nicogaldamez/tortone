@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725150143) do
+ActiveRecord::Schema.define(version: 20160728214951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,21 @@ ActiveRecord::Schema.define(version: 20160725150143) do
 
   add_index "expenses", ["expense_category_id"], name: "index_expenses_on_expense_category_id", using: :btree
 
+  create_table "sales", force: :cascade do |t|
+    t.date     "sold_on"
+    t.integer  "customer_id"
+    t.integer  "vehicle_id"
+    t.integer  "advance_in_cents", limit: 8, default: 0
+    t.integer  "status",                     default: 0
+    t.integer  "price_in_cents",   limit: 8
+    t.text     "notes"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "sales", ["customer_id"], name: "index_sales_on_customer_id", using: :btree
+  add_index "sales", ["vehicle_id"], name: "index_sales_on_vehicle_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",            null: false
     t.string   "crypted_password"
@@ -174,6 +189,8 @@ ActiveRecord::Schema.define(version: 20160725150143) do
   add_foreign_key "buyer_interests", "buyers"
   add_foreign_key "buyer_interests", "vehicle_models"
   add_foreign_key "expenses", "expense_categories"
+  add_foreign_key "sales", "customers"
+  add_foreign_key "sales", "vehicles"
   add_foreign_key "vehicle_models", "brands"
   add_foreign_key "vehicles", "brands"
   add_foreign_key "vehicles", "customers"

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+delorean_to_carlos:
+  sold_on: <%= Date.today.strftime('%Y-%m-%d')%>
+  customer: carlos
+  vehicle: delorean
+  advance_in_cents: 2000
+  status: 0
+  price_in_cents: 150000
+
+batmobile_to_silvia:
+  sold_on: <%= 1.year.ago.strftime('%Y-%m-%d') %>
+  customer: silvia
+  vehicle: batmobile
+  advance_in_cents: 1000
+  status: 0
+  price_in_cents: 300000

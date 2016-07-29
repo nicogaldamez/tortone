@@ -36,3 +36,4 @@
 //= require buyers
 //= require expenses
 //= require budgets
+//= require sales

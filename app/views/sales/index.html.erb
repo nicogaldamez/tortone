@@ -1,0 +1,33 @@
+<header class="content-header">
+  <h1>Ventas</h1>
+</header>
+
+<section class="content">
+
+  <article class="box box-primary">
+    <section class="box-body">
+
+      <%= render 'filter' %>
+
+      <table class="table table-custom table-hover">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Comprador</th>
+            <th>Vehículo</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render @presenter.sales %>
+        </tbody>
+      </table>
+
+      <%= paginate @presenter.sales %>
+
+      <%= content_tag :p, 'No se encontraron ventas', class: 'text-center' unless @presenter.sales.any? %>
+
+    </section>
+  </article>
+
+</section>

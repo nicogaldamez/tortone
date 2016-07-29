@@ -1,0 +1,7 @@
+<tr id="<%= dom_id(sale) %>">
+
+  <td> <%= link_to sale.sold_on, sale, target: :blank %> </td>
+  <td class="text-center"> <%= sale.customer %> </td>
+  <td class="text-center"> <%= sale.vehicle.decorate.identification %> </td>
+
+</tr>
