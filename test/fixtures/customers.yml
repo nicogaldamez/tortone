@@ -17,3 +17,23 @@ silvia:
   address:     47 Nro 1419
   email:       dantesilvia@gmail.com
   description: Madre
+
+gladys:
+  first_name:  Gladys
+  last_name:   Actis
+  dni:         34123111
+  phones:      4214112
+  address:     4 Nro 422
+  email:       gladysactis@gmail.com
+  description: Abuela
+
+
+deleted:
+  first_name:  Customer
+  last_name:   Deleted
+  dni:         34123111
+  phones:      4214112
+  address:     4 Nro 422
+  email:       deleted@gmail.com
+  description: Eliminado
+  deleted_at: 2010-01-01
