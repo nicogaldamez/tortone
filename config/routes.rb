@@ -26,7 +26,12 @@ Rails.application.routes.draw do
   resources :versions, only: [:index, :create]
   resources :buyers
   resources :budgets
-  resources :sales, only: [:index, :show, :new, :create]
+  resources :sales do
+    get 'pre_print_advance_certificate', on: :member
+    get 'pre_print_sale_certificate', on: :member
+  end
+
+  post 'print_pdf', to: 'printer#print_pdf'
 
   get 'login', to: 'user_sessions#new', as: :login
   post 'logout', to: 'user_sessions#destroy', as: :logout

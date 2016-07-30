@@ -55,17 +55,51 @@ class SalesControllerTest < ActionController::TestCase
     end
   end
 
+  test 'should show sale' do
+    get :show, id: @sale.id
+    assert_response :success
+  end
+
   test "should create sale" do
     assert_difference('Sale.count', 1) do
       post :create, sale: @sale_new_data
     end
-    assert_redirected_to sales_path
 
     sale = Sale.find_by(sold_on: @sale_new_data[:sold_on])
+    assert_redirected_to sale_path(sale)
     sale.as_json.each do |key, value|
       assert_equal @sale_new_data[key.to_sym], value, "No guardó correctamente #{key}" if @sale_new_data.key?(key.to_sym)
     end
   end
 
+  test "should get edit sale" do
+    get :edit, id: @sale
+    assert_equal @sale, assigns(:sale)
+  end
+
+  test "should update sale" do
+    assert_record_differences(@sale, @sale_new_data) do
+      put :update, id: @sale.id, sale: @sale_new_data
+    end
+    assert_redirected_to sale_path(@sale)
+  end
+
+  test "should destroy sale" do
+    assert_difference('Sale.count', -1) do
+      delete :destroy, id: @sale.id
+    end
+
+    assert_redirected_to sales_path
+  end
+
+  test 'should display form to print advance certificate' do
+    get :pre_print_advance_certifiate, id: @sale
+    assert_equal @sale, assigns(:sale)
+  end
+
+  test 'should print advance certificate' do
+    post :pre_print_advance_certifiate
+    assert_equal @sale, assigns(:sale)
+  end
 
 end

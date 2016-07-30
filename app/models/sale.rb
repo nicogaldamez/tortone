@@ -13,14 +13,16 @@ class Sale < ActiveRecord::Base
   # -- Misc
   enum status: { pending: 0, finished: 1  }
 
-
-
   # Para usar field_in_cents, etc.
   def self.attributes_in_cents
     ['price', 'advance']
   end
 
   include IntegerInCents
+
+  def sold?
+    !sold_on.nil? && !sold_on.blank?
+  end
 
 
 end

@@ -20,7 +20,8 @@
         <fieldset class="form-group">
           <%= f.label :customer_id %>
           <%= f.hidden_field :customer_id, class: 'select2', required: true,
-            data: { behavior: 'searchCustomer', url: search_customers_path, 'record-id' => @vehicle.customer.try(:customer_id),
+            data: { behavior: 'searchCustomer', url: search_customers_path,
+                    'record-id' => @sale.customer.try(:customer_id),
                     'record-text' => @sale.customer.try(:to_s) } %>
         </fieldset>
       </div>
