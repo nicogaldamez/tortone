@@ -3,7 +3,7 @@ require 'test_helper'
 class SaleTest < ActiveSupport::TestCase
 
   def setup
-    @sale = sales(:delorean_to_carlos)
+    @sale = sales(:lightning_mcqueen_to_carlos)
   end
 
   test 'should not save sale without customer' do

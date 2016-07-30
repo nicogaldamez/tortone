@@ -46,7 +46,7 @@ class SaleDecorator < Draper::Decorator
   end
 
   def notes
-    if object.notes.empty?
+    if object.notes.nil? || object.notes.blank?
       '<i> Sin notas </i>'.html_safe
     else
       simple_format(object.notes)

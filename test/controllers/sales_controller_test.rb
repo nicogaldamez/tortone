@@ -4,8 +4,8 @@ class SalesControllerTest < ActionController::TestCase
   include Sorcery::TestHelpers::Rails::Controller
 
   def setup
-    @sale = sales(:delorean_to_carlos)
-    @sale_new_data = {vehicle_id: vehicles(:batmobile).id, customer_id: customers(:silvia).id,
+    @sale = sales(:mater_to_silvia)
+    @sale_new_data = {vehicle_id: vehicles(:batmobile).id, customer_id: customers(:carlos).id,
                        sold_on: Date.yesterday, price: 2000000, advance: 4000
                       }
     login_user(users(:ross))
@@ -23,7 +23,7 @@ class SalesControllerTest < ActionController::TestCase
     assert_response :success
 
     assert_equal 1, assigns(:presenter).send(:sales).send(:count)
-    assert_includes assigns(:presenter).send(:sales), sales(:delorean_to_carlos).decorate
+    assert_includes assigns(:presenter).send(:sales), sales(:mater_to_silvia).decorate
   end
 
   test "should filter sales by to date" do
@@ -31,15 +31,15 @@ class SalesControllerTest < ActionController::TestCase
     assert_response :success
 
     assert_equal 1, assigns(:presenter).send(:sales).send(:count)
-    assert_includes assigns(:presenter).send(:sales), sales(:batmobile_to_silvia).decorate
+    assert_includes assigns(:presenter).send(:sales), sales(:meteoro_to_silvia).decorate
   end
 
   test "should filter sales by to vehicle model" do
-    get :index, sale_filter: {vehicle_model_id: vehicles(:delorean).vehicle_model_id}
+    get :index, sale_filter: {vehicle_model_id: vehicles(:lightning_mcqueen).vehicle_model_id}
     assert_response :success
 
     assert_equal 1, assigns(:presenter).send(:sales).send(:count)
-    assert_includes assigns(:presenter).send(:sales), sales(:delorean_to_carlos).decorate
+    assert_includes assigns(:presenter).send(:sales), sales(:lightning_mcqueen_to_carlos).decorate
   end
 
   test "should fill form with vehicle data" do
@@ -93,12 +93,12 @@ class SalesControllerTest < ActionController::TestCase
   end
 
   test 'should display form to print advance certificate' do
-    get :pre_print_advance_certifiate, id: @sale
+    get :pre_print_advance_certificate, id: @sale
     assert_equal @sale, assigns(:sale)
   end
 
   test 'should print advance certificate' do
-    post :pre_print_advance_certifiate
+    post :pre_print_advance_certificate, id: @sale
     assert_equal @sale, assigns(:sale)
   end
 
