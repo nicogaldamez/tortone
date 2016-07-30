@@ -60,7 +60,7 @@ class CustomersController < ApplicationController
   # GET /customers/search
   def search
     block = ->(customer) { { id: customer.id, name: customer.to_s } }
-    records = RecordSearcher.call(Customer, params, &block)
+    records = RecordSearcher.call(Customer.active, params, &block)
     render json: records.to_json, callback: params[:callback]
   end
 

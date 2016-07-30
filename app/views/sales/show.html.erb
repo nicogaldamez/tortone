@@ -1,0 +1,77 @@
+<header class="content-header">
+  <h1>
+    Detalle de la venta
+    <%= back_to_link 'Volver', @presenter.sale, 'pull-right' %>
+  </h1>
+</header>
+
+<section class="content">
+
+  <div class="row">
+
+    <div class="col-md-8">
+      <div class="box box-primary">
+        <div class="box-body box-profile">
+          <h3 class="text-center"><%= @presenter.sale.brand_and_model %></h3>
+          <h4 class="text-center"><%= @presenter.sale.version %></h4>
+          <br />
+          <h4 class="text-center"><b><%= @presenter.sale.specs %></b></h4>
+
+          <br />
+
+          <ul class="list-group list-group-unbordered">
+            <li class="list-group-item">
+              <b>Comprador</b>
+              <span class="text-muted pull-right">
+                <%= link_to @presenter.sale.customer, @sale.customer %></span>
+            </li>
+            <li class="list-group-item">
+              <b>Vehículo</b>
+              <span class="text-muted pull-right">
+                <%= link_to @presenter.sale.vehicle.decorate.identification, @sale.vehicle %></span>
+            </li>
+            <li class="list-group-item">
+              <b>Precio</b>
+              <span class="text-muted pull-right"><%= @presenter.sale.price %></span>
+            </li>
+            <li class="list-group-item">
+              <b>Seña</b>
+              <span class="text-muted pull-right"><%= @presenter.sale.advance %></span>
+            </li>
+            <li class="list-group-item">
+              <b>Fecha Venta</b>
+              <span class="text-muted pull-right">
+                <%= @presenter.sold_on %></span>
+            </li>
+          </ul>
+          <b> Notas </b>
+          <div> <%= @presenter.sale.notes %> </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="box box-default">
+        <div class="box-header with-border">
+          <h3 class="box-title">Operaciones</h3>
+        </div>
+        <div class="box-body">
+          <%= link_to '<b>Editar</b>'.html_safe, edit_sale_path(@presenter.sale),
+                class: 'btn btn-primary btn-block' %>
+          <%= link_to '<b>Imprimir Boleto Seña </b>'.html_safe, [:pre_print_advance_certificate, @presenter.sale],
+                class: 'btn btn-warning btn-block' %>
+          <%= link_to '<b>Imprimir Boleto Compra Venta </b>'.html_safe, [:pre_print_sale_certificate, @presenter.sale],
+                disabled: !@presenter.sale.sold?,
+                class: 'btn btn-success btn-block' %>
+          <hr>
+          <%= link_to '<b>Eliminar</b>'.html_safe, @presenter.sale, method: :delete,
+                data: { confirm: '¿Seguro' },
+                class: 'btn btn-danger btn-block' %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+

@@ -57,5 +57,18 @@ class CustomerTest < ActiveSupport::TestCase
     @customer.save
     assert_equal 'Galdámez', @customer.last_name
   end
+
+  test 'should soft delete if has sales' do
+    customer = sales(:meteoro_to_silvia).customer
+    customer.destroy
+    assert_not_nil customer.deleted_at
+  end
+
+  test 'should delete if has no sales' do
+    customer = customers(:gladys)
+    assert_difference('Customer.count', -1) do
+      customer.destroy
+    end
+  end
 end
 

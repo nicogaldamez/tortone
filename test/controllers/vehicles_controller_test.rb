@@ -24,7 +24,7 @@ class VehiclesControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:presenter)
-    assert_equal Vehicle.count, assigns(:presenter).send(:vehicles).send(:count)
+    assert_equal Vehicle.not_sold.count, assigns(:presenter).send(:vehicles).send(:count)
   end
 
 
@@ -32,7 +32,7 @@ class VehiclesControllerTest < ActionController::TestCase
     get :index, vehicle_filter: {brand: @vehicle.brand.name}
     assert_response :success
 
-    assert_equal 1, assigns(:presenter).send(:vehicles).send(:count)
+    assert_equal 2, assigns(:presenter).send(:vehicles).send(:count)
     assert_includes assigns(:presenter).send(:vehicles), @vehicle.decorate
   end
 
@@ -40,7 +40,7 @@ class VehiclesControllerTest < ActionController::TestCase
     get :index, vehicle_filter: {vehicle_model: @vehicle.vehicle_model.name}
     assert_response :success
 
-    assert_equal 1, assigns(:presenter).send(:vehicles).send(:count)
+    assert_equal 2, assigns(:presenter).send(:vehicles).send(:count)
     assert_includes assigns(:presenter).send(:vehicles), @vehicle.decorate
   end
 

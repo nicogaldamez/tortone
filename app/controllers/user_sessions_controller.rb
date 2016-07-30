@@ -1,12 +1,9 @@
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, except: [:destroy]
-  
+
   def new
-    if current_user
-      redirect_to root_path
-    else
-      @user = User.new
-    end
+    redirect_to root_path if logged_in?
+    @user = User.new
   end
 
   def create

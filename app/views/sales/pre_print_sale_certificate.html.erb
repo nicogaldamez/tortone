@@ -1,0 +1,18 @@
+<header class="content-header">
+  <h1> Crear boleto compra venta
+    <%= back_to_link 'Volver', @sale, 'pull-right' %>
+  </h1>
+</header>
+
+<section class="content">
+  <%= form_tag print_pdf_path, method: :post, target: '_blank' do %>
+
+    <div class="form-group">
+      <%= content_tag 'trix-editor', '', input: 'js-body', class: 'trix-content' %>
+      <%= hidden_field_tag :body, @content, id: 'js-body' %>
+    </div>
+
+    <%= submit_tag 'Imprimir', class: 'btn btn-success' %>
+
+  <% end %>
+</section>

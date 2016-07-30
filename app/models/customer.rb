@@ -16,11 +16,15 @@
 
 class Customer < ActiveRecord::Base
 
+  include SoftDestroyable
+
   # -- Associations
   has_many :vehicles, dependent: :destroy
+  has_many :sales, dependent: :destroy
 
   # -- Scopes
   default_scope -> { order(:last_name, :first_name) }
+  scope :active, -> { where(deleted_at: nil) }
   scope :search, ->(term) {
     where('first_name ilike :term or last_name ilike :term', term: "%#{term}%")
   }
@@ -34,6 +38,10 @@ class Customer < ActiveRecord::Base
 
   def to_s
     "#{last_name}, #{first_name}"
+  end
+
+  def permanent_destroy?
+    sales.empty?
   end
 
   def first_name=(s)
