@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: versions
+#
+#  id               :integer          not null, primary key
+#  name             :string
+#  created_at       :datetime
+#  updated_at       :datetime
+#  vehicle_model_id :integer
+#
+
 class Version < ActiveRecord::Base
 
   # Scopes

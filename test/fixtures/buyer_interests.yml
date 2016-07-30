@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: buyer_interests
+#
+#  id               :integer          not null, primary key
+#  buyer_id         :integer
+#  brand_id         :integer
+#  vehicle_model_id :integer
+#  year             :integer          not null
+#  max_kilometers   :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 bora:
@@ -13,3 +27,10 @@ focus:
   vehicle_model: focus
   year: 2011
   max_kilometers: 60000
+
+again_focus:
+  buyer: silvia
+  brand: ford
+  vehicle_model: focus
+  year: 2006
+  max_kilometers: 70000

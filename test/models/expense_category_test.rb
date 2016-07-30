@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: expense_categories
+#
+#  id          :integer          not null, primary key
+#  name        :string
+#  description :text
+#
+
 require 'test_helper'
 require 'pp'
 
