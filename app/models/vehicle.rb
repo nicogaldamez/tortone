@@ -2,6 +2,10 @@ class Vehicle < ActiveRecord::Base
 
   # -- Scopes
   default_scope -> { order(:created_at) }
+  scope :not_sold, -> {
+    joins('LEFT JOIN sales on sales.vehicle_id = vehicles.id')
+    .where('sales.id is NULL OR sales.sold_on IS NULL')
+  }
 
   # -- Associations
   belongs_to :brand
@@ -10,6 +14,7 @@ class Vehicle < ActiveRecord::Base
   belongs_to :customer
   has_many :attachments, dependent: :destroy
   has_many :budgets, dependent: :destroy
+  has_one :sale, dependent: :destroy
 
   # -- Validations
   validates :brand, presence: true

@@ -2,6 +2,7 @@ class Customer < ActiveRecord::Base
 
   # -- Associations
   has_many :vehicles, dependent: :destroy
+  has_many :sales, dependent: :destroy
 
   # -- Scopes
   default_scope -> { order(:last_name, :first_name) }

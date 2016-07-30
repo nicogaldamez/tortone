@@ -28,6 +28,7 @@
 //= require moment/es
 //= require bootstrap-datetimepicker
 //= require cocoon
+//= require trix
 
 //= require init
 //= require utilities
@@ -36,3 +37,4 @@
 //= require buyers
 //= require expenses
 //= require budgets
+//= require sales

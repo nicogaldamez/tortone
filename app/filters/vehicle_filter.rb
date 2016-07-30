@@ -3,7 +3,7 @@ class VehicleFilter
   attr_accessor :name, :brand, :vehicle_model, :is_owner
 
   def call(context=false)
-    vehicles = Vehicle.all
+    vehicles = Vehicle.not_sold
 
     vehicles = vehicles.joins(:customer).where(
         'customers.first_name ilike ? OR customers.last_name ilike ?',

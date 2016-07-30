@@ -72,4 +72,10 @@ es:
         installments_cost: Precio Cuota
         expenses: Gastos
         notes: Descripción
+      sale:
+        customer_id: Comprador
+        price: Precio
+        advance: Seña
+        sold_on: Fecha Venta
+        notes: Notas
 
