@@ -15,7 +15,6 @@
 class BuyerInterest < ActiveRecord::Base
   
   # -- Scopes
-  scope :for_brand_and_model, -> (brand, model) { where(brand: brand, vehicle_model: model) }
 
   # -- Associations
   belongs_to :buyer

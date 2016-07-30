@@ -27,3 +27,10 @@ focus:
   vehicle_model: focus
   year: 2011
   max_kilometers: 60000
+
+again_focus:
+  buyer: silvia
+  brand: ford
+  vehicle_model: focus
+  year: 2006
+  max_kilometers: 70000

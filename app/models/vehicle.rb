@@ -33,7 +33,6 @@ class Vehicle < ActiveRecord::Base
 
   # -- Scopes
   default_scope -> { order(:created_at) }
-  scope :from_brand_and_model, -> (brand, model) { where(brand: brand, vehicle_model: model) }
 
   # -- Associations
   belongs_to :brand
@@ -42,6 +41,7 @@ class Vehicle < ActiveRecord::Base
   belongs_to :customer
   has_many :attachments, dependent: :destroy
   has_many :budgets, dependent: :destroy
+  has_many :coincidences, dependent: :destroy
 
   # -- Validations
   validates :brand, presence: true
@@ -52,7 +52,6 @@ class Vehicle < ActiveRecord::Base
   validates :year, presence: true
   validates :kilometers, presence: true
   validates :color, presence: true
-  validates :year, presence: true
   validates :plate, uniqueness: true, allow_blank: true
 
   # -- Misc

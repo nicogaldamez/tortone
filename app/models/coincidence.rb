@@ -15,8 +15,12 @@ class Coincidence < ActiveRecord::Base
   
   # - Associations
   belongs_to :buyer
-  belongs_to :vehicle_model
-  belongs_to :brand
+  belongs_to :vehicle
+  
+  # - Validations
+  validates :buyer, presence: true
+  validates :vehicle, presence: true
+  validates :buyer, uniqueness: { scope: :vehicle }
   
   # - Scopes
   

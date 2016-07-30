@@ -25,7 +25,6 @@ carlos:
   email: carlos@galdamez.com
   is_hdi: false
   has_automatic_transmission: false
-  min_price_in_cents: 50000
   max_price_in_cents: 60000
 
 silvia:
@@ -35,6 +34,5 @@ silvia:
   email: silvia@dante.com
   is_hdi: false
   has_automatic_transmission: false
-  min_price_in_cents: 120000
   max_price_in_cents: 180000
 

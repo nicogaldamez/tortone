@@ -20,16 +20,17 @@ class Buyer < ActiveRecord::Base
 
   # -- Associations
   has_many :buyer_interests, dependent: :destroy
+  has_many :coincidences, dependent: :destroy
   accepts_nested_attributes_for :buyer_interests, allow_destroy: true
 
   # -- Validations
   validates :first_name, presence: true
-  validates :min_price, presence: true
+  validates :max_price, presence: true
   validates :phones, presence: true
 
   # Para usar field_in_cents, etc.
   def self.attributes_in_cents
-    ['min_price', 'max_price']
+    ['max_price']
   end
 
   include IntegerInCents

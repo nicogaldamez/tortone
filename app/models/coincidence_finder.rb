@@ -1,40 +1,35 @@
 class CoincidenceFinder
-  
-  def initialize(vehicle:, interest:)
-    @vehicle  = vehicle
-    @interest = interest
-  end
-  
-  def call
-    buyer = @interest.buyer
-    conditions = []
 
-    conditions << is_between_years?
-    conditions << @vehicle.is_hdi? if buyer.is_hdi?
-    conditions << @vehicle.has_automatic_transmission? if buyer.has_automatic_transmission?
-    conditions << is_between_prices?(buyer.min_price, buyer.max_price) if buyer.max_price.present? || buyer.min_price != 0
-    conditions << is_between_kilometers? if @interest.max_kilometers.present?
-
-    conditions.all?
+  # Al crear un vehículo o un interesado, chequeo si hay coincidencias
+  # Ej. CoincidenceFinder.new(vehicle) o CoincidenceFinder.new(buyer)
+  def self.call(vehicle: false, buyer: false)
+    coincidences_for_vehicle(vehicle) if vehicle
+    coincidences_for_buyer(buyer) if buyer
   end
-  
-  
+
+
   private
-  
-    def is_between_years?
-      @vehicle.year >= (@interest.year - Const::YEAR) && 
-                @vehicle.year <= (@interest.year + Const::YEAR)
-    end
 
-    def is_between_prices?(min, max)
-      return true if !@vehicle.price
-  
-      max ||= Float::INFINITY    
-      (@vehicle.price >= min && @vehicle.price <= max)
-    end
+  def self.coincidences_for_vehicle(vehicle)
+    buyers = BuyerFinder.new(vehicle).call
 
-    def is_between_kilometers?
-      @vehicle.kilometers <= @interest.max_kilometers
+    Coincidence.where(vehicle: vehicle).delete_all    
+    if buyers.any?
+      buyers.each { |buyer| create_coincidences(buyer, vehicle) }
     end
+  end
+
+  def self.coincidences_for_buyer(buyer)
+    vehicles = VehicleFinder.new(buyer).call
+
+    Coincidence.where(buyer: buyer).delete_all
+    if vehicles.any?
+      vehicles.each { |vehicle| create_coincidences(buyer, vehicle) }
+    end
+  end
   
+  def self.create_coincidences(buyer, vehicle)
+    Coincidence.create(buyer: buyer, vehicle: vehicle)
+  end
+
 end

@@ -21,7 +21,7 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(vehicle_params)
     if @vehicle.save
-      # CoincidenceManager.call(vehicle: @vehicle)
+      CoincidenceFinder.call(vehicle: @vehicle)
       
       redirect_to @vehicle,
         notice: 'El vehículo ha sido creado correctamente.'
@@ -35,6 +35,8 @@ class VehiclesController < ApplicationController
 
   def update
     if @vehicle.update(vehicle_params)
+      CoincidenceFinder.call(vehicle: @vehicle)
+      
       redirect_to vehicles_path,
         notice: 'El vehículo ha sido actualizado correctamente.'
     else

@@ -37,8 +37,8 @@ delorean:
   version:        kinetic
   kilometers:     20000
   color:          Gris perla
-  cost_in_cents:  300000
-  price_in_cents: 350000
+  cost_in_cents:  30000
+  price_in_cents: 60000
   entered_on:     2016-01-01
   year:           2010
   is_consignment: true
