@@ -1,0 +1,34 @@
+<header class="content-header">
+  <h1>Coincidencias</h1>
+</header>
+
+<section class="content">
+
+  <article class="box box-primary">
+    <section class="box-body">
+
+      <%= render 'filter' %>
+
+      <table class="table table-custom table-hover">
+        <thead>
+          <tr>
+            <th>Vehículo</th>
+            <th>Comprador</th>
+            <th>Teléfono</th>
+            <th>Nota</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render @coincidences_presenter.coincidences %>
+        </tbody>
+      </table>
+
+      <%= paginate @coincidences_presenter.coincidences %>
+
+      <%= content_tag :p, 'No se encontraron coincidencias', class: 'text-center' unless @coincidences_presenter.coincidences.any? %>
+
+    </section>
+  </article>
+
+</section>

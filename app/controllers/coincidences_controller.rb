@@ -4,7 +4,13 @@ class CoincidencesController < ApplicationController
 
   # GET /coincidences
   def index
-    @coincidences = Coincidences.all
+    @coincidences_presenter = CoincidencesPresenter.new(params)
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @coincidences_presenter.coincidences.as_json, status: :ok }
+    end
+      
   end
 
   # POST /coincidences
@@ -39,8 +45,7 @@ class CoincidencesController < ApplicationController
   private
 
   def coincidence_params
-    params.require(:coincidence).permit(:buyer_id, :vehicle_model_id, :brand_id,
-                                         :is_ignored)
+    params.require(:coincidence).permit(:buyer_id, :vehicle_id, :is_ignored)
   end
 
   def set_coincidence

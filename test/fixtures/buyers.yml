@@ -9,7 +9,6 @@
 #  email                      :string
 #  is_hdi                     :boolean          default(FALSE)
 #  has_automatic_transmission :boolean          default(FALSE)
-#  min_price_in_cents         :integer          default(0)
 #  max_price_in_cents         :integer
 #  notes                      :text
 #  created_at                 :datetime         not null

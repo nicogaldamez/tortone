@@ -27,7 +27,8 @@ class VehicleFinder
     is_hdi                     = buyer.is_hdi?
     has_automatic_transmission = buyer.has_automatic_transmission?
 
-    vehicles = Vehicle.where(
+    vehicles = Vehicle.not_sold
+    vehicles = vehicles.where(
       vehicle_model: vehicle_model,
       year: (min_year..max_year),
       kilometers: (0..max_km),

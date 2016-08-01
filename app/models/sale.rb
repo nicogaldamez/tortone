@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: sales
+#
+#  id               :integer          not null, primary key
+#  sold_on          :date
+#  customer_id      :integer
+#  vehicle_id       :integer
+#  advance_in_cents :integer          default(0)
+#  status           :integer          default(0)
+#  price_in_cents   :integer
+#  notes            :text
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 class Sale < ActiveRecord::Base
 
   # -- Associations

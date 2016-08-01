@@ -38,3 +38,4 @@
 //= require expenses
 //= require budgets
 //= require sales
+//= require coincidences

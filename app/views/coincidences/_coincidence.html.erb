@@ -1,0 +1,13 @@
+<tr id="<%= dom_id(coincidence) %>">
+
+  <td> <%= coincidence.vehicle %> </td>
+  <td class="text-center"> <%= coincidence.buyer %> </td>
+  <td class="text-center"> <%= coincidence.phones %> </td>
+  <td class="text-center"> <%= coincidence.notes %> </td>
+  <td>
+    <%= coincidence.action_button %>
+    <%= link_to 'Eliminar', coincidence, method: :delete,
+        data: {confirm: '¿Está seguro?'}, class: 'btn btn-xs btn-danger' %>
+  </td>
+
+</tr>
