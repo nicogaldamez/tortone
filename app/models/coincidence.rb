@@ -2,16 +2,17 @@
 #
 # Table name: coincidences
 #
-#  id               :integer          not null, primary key
-#  buyer_id         :integer
-#  vehicle_model_id :integer
-#  brand_id         :integer
-#  is_ignored       :boolean          default(FALSE)
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  id         :integer          not null, primary key
+#  buyer_id   :integer
+#  vehicle_id :integer
+#  is_ignored :boolean          default(FALSE)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class Coincidence < ActiveRecord::Base
+  
+  default_scope -> { order(:is_ignored, :created_at) }
   
   # - Associations
   belongs_to :buyer
@@ -23,6 +24,7 @@ class Coincidence < ActiveRecord::Base
   validates :buyer, uniqueness: { scope: :vehicle }
   
   # - Scopes
+  scope :non_ignored, -> { where(is_ignored: false) }
   
   # - Methods
 end

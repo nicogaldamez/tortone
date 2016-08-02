@@ -2,7 +2,7 @@ class CustomerFilter
   include ActiveModel::Model
   attr_accessor :name, :vehicle
 
-  def call(context=false)
+  def call
     customers = Customer.active
     customers = customers.where('first_name ilike ? OR last_name ilike ?', "%#{@name}%", "%#{@name}%") if @name.present?
     customers = customers.joins(:vehicles)

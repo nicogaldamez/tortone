@@ -7,6 +7,8 @@ class BuyerFinder
   # Returns a collection of buyers interested in the @vehicle
   # Example: BuyerFinder.new(vehicle).call
   def call
+    return [] if @vehicle.sold?
+    
     vehicle_model = @vehicle.vehicle_model
     min_year, max_year = years_range()
     kilometers = @vehicle.kilometers

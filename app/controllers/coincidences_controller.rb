@@ -4,18 +4,13 @@ class CoincidencesController < ApplicationController
 
   # GET /coincidences
   def index
-    @coincidences = Coincidences.all
-  end
-
-  # POST /coincidences
-  def create
-    @coincidence = Coincidence.new(coincidence_params)
-    if @coincidence.save
-      render :nothing
-    else
-      flash[:error] = 'Falló el chequeo de coincidencias entre interesados y vehículos'
-      redirect_to root_path
+    @coincidences = Coincidence.all.page(params[:page]).decorate
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @coincidences.as_json, status: :ok }
     end
+      
   end
 
   # PUT /coincidences/:id
@@ -39,8 +34,7 @@ class CoincidencesController < ApplicationController
   private
 
   def coincidence_params
-    params.require(:coincidence).permit(:buyer_id, :vehicle_model_id, :brand_id,
-                                         :is_ignored)
+    params.require(:coincidence).permit(:buyer_id, :vehicle_id, :is_ignored)
   end
 
   def set_coincidence

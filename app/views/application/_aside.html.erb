@@ -12,6 +12,15 @@
 
         <li class="header"> COMPRADORES </li>
         <%= side_link text: 'Nuevo Comprador', path: new_buyer_path %>
+        
+        <li>
+          <%= link_to coincidences_path do %>
+            <i class="fa fa-fw"></i>
+            <span> Coincidencias  </span>
+            <span id="js-coincidences" class="badge bg-yellow"></span>
+          <% end %>
+        </li>
+        
         <%= side_link text: 'Listado de Compradores', path: buyers_path %>
 
         <li class="header"> GASTOS </li>
