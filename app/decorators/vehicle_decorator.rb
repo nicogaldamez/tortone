@@ -77,7 +77,7 @@ class VehicleDecorator < Draper::Decorator
 
   # TODO: add a class for owned vehicles
   def klass
-    object.is_owner ? 'color-beige' : ''
+    object.is_owner ? 'own-vehicle' : 'others-vehicle'
   end
 
   def customer

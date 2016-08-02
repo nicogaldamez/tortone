@@ -63,6 +63,10 @@ class Vehicle < ActiveRecord::Base
   def not_owner?
     !is_owner?
   end
+  
+  def sold?
+    sold_on.present?
+  end
 
   # Para usar field_in_cents, etc.
   def self.attributes_in_cents

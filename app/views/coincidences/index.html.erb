@@ -7,8 +7,6 @@
   <article class="box box-primary">
     <section class="box-body">
 
-      <%= render 'filter' %>
-
       <table class="table table-custom table-hover">
         <thead>
           <tr>
@@ -20,13 +18,13 @@
         </thead>
 
         <tbody>
-          <%= render @coincidences_presenter.coincidences %>
+          <%= render @coincidences %>
         </tbody>
       </table>
 
-      <%= paginate @coincidences_presenter.coincidences %>
+      <%= paginate @coincidences %>
 
-      <%= content_tag :p, 'No se encontraron coincidencias', class: 'text-center' unless @coincidences_presenter.coincidences.any? %>
+      <%= content_tag :p, 'No se encontraron coincidencias', class: 'text-center' unless @coincidences.any? %>
 
     </section>
   </article>

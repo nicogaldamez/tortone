@@ -4,24 +4,13 @@ class CoincidencesController < ApplicationController
 
   # GET /coincidences
   def index
-    @coincidences_presenter = CoincidencesPresenter.new(params)
+    @coincidences = Coincidence.all.page(params[:page]).decorate
     
     respond_to do |format|
       format.html
-      format.json { render json: @coincidences_presenter.coincidences.as_json, status: :ok }
+      format.json { render json: @coincidences.as_json, status: :ok }
     end
       
-  end
-
-  # POST /coincidences
-  def create
-    @coincidence = Coincidence.new(coincidence_params)
-    if @coincidence.save
-      render :nothing
-    else
-      flash[:error] = 'Falló el chequeo de coincidencias entre interesados y vehículos'
-      redirect_to root_path
-    end
   end
 
   # PUT /coincidences/:id

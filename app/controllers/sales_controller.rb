@@ -22,6 +22,7 @@ class SalesController < ApplicationController
   def create
     @sale = Sale.new(sale_params)
     if @sale.save
+      update_vehicle()
       redirect_to @sale, notice: 'La venta ha sido creada con éxito'
     else
       render :new
@@ -35,6 +36,7 @@ class SalesController < ApplicationController
   # PUT /sales/:id
   def update
     if @sale.update(sale_params)
+      update_vehicle()
       redirect_to @sale, notice: 'La venta se ha actualizado correctamente'
     else
       @vehicle = @sale.vehicle
@@ -45,6 +47,9 @@ class SalesController < ApplicationController
   # DELETE /sales/:id
   def destroy
     if @sale.destroy
+      @sale.vehicle.update(sold_on: nil)
+      CoincidenceFinder.call(vehicle: @sale.vehicle) # Actualizo coincidencias
+
       redirect_to sales_path,
         notice: 'La venta sido eliminada correctamente.'
     else
@@ -62,6 +67,7 @@ class SalesController < ApplicationController
   def pre_print_sale_certificate
     @content = SaleCertificate.new(@sale).content
   end
+  
 
   private
 
@@ -80,6 +86,13 @@ class SalesController < ApplicationController
       vehicle_id: @vehicle.id,
       price: @vehicle.unformatted_price
     )
+  end
+  
+  def update_vehicle
+    if sale_params[:sold_on].present?
+      @sale.vehicle.update(sold_on: sale_params[:sold_on])
+      CoincidenceFinder.call(vehicle: @sale.vehicle) # Actualizo coincidencias
+    end
   end
 
 end

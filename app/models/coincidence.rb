@@ -12,6 +12,8 @@
 
 class Coincidence < ActiveRecord::Base
   
+  default_scope -> { order(:is_ignored, :created_at) }
+  
   # - Associations
   belongs_to :buyer
   belongs_to :vehicle
