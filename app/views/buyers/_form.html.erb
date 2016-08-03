@@ -61,22 +61,16 @@
     <div class="row">
       <div class="col-md-5">
         <fieldset class="form-group">
-          <%= f.label :min_price, 'Dispuesto a pagar' %>
+          <%= f.label :max_price, 'Máximo a pagar' %>
           <div class="input-group">
             <span class="input-group-addon">
               <span class="fa fa-dollar"></span>
             </span>
-            <%= f.number_field :min_price, class: 'form-control', required: true,
-                  placeholder: 'Mínimo' %>
-            <span class="input-group-addon">
-              hasta
-            </span>
-            <%= f.number_field :max_price, class: 'form-control', required: true,
-                  placeholder: 'Máximo' %>
+            <%= f.number_field :max_price, class: 'form-control', required:                             true, placeholder: 'Máximo' %>
           </div>
         </fieldset>
       </div>
-
+      
       <div class="col-md-6 col-md-offset-1">
         <div class="row">
           <div class="col-md-2">

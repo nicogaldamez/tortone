@@ -1,4 +1,20 @@
+# == Schema Information
+#
+# Table name: buyer_interests
+#
+#  id               :integer          not null, primary key
+#  buyer_id         :integer
+#  brand_id         :integer
+#  vehicle_model_id :integer
+#  year             :integer          not null
+#  max_kilometers   :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 class BuyerInterest < ActiveRecord::Base
+  
+  # -- Scopes
 
   # -- Associations
   belongs_to :buyer

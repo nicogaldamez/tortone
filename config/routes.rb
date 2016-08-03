@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   resources :vehicle_models, only: [:index, :create] do
     get :search, on: :collection
   end
+  
   resources :versions, only: [:index, :create]
+  resources :coincidences, except: [:edit, :new]
   resources :buyers
   resources :budgets
   resources :sales do
