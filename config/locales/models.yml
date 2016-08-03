@@ -10,6 +10,9 @@ es:
       customer: "cliente"
       vehicle: "vehículo"
     attributes:
+      user:
+        password: Clave
+        password_confirmation: Confirmación de Clave
       customer:
         first_name: Nombre
         last_name: Apellido
@@ -72,4 +75,10 @@ es:
         installments_cost: Precio Cuota
         expenses: Gastos
         notes: Descripción
+      sale:
+        customer_id: Comprador
+        price: Precio
+        advance: Seña
+        sold_on: Fecha Venta
+        notes: Notas
 

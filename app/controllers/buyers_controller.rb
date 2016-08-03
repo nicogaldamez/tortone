@@ -10,16 +10,17 @@ class BuyersController < ApplicationController
   # GET /buyers/new
   def new
     @buyer = Buyer.new
+    @buyer.buyer_interests.new
   end
 
   # POST /buyers
   def create
     @buyer = Buyer.new(buyer_params)
     if @buyer.save
+      CoincidenceFinder.call(buyer: @buyer)
+      
       redirect_to buyers_path, notice: 'El interesado ha sido creado correctamente.'
     else
-      pp buyer_params
-      pp @buyer.errors
       render :new
     end
   end
@@ -31,6 +32,8 @@ class BuyersController < ApplicationController
   # PUT /buyers/:id
   def update
     if @buyer.update(buyer_params)
+      CoincidenceFinder.call(buyer: @buyer)
+      
       redirect_to buyers_path,
         notice: 'El interesado ha sido actualizado correctamente.'
     else
@@ -54,7 +57,7 @@ class BuyersController < ApplicationController
 
   def buyer_params
     params.require(:buyer).permit(:first_name, :last_name, :phones, :email,
-                                  :min_price, :max_price, :notes, :is_hdi,
+                                  :max_price, :notes, :is_hdi,
                                   :has_automatic_transmission,
                                   buyer_interests_attributes: [:vehicle_model_id,
                                     :id, :_destroy, :brand_id, :max_kilometers, :year])

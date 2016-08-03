@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: vehicle_models
+#
+#  id         :integer          not null, primary key
+#  brand_id   :integer
+#  name       :string
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class VehicleModel < ActiveRecord::Base
 
   # Scopes

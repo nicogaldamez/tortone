@@ -1,0 +1,41 @@
+# == Schema Information
+#
+# Table name: sales
+#
+#  id               :integer          not null, primary key
+#  sold_on          :date
+#  customer_id      :integer
+#  vehicle_id       :integer
+#  advance_in_cents :integer          default(0)
+#  status           :integer          default(0)
+#  price_in_cents   :integer
+#  notes            :text
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+lightning_mcqueen_to_carlos:
+  sold_on:
+  customer: carlos
+  vehicle: lightning_mcqueen
+  advance_in_cents: 2000
+  status: 0
+  price_in_cents: 150000
+
+mater_to_silvia:
+  sold_on: <%= Date.today.strftime('%Y-%m-%d') %>
+  customer: silvia
+  vehicle: mater
+  advance_in_cents: 1000
+  status: 0
+  price_in_cents: 300000
+
+meteoro_to_silvia:
+  sold_on: <%= 1.month.ago.strftime('%Y-%m-%d') %>
+  customer: silvia
+  vehicle: meteoro
+  advance_in_cents: 1000
+  status: 0
+  price_in_cents: 300000

@@ -1,7 +1,7 @@
 class App.BudgetPrinter
   constructor: () ->
     print_url = $('#js-print-budget')
-    return unless print_url
+    return unless print_url.length > 0
     window.open print_url.val(), '_blank'
 
 # --------------------------------

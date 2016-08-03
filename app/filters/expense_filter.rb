@@ -12,9 +12,9 @@ class ExpenseFilter
   def call(context=false)
     expenses = Expense.all
     expenses = expenses.where('incurred_on >= ? AND incurred_on <= ?', @from, @to)
-    # expenses = expenses.joins(:expense_category).where('expense_categories.name ILIKE ?', "%#{@expense_category}%") if @expense_category.present?
-    
-    # expenses.includes(:expense_category)
+    expenses = expenses.joins(:expense_category).where('expense_categories.name ILIKE ?', "%#{@expense_category}%") if @expense_category.present?
+
+    expenses.includes(:expense_category)
   end
   
   

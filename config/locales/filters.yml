@@ -17,3 +17,7 @@ es:
       budget_filter:
         from: 'Desde'
         to: 'Hasta'
+      sale_filter:
+        from: 'Desde'
+        to: 'Hasta'
+        vehicle_id: 'Vehículo'

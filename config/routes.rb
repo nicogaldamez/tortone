@@ -23,12 +23,20 @@ Rails.application.routes.draw do
   resources :vehicle_models, only: [:index, :create] do
     get :search, on: :collection
   end
+  
   resources :versions, only: [:index, :create]
+  resources :coincidences, except: [:edit, :new]
   resources :buyers
   resources :budgets
+  resources :sales do
+    get 'pre_print_advance_certificate', on: :member
+    get 'pre_print_sale_certificate', on: :member
+  end
+
+  post 'print_pdf', to: 'printer#print_pdf'
 
   get 'login', to: 'user_sessions#new', as: :login
   post 'logout', to: 'user_sessions#destroy', as: :logout
 
-  root 'main#index'
+  root 'vehicles#index'
 end

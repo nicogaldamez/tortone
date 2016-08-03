@@ -38,7 +38,7 @@ class BudgetPdf < ToPdf
       "<b>Valor:</b>  #{to_currency @budget.installments_cost}"
     move_down 20
 
-    p '<b>Gastos:</b>', to_currency(@budget.expenses)
+    p "<b>Gastos:</b> #{to_currency(@budget.expenses)}"
     move_down 20
 
     p '<b>Descripción</b>'

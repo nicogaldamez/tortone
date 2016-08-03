@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: expense_categories
+#
+#  id          :integer          not null, primary key
+#  name        :string
+#  description :text
+#
+
 class ExpenseCategory < ActiveRecord::Base
   
   # -- Associations

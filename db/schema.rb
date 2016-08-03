@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725150143) do
+ActiveRecord::Schema.define(version: 20160730182157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(version: 20160725150143) do
     t.integer  "year"
     t.integer  "price_in_cents",      limit: 8
     t.integer  "minimum_advance",     limit: 8
-    t.string   "financed"
-    t.string   "installments"
-    t.string   "installments_cost"
-    t.string   "expenses"
+    t.string   "financed",                      default: "0"
+    t.string   "installments",                  default: "0"
+    t.string   "installments_cost",             default: "0"
+    t.string   "expenses",                      default: "0"
     t.string   "notes"
     t.date     "budgeted_on"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   add_index "budgets", ["vehicle_id"], name: "index_budgets_on_vehicle_id", using: :btree
@@ -71,12 +71,22 @@ ActiveRecord::Schema.define(version: 20160725150143) do
     t.string   "email"
     t.boolean  "is_hdi",                               default: false
     t.boolean  "has_automatic_transmission",           default: false
-    t.integer  "min_price_in_cents",         limit: 8, default: 0
     t.integer  "max_price_in_cents",         limit: 8
     t.text     "notes"
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
   end
+
+  create_table "coincidences", force: :cascade do |t|
+    t.integer  "buyer_id"
+    t.integer  "vehicle_id"
+    t.boolean  "is_ignored", default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "coincidences", ["buyer_id"], name: "index_coincidences_on_buyer_id", using: :btree
+  add_index "coincidences", ["vehicle_id"], name: "index_coincidences_on_vehicle_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
     t.string   "first_name",  null: false
@@ -88,6 +98,7 @@ ActiveRecord::Schema.define(version: 20160725150143) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.datetime "deleted_at"
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", using: :btree
@@ -107,6 +118,21 @@ ActiveRecord::Schema.define(version: 20160725150143) do
   end
 
   add_index "expenses", ["expense_category_id"], name: "index_expenses_on_expense_category_id", using: :btree
+
+  create_table "sales", force: :cascade do |t|
+    t.date     "sold_on"
+    t.integer  "customer_id"
+    t.integer  "vehicle_id"
+    t.integer  "advance_in_cents", limit: 8, default: 0
+    t.integer  "status",                     default: 0
+    t.integer  "price_in_cents",   limit: 8
+    t.text     "notes"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "sales", ["customer_id"], name: "index_sales_on_customer_id", using: :btree
+  add_index "sales", ["vehicle_id"], name: "index_sales_on_vehicle_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",            null: false
@@ -173,7 +199,11 @@ ActiveRecord::Schema.define(version: 20160725150143) do
   add_foreign_key "buyer_interests", "brands"
   add_foreign_key "buyer_interests", "buyers"
   add_foreign_key "buyer_interests", "vehicle_models"
+  add_foreign_key "coincidences", "buyers"
+  add_foreign_key "coincidences", "vehicles"
   add_foreign_key "expenses", "expense_categories"
+  add_foreign_key "sales", "customers"
+  add_foreign_key "sales", "vehicles"
   add_foreign_key "vehicle_models", "brands"
   add_foreign_key "vehicles", "brands"
   add_foreign_key "vehicles", "customers"

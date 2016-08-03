@@ -1,0 +1,56 @@
+<%= form_for @presenter.filter, url: :sales, method: :get do |f| %>
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <fieldset class="form-group">
+
+        <div class="col-md-3">
+          <fieldset class="form-group">
+            <%= f.label :vehicle_model_id, 'Marca y Modelo' %>
+            <%= f.hidden_field :vehicle_model_id, class: 'select2 js-vehicle-model',
+                  data: { behavior: 'searchBrandAndModel', url: search_vehicle_models_path(with_brand: true),
+                          record_id: f.object.vehicle_model_id,
+                          record_text: f.object.brand_and_model_name } %>
+          </fieldset>
+        </div>
+
+        <div class="col-md-3">
+          <fieldset class="form-group">
+            <%= f.label :from %>
+            <div class='input-group date datepicker'>
+              <span class="input-group-addon">
+                <span class="fa fa-calendar"></span>
+              </span>
+              <%= f.text_field :from, class: 'form-control' %>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="col-md-3">
+          <fieldset class="form-group">
+            <%= f.label :to %>
+            <div class='input-group date datepicker'>
+              <span class="input-group-addon">
+                <span class="fa fa-calendar"></span>
+              </span>
+              <%= f.text_field :to, class: 'form-control' %>
+            </div>
+          </fieldset>
+        </div>
+
+
+        <div class="col-md-3">
+          <div class="fake-label"></div>
+          <%= f.submit 'Filtrar', class: 'btn btn-primary',
+                  'data-disable-with' => 'Filtrando...' %>
+          <%= link_to 'Limpiar', [:sales], class: 'btn btn-default',
+                'data-disable-with' => 'Espere...' %>
+        </div>
+
+      </fieldset>
+
+    </div>
+  </div>
+
+<% end %>

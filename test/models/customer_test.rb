@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: customers
+#
+#  id          :integer          not null, primary key
+#  first_name  :string           not null
+#  last_name   :string           not null
+#  dni         :string
+#  phones      :string
+#  address     :string
+#  email       :string
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  deleted_at  :datetime
+#
+
 require 'test_helper'
 
 class CustomerTest < ActiveSupport::TestCase
@@ -40,6 +57,19 @@ class CustomerTest < ActiveSupport::TestCase
     @customer.last_name = 'galdámez'
     @customer.save
     assert_equal 'Galdámez', @customer.last_name
+  end
+
+  test 'should soft delete if has sales' do
+    customer = sales(:meteoro_to_silvia).customer
+    customer.destroy
+    assert_not_nil customer.deleted_at
+  end
+
+  test 'should delete if has no sales' do
+    customer = customers(:gladys)
+    assert_difference('Customer.count', -1) do
+      customer.destroy
+    end
   end
 end
 

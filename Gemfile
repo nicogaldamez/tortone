@@ -23,7 +23,6 @@ gem 'prawn' # PDF Generator
 gem 'prawn-table' # Tables for Prawn
 gem 'momentjs-rails', '>= 2.9.0' # Datetimepicker dependency
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37' # Datetimepicker
-gem 'prawn' # Generación de PDFs
 
 # File uploader
 gem "jquery-fileupload-rails"
@@ -46,9 +45,11 @@ group :development do
   gem 'hirb' # Mejora la visualización de consulas desde consola
   gem 'letter_opener'
   gem 'quiet_assets'
+  gem 'annotate'
 end
 
 group :production do
   gem 'rails_12factor'
   gem 'rack-cache', require: 'rack/cache'
 end
+

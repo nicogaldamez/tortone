@@ -1,4 +1,4 @@
-require 'test_helper'
+ 'test_helper'
 
 class BudgetsControllerTest < ActionController::TestCase
   include Sorcery::TestHelpers::Rails::Controller

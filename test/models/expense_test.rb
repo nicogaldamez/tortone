@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: expenses
+#
+#  id                  :integer          not null, primary key
+#  incurred_on         :date
+#  expense_category_id :integer
+#  amount_in_cents     :integer
+#  description         :text
+#
+
 require 'test_helper'
 
 class ExpenseTest < ActiveSupport::TestCase

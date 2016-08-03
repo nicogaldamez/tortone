@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: expenses
+#
+#  id                  :integer          not null, primary key
+#  incurred_on         :date
+#  expense_category_id :integer
+#  amount_in_cents     :integer
+#  description         :text
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 peugeot_wash:

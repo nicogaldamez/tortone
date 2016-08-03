@@ -1,6 +1,9 @@
 <tr id="<%= dom_id(vehicle) %>" class="<%= vehicle.klass %>">
 
-  <td align="left"> <%= link_to vehicle.identification, vehicle  %> </td>
+  <td align="left">
+    <%= link_to vehicle.identification, vehicle  %>
+    <%= vehicle.sale_advance_badge %>
+  </td>
   <td align="center"> <%= vehicle.color %> </td>
   <td align="center"> <%= vehicle.year %> </td>
   <td align="center"> <%= vehicle.kilometers %> </td>

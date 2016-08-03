@@ -16,7 +16,7 @@ class CustomersControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:presenter)
-    assert_equal Customer.count, assigns(:presenter).send(:customers).send(:count)
+    assert_equal Customer.active.count, assigns(:presenter).send(:customers).send(:count)
   end
 
 
@@ -82,7 +82,7 @@ class CustomersControllerTest < ActionController::TestCase
 
   test "should destroy customer" do
     assert_difference('Customer.count', -1) do
-      delete :destroy, id: @customer.id
+      delete :destroy, id: customers(:gladys).id # Elijo este cliente porque no tiene ventas
     end
 
     assert_redirected_to customers_path

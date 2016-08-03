@@ -25,6 +25,14 @@ class BuyersControllerTest < ActionController::TestCase
     assert_equal Buyer.count, assigns(:presenter).send(:buyers).send(:count)
   end
 
+  test "should filter buyers by name" do
+    get :index, buyer_filter: {name: @buyer.first_name}
+    assert_response :success
+
+    assert_equal 1, assigns(:presenter).send(:buyers).send(:count)
+    assert_includes assigns(:presenter).send(:buyers), @buyer.decorate
+  end
+
   test "should get new buyer" do
     get :new
     assert_not_nil assigns(:buyer)
