@@ -1,0 +1,22 @@
+<%= form_tag prepare_to_publish_vehicle_path(id: @vehicle.id), remote: true do |f| %>
+
+<article>
+  <section>
+    <div class="col-md-6">
+      <fieldset class="form-group">
+        <%= label_tag :message %>
+        <%= text_field_tag :message, class: 'form-control', required: true %>
+      </fieldset>
+    </div>
+  </section>
+</article>
+
+<div class="row">
+  <div class="col-md-12">
+    <fieldset class="form-group">
+      <%= submit_tag 'Publicar', class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
+    </fieldset>
+  </div>
+</div>
+
+<% end %>

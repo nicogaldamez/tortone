@@ -1,6 +1,6 @@
 class VehiclesController < ApplicationController
 
-  before_filter :set_vehicle, only: [:edit, :update, :destroy]
+  before_filter :set_vehicle, only: [:edit, :update, :destroy, :prepare_to_publish, :publish]
 
   def index
     @presenter = VehiclesPresenter.new(params)
@@ -52,6 +52,23 @@ class VehiclesController < ApplicationController
       flash[:error] = 'Ocurrió un error al eliminar el vehículo'
       redirect_to vehicles_path
     end
+  end
+  
+  def prepare_to_publish
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def publish
+    response = FacebookPublisher.new.post(@vehicle.decorate)
+    
+    if response[:status] == :ok
+      flash[:success] = 'El vehículo se ha publicado en Facebook exitosamente'
+    else
+      flash[:error] = 'Ocurrió un error al intentar conectarse con Facebook'
+    end    
+    redirect_to @vehicle
   end
 
 

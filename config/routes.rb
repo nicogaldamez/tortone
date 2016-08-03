@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :vehicles do
     resources :attachments, only: [:create]
+    post 'publish', on: :member
+    get 'prepare_to_publish', on: :member, as: :prepare_to_publish
   end
 
   resources :expenses
