@@ -81,4 +81,9 @@ es:
         advance: Seña
         sold_on: Fecha Venta
         notes: Notas
+      brand:
+        name: Nombre
+      vehicle_model:
+        name: Nombre
+        brand_id: Marca
 

@@ -39,3 +39,4 @@
 //= require budgets
 //= require sales
 //= require coincidences
+//= require vehicle_models

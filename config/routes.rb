@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :attachments, only: [:destroy]
   resources :brands
-  resources :vehicle_models, only: [:index, :create] do
+  resources :vehicle_models do
     get :search, on: :collection
   end
 

@@ -1,0 +1,11 @@
+<tr>
+  <td> <%= link_to vehicle_model.name, edit_vehicle_model_path(vehicle_model) %> </td>
+  <td> <%= vehicle_model.brand.name %> </td>
+  <td>
+    <%= link_to 'Editar', edit_vehicle_model_path(vehicle_model), class: 'btn btn-xs btn-primary' %>
+    <%= link_to 'Eliminar', vehicle_model, method: :delete,
+        data: {confirm: '¿Está seguro?'}, class: 'btn btn-xs btn-danger' %>
+  </td>
+
+</tr>
+

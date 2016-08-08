@@ -1,0 +1,29 @@
+<header class="content-header">
+  <%= link_to 'Nuevo modelo', new_vehicle_model_path, class: 'btn btn-primary pull-right' %>
+  <h1>Modelos</h1>
+</header>
+
+<section class="content">
+
+  <article class="box box-primary">
+    <section class="box-body">
+
+      <table class="table table-custom table-hover">
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Marca</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render @vehicle_models %>
+        </tbody>
+      </table>
+
+    </section>
+  </article>
+
+</section>
+

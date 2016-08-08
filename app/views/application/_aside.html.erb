@@ -12,7 +12,7 @@
 
         <li class="header"> COMPRADORES </li>
         <%= side_link text: 'Nuevo Comprador', path: new_buyer_path %>
-        
+
         <li>
           <%= link_to coincidences_path do %>
             <i class="fa fa-fw"></i>
@@ -20,7 +20,7 @@
             <span id="js-coincidences" class="badge bg-yellow"></span>
           <% end %>
         </li>
-        
+
         <%= side_link text: 'Listado de Compradores', path: buyers_path %>
 
         <li class="header"> GASTOS </li>
@@ -34,6 +34,10 @@
         <li class="header"> CLIENTES </li>
         <%= side_link text: 'Nuevo Cliente', path: new_customer_path %>
         <%= side_link text: 'Listado de Clientes', path: customers_path %>
+
+        <li class="header"> OTROS </li>
+        <%= side_link text: 'Marcas', path: brands_path %>
+        <%= side_link text: 'Modelos', path: vehicle_models_path %>
 
       <% end %>
 

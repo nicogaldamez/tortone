@@ -19,5 +19,9 @@ bora:
   name: 'Bora'
   brand: volkswagen
 
+with_no_relationships:
+  name: 'Sad Model'
+  brand: volkswagen
+
 
 
