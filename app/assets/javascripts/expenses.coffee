@@ -1,30 +1,33 @@
 # --------------------------------
-# CATEGORY MODAL
-# --------------------------------
-class App.ExpenseCategoryModalForm
+# EXPENSE CATEGORY
+# ---------------------------------
+class App.ExpenseCategorySelect
 
-  constructor: (@modal, @callback) ->
-    @bindEvents()
+  constructor: (element_id) ->
+    @element = $(element_id)
+    @build_select()
 
-  bindEvents: () ->
-    that = @
-    $(@modal).on 'show.bs.modal', (e) ->
-      $(this).find('form').on 'ajax:success', (event, data, status, xhr) =>
-        that.processReceivedData(this, data, status, xhr)
-
-  processReceivedData: (form, data, status, xhr) ->
-    if data.result == 'success'
-      # Aplicar cambios en la ventana actual, y cerrar el modal
-      newData =
-        id: data.data.id
-        name: "#{data.data.name}"
-
-      @callback? newData
-
-      $(@modal).modal('hide')
-    else
-      App.show_form_error_messages("ExpenseCategory", form, data.error_messages)
-      $(@modal).modal('handleUpdate')
+  build_select: ->
+    @element.normalSelect
+      data: @element.data('data')
+      placeholder: 'Buscar Categoría...'
+      createSearchChoicePosition: 'bottom'
+      createSearchChoice: (term, page) ->
+        unless page.some(((item) ->
+            item.text.toLowerCase() == term.toLowerCase()
+          ))
+          return {
+            id: term
+            text: "#{term} (Nuevo)"
+            name: term
+            isNew: true
+          }
+  update: (expense_category_id, expense_category_name) ->
+    expense_categories = @element.data 'data'
+    expense_categories.push { id: expense_category_id, text: expense_category_name }
+    @element.data('data', expense_categories)
+    @build_select()
+    @element.select2('val', expense_category_id)
 
 
 # --------------------------------
@@ -34,14 +37,26 @@ class App.ExpenseForm
 
   constructor: () ->
     @bindEvents()
-    @expense_category_modal = new App.ExpenseCategoryModalForm('#js-modal', @onExpenseCategoryCreated)
+    @expense_category_select  = new App.ExpenseCategorySelect('#js-expense-category')
 
   # Binding de Eventos
   bindEvents: () ->
-    $("[data-behavior~=searchExpenseCategory]").ajaxSelect()
+    $('#js-expense-category').on 'select2-selecting', (e)=>
+      @onExpenseCategoryChanged e.object
 
-  onExpenseCategoryCreated: (data) ->
-    $('input[data-behavior~=searchExpenseCategory]').select2('data', data)
+  onExpenseCategoryChanged: (expense_category)->
+    if expense_category.isNew
+      @createExpenseCategory(expense_category.name)
+  
+  createExpenseCategory: (name)->
+    $.ajax
+      url: '/expense_categories'
+      method: 'post'
+      data:
+        expense_category:
+          name: name
+      success: (data) =>
+        @expense_category_select.update data.data.id, name
 
 
 # ---------------------------------
