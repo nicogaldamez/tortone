@@ -10,29 +10,41 @@
 
     <ul class="list-group list-group-unbordered">
       <li class="list-group-item">
+        <h2 class="text-center"><b><%= vehicle.price %></b></h2>
+      </li>
+      <li class="list-group-item">
         <b>Consignación</b>
         <span class="text-muted pull-right"><%= vehicle.is_consignment %></span>
       </li>
-      <li class="list-group-item">
-        <h2 class="text-center"><b><%= vehicle.price %></b></h2>
-      </li>
     </ul>
 
-    <div class="row">
-      <% if @vehicle.sale %>
+    <% if @vehicle.sale %>
+      <div class="row">
         <div class="col-md-12">
           <p class="text-center text-muted"> <%= @vehicle.sale_situation_text %> </p>
         </div>
-      <% else %>
-        <div class="col-md-6">
+      </div>
+    <% else %>
+    
+      <div class="row">
+        <div class="col-md-12">
           <%= link_to '<b>Presupuestar</b>'.html_safe, new_budget_path(vehicle_id: vehicle.id),
-            class: 'btn btn-warning btn-block' %>
+            class: 'btn btn-warning btn-block margin-bottom-5' %>
         </div>
-        <div class="col-md-6">
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to '<b>Publicar</b>'.html_safe, publish_vehicle_path(vehicle), method: :post,
+            class: 'btn btn-primary btn-block margin-bottom-5' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
           <%= link_to '<b>Iniciar Venta</b>'.html_safe, new_sale_path(vehicle_id: vehicle.id),
             class: 'btn btn-success btn-block' %>
         </div>
-      <% end %>
-    </div>
+      </div>
+      
+    <% end %>
   </div>
 </div>

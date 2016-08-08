@@ -61,13 +61,14 @@ class VehiclesController < ApplicationController
   end
   
   def publish
-    response = FacebookPublisher.new.post(@vehicle.decorate)
+    response = FacebookPublisher.new(@vehicle.decorate).post
     
     if response[:status] == :ok
       flash[:success] = 'El vehículo se ha publicado en Facebook exitosamente'
     else
       flash[:error] = 'Ocurrió un error al intentar conectarse con Facebook'
-    end    
+    end
+    
     redirect_to @vehicle
   end
 

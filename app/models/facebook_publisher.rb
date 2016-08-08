@@ -12,8 +12,8 @@ class FacebookPublisher
     @vehicle = vehicle
   end
   
-  def post(message)
-    album_id = build_album(message)
+  def post
+    album_id = build_album()
     results = upload_images(album_id)
     
     {status: :ok}
@@ -33,11 +33,11 @@ class FacebookPublisher
     end
   end
   
-  def build_album(message)
+  def build_album()
     album = @graph.put_connections("me", "albums",
       location: 'Tortone Automotores',
       name: @vehicle.identification,
-      message: message
+      message: _message()
     )
     
     return album['id']
@@ -47,6 +47,10 @@ class FacebookPublisher
     @vehicle.attachments.map do |attachment|
       attachment.file.remote_url
     end
+  end
+  
+  def _message
+    "#{@vehicle.identification} | #{@vehicle.year} | #{@vehicle.kilometers}"
   end
   
 end
