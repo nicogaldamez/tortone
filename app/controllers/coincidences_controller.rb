@@ -5,10 +5,13 @@ class CoincidencesController < ApplicationController
   # GET /coincidences
   def index
     @coincidences = Coincidence.all.page(params[:page]).decorate
-    
+
     respond_to do |format|
       format.html
-      format.json { render json: @coincidences.as_json, status: :ok }
+      format.json { 
+        render json: @coincidences.reject(&:is_ignored).as_json, 
+        status: :ok 
+      }
     end
       
   end
