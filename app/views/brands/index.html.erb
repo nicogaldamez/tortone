@@ -1,0 +1,27 @@
+<header class="content-header">
+  <%= link_to 'Nueva marca', new_brand_path, class: 'btn btn-primary pull-right' %>
+  <h1>Marcas</h1>
+</header>
+
+<section class="content">
+
+  <article class="box box-primary">
+    <section class="box-body">
+
+      <table class="table table-custom table-hover">
+        <thead>
+          <tr>
+            <th>Marca</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render @brands %>
+        </tbody>
+      </table>
+
+    </section>
+  </article>
+
+</section>

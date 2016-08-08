@@ -19,11 +19,11 @@ Rails.application.routes.draw do
   end
 
   resources :attachments, only: [:destroy]
-  resources :brands, only: [:create]
+  resources :brands
   resources :vehicle_models, only: [:index, :create] do
     get :search, on: :collection
   end
-  
+
   resources :versions, only: [:index, :create]
   resources :coincidences, except: [:edit, :new]
   resources :buyers
