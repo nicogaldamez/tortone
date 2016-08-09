@@ -1,22 +1,22 @@
 class FacebookPublisher
   
+  PAGE_ID = 129247780746057
+  
   require 'koala'
-    
-  TOKEN = ENV['FACEBOOK_TOKEN']
 
-  # A partir de un vehículo y un mensaje, crea un álbum en Facebook
+  # A partir de un vehículo, crea un álbum en Facebook
   # y carga las imágenes del vehículo
-  # Ej: FacebookPublisher.new(vehicle).post('un_mensaje_sobre_auto')
-  def initialize(vehicle)
-    @graph   = Koala::Facebook::API.new(TOKEN)
+  # Ej: FacebookPublisher.new(vehicle, token).post()
+  def initialize(vehicle, token)
+    @graph   = Koala::Facebook::API.new(token)
     @vehicle = vehicle
   end
   
   def post
     album_id = build_album()
-    results = upload_images(album_id)
-    
-    {status: :ok}
+    results  = upload_images(album_id)
+
+    { status: :ok }
     
     rescue Exception => e
       return {status: :error} # Si ocurre error retorna error
@@ -34,12 +34,12 @@ class FacebookPublisher
   end
   
   def build_album()
-    album = @graph.put_connections("me", "albums",
+    album = @graph.put_connections('me', 'albums',
       location: 'Tortone Automotores',
       name: @vehicle.identification,
       message: _message()
     )
-    
+
     return album['id']
   end
   
