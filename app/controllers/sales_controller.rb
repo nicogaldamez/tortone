@@ -77,7 +77,8 @@ class SalesController < ApplicationController
 
   def sale_params
     params.require(:sale).permit(:vehicle_id, :price, :notes, :sold_on,
-                                 :advance, :customer_id, :advance_delivered_on)
+                                 :advance, :customer_id, :advance_delivered_on,
+                                 :cash)
   end
 
   def new_sale_from_vehicle

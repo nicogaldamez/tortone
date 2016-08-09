@@ -21,6 +21,10 @@ class SaleDecorator < Draper::Decorator
     number_to_currency(object.price, precision: 2) || '-'
   end
 
+  def cash
+    number_to_currency(object.cash, precision: 2) || '-'
+  end
+
   def price_in_letters
     object.price.a_moneda
   end

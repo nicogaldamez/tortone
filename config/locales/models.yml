@@ -78,6 +78,7 @@ es:
       sale:
         customer_id: Comprador
         price: Precio
+        cash: Entregado en efectivo
         advance: Seña
         advance_delivered_on: Fecha Seña
         sold_on: Fecha Venta

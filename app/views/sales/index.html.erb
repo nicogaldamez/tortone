@@ -15,6 +15,8 @@
             <th>Vehículo</th>
             <th>Comprador</th>
             <th>Fecha</th>
+            <th>Precio</th>
+            <th>En Efectivo</th>
             <th></th>
           </tr>
         </thead>
@@ -22,6 +24,15 @@
         <tbody>
           <%= render @presenter.sales %>
         </tbody>
+
+        <tfoot>
+          <tr style="background: #f0f0f0;">
+            <td colspan="3"></td>
+            <td class="text-center"><b><%= @presenter.total_price %></b></td>
+            <td class="text-center"><b><%= @presenter.total_cash %></b></td>
+            <td></td>
+          </tr>
+        </tfoot>
       </table>
 
       <%= paginate @presenter.sales %>
