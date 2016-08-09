@@ -6,7 +6,8 @@ class SalesControllerTest < ActionController::TestCase
   def setup
     @sale = sales(:mater_to_silvia)
     @sale_new_data = {vehicle_id: vehicles(:batmobile).id, customer_id: customers(:carlos).id,
-                       sold_on: Date.yesterday, price: 2000000, advance: 4000
+                       sold_on: Date.yesterday, price: 2000000, advance: 4000,
+                       advance_delivered_on: Date.today
                       }
     login_user(users(:ross))
   end

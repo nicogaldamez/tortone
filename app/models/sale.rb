@@ -25,6 +25,7 @@ class Sale < ActiveRecord::Base
   validates :vehicle, presence: true
   validates :price, presence: true
   validates :advance, presence: true
+  validates :advance_delivered_on, presence: true
 
   # -- Misc
   enum status: { pending: 0, finished: 1  }

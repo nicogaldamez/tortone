@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808130825) do
+ActiveRecord::Schema.define(version: 20160809111856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(version: 20160808130825) do
     t.integer  "year"
     t.integer  "price_in_cents",      limit: 8
     t.integer  "minimum_advance",     limit: 8
-    t.string   "financed",                      default: "0"
-    t.string   "installments",                  default: "0"
-    t.string   "installments_cost",             default: "0"
-    t.string   "expenses",                      default: "0"
+    t.string   "financed"
+    t.string   "installments"
+    t.string   "installments_cost"
+    t.string   "expenses"
     t.string   "notes"
     t.date     "budgeted_on"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "budgets", ["vehicle_id"], name: "index_budgets_on_vehicle_id", using: :btree
@@ -122,12 +122,14 @@ ActiveRecord::Schema.define(version: 20160808130825) do
     t.date     "sold_on"
     t.integer  "customer_id"
     t.integer  "vehicle_id"
-    t.integer  "advance_in_cents", limit: 8, default: 0
-    t.integer  "status",                     default: 0
-    t.integer  "price_in_cents",   limit: 8
+    t.integer  "advance_in_cents",     limit: 8, default: 0
+    t.integer  "status",                         default: 0
+    t.integer  "price_in_cents",       limit: 8
     t.text     "notes"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.date     "advance_date"
+    t.date     "advance_delivered_on"
   end
 
   add_index "sales", ["customer_id"], name: "index_sales_on_customer_id", using: :btree

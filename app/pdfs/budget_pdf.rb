@@ -32,9 +32,9 @@ class BudgetPdf < ToPdf
     move_down 20
 
     p "<b>A Financiar::</b> #{to_currency @budget.financed} "\
-      '             '\
+      '                             '\
       "<b>Cuotas:</b>  #{@budget.installments}"\
-      '             '\
+      '                             '\
       "<b>Valor:</b>  #{to_currency @budget.installments_cost}"
     move_down 20
 
@@ -60,7 +60,7 @@ class BudgetPdf < ToPdf
       move_down 5
       p 'Calle Nro 566. La Plata', size: 9
     end
-    bounding_box([235, c], width: 113) do
+    bounding_box([400, c], width: 113) do
       p 'Matias Tortone', size: 17
       move_down 5
       p 'Asesor Comercial', size: 11, align: :right

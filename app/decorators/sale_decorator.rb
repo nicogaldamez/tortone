@@ -57,6 +57,15 @@ class SaleDecorator < Draper::Decorator
     object.sold_on || '-'
   end
 
+  def sale_situation
+    if object.sold?
+      "Vehículo vendido el <b>#{sold_on}</b>".html_safe
+    else
+      "Vehículo señado con <b> #{advance} </b> el <b> #{object.advance_delivered_on} </b>. "\
+      "<br>Resta pagar <b> #{h.number_to_currency(remaining)} </b>".html_safe
+    end
+  end
+
   private
 
   def vehicle_decorated

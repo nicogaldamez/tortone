@@ -79,6 +79,7 @@ es:
         customer_id: Comprador
         price: Precio
         advance: Seña
+        advance_delivered_on: Fecha Seña
         sold_on: Fecha Venta
         notes: Notas
       brand:

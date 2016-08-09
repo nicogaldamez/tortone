@@ -21,6 +21,7 @@ lightning_mcqueen_to_carlos:
   customer: carlos
   vehicle: lightning_mcqueen
   advance_in_cents: 2000
+  advance_delivered_on: <%= Date.yesterday.strftime('%Y-%m-%d') %>
   status: 0
   price_in_cents: 150000
 
@@ -29,6 +30,7 @@ mater_to_silvia:
   customer: silvia
   vehicle: mater
   advance_in_cents: 1000
+  advance_delivered_on: <%= Date.yesterday.strftime('%Y-%m-%d') %>
   status: 0
   price_in_cents: 300000
 
@@ -37,5 +39,6 @@ meteoro_to_silvia:
   customer: silvia
   vehicle: meteoro
   advance_in_cents: 1000
+  advance_delivered_on: <%= Date.yesterday.strftime('%Y-%m-%d') %>
   status: 0
   price_in_cents: 300000

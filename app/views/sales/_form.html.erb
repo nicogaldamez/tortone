@@ -61,6 +61,17 @@
           </div>
         </fieldset>
       </div>
+      <div class="col-md-3">
+        <fieldset class="form-group">
+          <%= f.label :advance_delivered_on %>
+          <div class='input-group date datepicker'>
+            <span class="input-group-addon">
+              <span class="fa fa-calendar"></span>
+            </span>
+            <%= f.text_field :advance_delivered_on, class: 'form-control', required: true %>
+          </div>
+        </fieldset>
+      </div>
     </div>
 
     <div class="row">
