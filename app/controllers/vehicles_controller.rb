@@ -1,6 +1,9 @@
 class VehiclesController < ApplicationController
 
-  before_filter :set_vehicle, only: [:edit, :update, :destroy]
+  before_filter :set_vehicle, only: [:edit, :update, :destroy, :prepare_to_publish, :publish]
+  
+  API_KEY    = ENV['FACEBOOK_API_KEY']
+  APP_SECRET = ENV['FACEBOOK_APP_SECRET']
 
   def index
     @presenter = VehiclesPresenter.new(params)
@@ -53,9 +56,38 @@ class VehiclesController < ApplicationController
       redirect_to vehicles_path
     end
   end
+  
+  # Try to gets token from Facebook to publish and redirects to /publish
+  def prepare_to_publish
+    manager = OauthManager.new(@vehicle)
+    @oauth = manager.oauth
+    redirect_to manager.url
+    
+    rescue Exception => e
+      flash[:error] = 'No se pudo autenticar con Facebook'
+      redirect_to vehicles_path
+  end
+  
+  def publish
+    manager = OauthManager.new(@vehicle)
+    page_token = manager.get_page_access_token(facebook_params[:code])
+    response = FacebookPublisher.new(@vehicle.decorate, page_token).post()
+    
+    if response[:status] == :ok
+      flash[:success] = 'El vehículo se ha publicado en Facebook exitosamente'
+    else
+      flash[:error] = 'Ocurrió un error al intentar conectarse con Facebook'
+    end
+    
+    redirect_to @vehicle
+  end
 
 
   private
+  
+  def facebook_params
+    params.permit(:code)
+  end
 
   def vehicle_params
     params.require(:vehicle).permit(:kilometers, :color, :details, :cost,
