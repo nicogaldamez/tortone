@@ -40,4 +40,10 @@ class SaleTest < ActiveSupport::TestCase
     assert_includes @sale.errors[:price], 'no puede estar en blanco'
   end
 
+  test 'should not save sale without advance date' do
+    @sale.advance_delivered_on = nil
+    @sale.valid?
+    assert_includes @sale.errors[:advance_delivered_on], 'no puede estar en blanco'
+  end
+
 end

@@ -25,13 +25,14 @@ class Sale < ActiveRecord::Base
   validates :vehicle, presence: true
   validates :price, presence: true
   validates :advance, presence: true
+  validates :advance_delivered_on, presence: true
 
   # -- Misc
   enum status: { pending: 0, finished: 1  }
 
   # Para usar field_in_cents, etc.
   def self.attributes_in_cents
-    ['price', 'advance']
+    ['price', 'advance', 'cash']
   end
 
   include IntegerInCents

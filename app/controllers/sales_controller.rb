@@ -67,7 +67,7 @@ class SalesController < ApplicationController
   def pre_print_sale_certificate
     @content = SaleCertificate.new(@sale).content
   end
-  
+
 
   private
 
@@ -77,7 +77,8 @@ class SalesController < ApplicationController
 
   def sale_params
     params.require(:sale).permit(:vehicle_id, :price, :notes, :sold_on,
-                                 :advance, :customer_id)
+                                 :advance, :customer_id, :advance_delivered_on,
+                                 :cash)
   end
 
   def new_sale_from_vehicle
@@ -87,7 +88,7 @@ class SalesController < ApplicationController
       price: @vehicle.unformatted_price
     )
   end
-  
+
   def update_vehicle
     if sale_params[:sold_on].present?
       @sale.vehicle.update(sold_on: sale_params[:sold_on])
