@@ -25,26 +25,24 @@ class SaleCertificate
   end
 
   def date_and_place
-    "<br><br>LUGAR Y FECHA: <b> LA PLATA #{I18n.l(Time.zone.today, format: :long)} </b><br><br>"
+    "<br><br>LUGAR Y FECHA: <b> LA PLATA #{I18n.l(Time.zone.today, format: :long)}</b><br><br>"
   end
 
   def body
     "EL SR/A <b>TORTONE MATÍAS </b> DNI NRO <b> 29131895 </b> DOMICILIADO EN <b> 35 NRO 566 LA PLATA </b>"\
-    "VENDE Y CEDE<br>"\
+    "<br><br>VENDE Y CEDE<br><br>"\
     "AL SR/A <b> #{customer.full_name.upcase} </b> DNI <b> #{customer.dni.capitalize} </b> DOMICILIADO EN <b> #{customer.address.capitalize} </b>"\
-    "<br><br>"\
+    "<br><br><br>"\
     "LO SIGUIENTE: <b> UN AUTOMOTOR USADO </b> "\
-    "<br><br>"\
+    "<br><br><br>"\
     "MARCA <b> #{vehicle.brand.name.upcase} </b> "\
     "MODELO <b> #{vehicle.version.name.upcase} </b> "\
-    "TIPO <b> #{vehicle.vehicle_model.name.upcase} </b> "\
-    "MOTOR MARCA <b> PEUGEOT </b> "\
-    "NUMERO <b> #{vehicle.motor_number} </b> "\
-    "CHASIS MARCA <b> PEUGEOT </b> "\
-    "NUMERO <b> #{vehicle.chassis_number} </b> "\
+    "TIPO <b> #{vehicle.vehicle_model.name.upcase}</b><br> "\
+    "MOTOR NUMERO <b> #{vehicle.motor_number} </b> "\
+    "CHASIS NUMERO <b> #{vehicle.chassis_number}</b><br> "\
     "MODELO AÑO <b> #{vehicle.year} </b> "\
     "DOMINIO <b> #{vehicle.plate.upcase} </b>"\
-    "RADICADO EN LA PLATA </b> "\
+    "<br>RADICADO EN <b>LA PLATA</b> </b> "\
     "<br><br>"\
     "EN EL BUEN ESTADO DE FUNCIONAMIENTO EN QUE SE ENCUENTRA, QUIEN PREVIA "\
     "INSPECCION DEL COMPRADOR Y DE HABER CONSTATADO LA SITUACION REGISTRAL "\
@@ -54,7 +52,7 @@ class SaleCertificate
     "CIVIL, PENAL Y TRIBUTARIAMENTE.-"\
     "<br><br>"\
     "EL PRECIO DE VENTA SE ESTABLECE EN PESOS ( <b>#{@sale.price_in_letters.upcase}</b> "\
-    "INCLUIDO LA TRANSFERENCIA ) QUE EL COMPRADOR, ENTREGA EN ESTE ACTO,"\
+    "INCLUIDO LA TRANSFERENCIA ). EL COMPRADOR ENTREGA EN ESTE ACTO"\
     " LA CANTIDAD DE PESOS <b>#{@sale.remaining_in_letters.upcase}</b> DE CONTADO EFECTIVO,"\
     "<br><br>"\
     "EN PRUEBA DE CONFORMIDAD SE FIRMAN DOS EJEMPLARES DEL MISMO TENOR Y A UN SOLO "\
