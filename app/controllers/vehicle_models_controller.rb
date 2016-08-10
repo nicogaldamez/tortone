@@ -1,11 +1,22 @@
 class VehicleModelsController < ApplicationController
 
+  before_action :set_vehicle_model, only: [:edit, :update, :destroy]
+
   # GET /vehicle_models
   def index
-    vehicle_models = VehicleModel.all
-    vehicle_models = VehicleModel.where(brand_id: params[:brand_id]) if params[:brand_id]
+    @vehicle_models = VehicleModel.all
+    @vehicle_models = @vehicle_models.where(brand_id: params[:brand_id]) if params[:brand_id]
+    @vehicle_models = @vehicle_models.includes(:brand)
 
-    render json: vehicle_models.as_json
+    respond_to do |format|
+      format.json { render json: @vehicle_models.as_json }
+      format.html
+    end
+  end
+
+  # GET /vehicle_models/new
+  def new
+    @vehicle_model = VehicleModel.new
   end
 
   # POST /vehicle_models
@@ -14,8 +25,10 @@ class VehicleModelsController < ApplicationController
     respond_to do |format|
       if @vehicle_model.save
         format.json { render json: {result: 'success', data: @vehicle_model} }
+        format.html { redirect_to vehicle_models_path, notice: 'El modelo se ha creado correctamente' }
       else
         format.json { render json: {result: 'error', error_messages: @vehicle_model.errors, full_error_messages: @vehicle_model.errors.full_messages} }
+        format.html { render :new }
       end
     end
   end
@@ -35,10 +48,39 @@ class VehicleModelsController < ApplicationController
     render json: records.to_json, callback: params[:callback]
   end
 
+  # GET /vehicle_models/:id/edit
+  def edit
+  end
+
+  # PUT /vehicle_models/:id
+  def update
+    if @vehicle_model.update(vehicle_model_params)
+      redirect_to vehicle_models_path,
+        notice: 'El modelo ha sido actualizado correctamente.'
+    else
+      render :edit
+    end
+  end
+
+  # DELETE /vehicle_models/:id
+  def destroy
+    if @vehicle_model.destroy
+      redirect_to vehicle_models_path,
+        notice: 'El modelo ha sido eliminado correctamente.'
+    else
+      flash[:error] = 'Ocurrió un error al eliminar el modelo'
+      redirect_to vehicle_models_path
+    end
+  end
+
   private
 
   def vehicle_model_params
     params.require(:vehicle_model).permit(:name, :brand_id)
+  end
+
+  def set_vehicle_model
+    @vehicle_model = VehicleModel.find(params[:id])
   end
 
 end

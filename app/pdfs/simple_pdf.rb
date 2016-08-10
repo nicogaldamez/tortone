@@ -10,8 +10,8 @@ class SimplePdf < ToPdf
   end
 
   def display_header
-    bounding_box([100, cursor], width: 290) do
-      image image_path('logo.jpg'), :width => 150
+    bounding_box([0, cursor], width: 590) do
+      image image_path('logo.png'), :width => 530
     end
   end
 

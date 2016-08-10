@@ -21,6 +21,10 @@ class SaleDecorator < Draper::Decorator
     number_to_currency(object.price, precision: 2) || '-'
   end
 
+  def cash
+    number_to_currency(object.cash, precision: 2) || '-'
+  end
+
   def price_in_letters
     object.price.a_moneda
   end
@@ -55,6 +59,15 @@ class SaleDecorator < Draper::Decorator
 
   def sold_on
     object.sold_on || '-'
+  end
+
+  def sale_situation
+    if object.sold?
+      "Vehículo vendido el <b>#{sold_on}</b>".html_safe
+    else
+      "Vehículo señado con <b> #{advance} </b> el <b> #{object.advance_delivered_on} </b>. "\
+      "<br>Resta pagar <b> #{h.number_to_currency(remaining)} </b>".html_safe
+    end
   end
 
   private

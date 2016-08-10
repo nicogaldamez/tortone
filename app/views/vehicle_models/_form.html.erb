@@ -1,0 +1,52 @@
+<%= form_for @vehicle_model do |f| %>
+
+<article>
+  <section>
+
+    <div class="row">
+
+      <div class="col-md-9">
+        <div class="box box-primary">
+
+          <div class="box-body">
+
+            <div class="row">
+              <div class="col-md-8">
+                  <%= f.label :brand_id %>
+                  <%= f.text_field :brand_id, id: 'js-brand',
+                    data: {
+                      data: Brand.all.map { |b| { id: b.id, text: b.name } },
+                      behavior: 'searchBrand'
+                    },
+                    class: 'form-control' %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8">
+                  <%= f.label :name %>
+                  <%= f.text_field :name, class: 'form-control',
+                          placeholder: 'Ingrese el nombre del modelo' %>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      </div>
+  </section>
+</article>
+
+<div class="row">
+  <div class="col-md-12">
+    <fieldset class="form-group">
+      <%= f.submit 'Guardar marca', class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
+    </fieldset>
+  </div>
+</div>
+
+<% end %>
+
+

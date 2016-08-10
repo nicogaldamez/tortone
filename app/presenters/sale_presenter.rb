@@ -9,12 +9,16 @@ class SalePresenter
   end
 
   def sold_on
-    if @sale.sold_on
+    if sold?
       @sale.sold_on
     else
       link_to 'Cargar Fecha', Rails.application.routes.url_helpers.edit_sale_path(@sale),
         class: 'btn btn-xs btn-default'
     end
+  end
+
+  def sold?
+    @sale.sold?
   end
 
 end

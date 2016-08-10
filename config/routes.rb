@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :vehicles do
     resources :attachments, only: [:create]
+    get 'publish', on: :member
+    post 'prepare_to_publish', on: :member, as: :prepare_to_publish
   end
 
   resources :expenses
@@ -19,11 +21,11 @@ Rails.application.routes.draw do
   end
 
   resources :attachments, only: [:destroy]
-  resources :brands, only: [:create]
-  resources :vehicle_models, only: [:index, :create] do
+  resources :brands
+  resources :vehicle_models do
     get :search, on: :collection
   end
-  
+
   resources :versions, only: [:index, :create]
   resources :coincidences, except: [:edit, :new]
   resources :buyers

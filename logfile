@@ -64,3 +64,7 @@ FATAL:  terminating connection due to administrator command
 LOG:  received smart shutdown request
 LOG:  shutting down
 LOG:  database system is shut down
+LOG:  database system was shut down at 2016-08-09 17:26:26 ART
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started

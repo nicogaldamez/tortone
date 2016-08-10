@@ -20,7 +20,7 @@ class VehicleModel < ActiveRecord::Base
   }
 
   # -- Associations
-  has_many :vehicles
+  has_many :vehicles, dependent: :restrict_with_error
   has_many :versions, dependent: :destroy
   belongs_to :brand
 

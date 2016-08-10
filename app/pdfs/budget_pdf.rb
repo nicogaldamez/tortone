@@ -1,7 +1,7 @@
 class BudgetPdf < ToPdf
 
   def initialize(budget, view)
-    super view, :portrait, 'A5'
+    super view, :portrait, 'A4'
     @budget = budget.decorate
     @view = view
 
@@ -11,8 +11,8 @@ class BudgetPdf < ToPdf
   end
 
   def display_header
-    bounding_box([100, cursor], width: 290) do
-      image image_path('logo.jpg'), :width => 150
+    bounding_box([0, cursor], width: 590) do
+      image image_path('logo.png'), :width => 530
     end
   end
 
@@ -32,9 +32,9 @@ class BudgetPdf < ToPdf
     move_down 20
 
     p "<b>A Financiar::</b> #{to_currency @budget.financed} "\
-      '             '\
+      '                             '\
       "<b>Cuotas:</b>  #{@budget.installments}"\
-      '             '\
+      '                             '\
       "<b>Valor:</b>  #{to_currency @budget.installments_cost}"
     move_down 20
 
@@ -60,7 +60,7 @@ class BudgetPdf < ToPdf
       move_down 5
       p 'Calle Nro 566. La Plata', size: 9
     end
-    bounding_box([235, c], width: 113) do
+    bounding_box([400, c], width: 113) do
       p 'Matias Tortone', size: 17
       move_down 5
       p 'Asesor Comercial', size: 11, align: :right

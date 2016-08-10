@@ -16,3 +16,6 @@ volkswagen:
 ford:
   name: 'FORD'
 
+with_no_relationships:
+  name: Sad Brand
+

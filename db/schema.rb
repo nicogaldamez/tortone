@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160730182157) do
+ActiveRecord::Schema.define(version: 20160809121515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,7 +107,6 @@ ActiveRecord::Schema.define(version: 20160730182157) do
 
   create_table "expense_categories", force: :cascade do |t|
     t.string "name"
-    t.text   "description"
   end
 
   create_table "expenses", force: :cascade do |t|
@@ -123,12 +122,15 @@ ActiveRecord::Schema.define(version: 20160730182157) do
     t.date     "sold_on"
     t.integer  "customer_id"
     t.integer  "vehicle_id"
-    t.integer  "advance_in_cents", limit: 8, default: 0
-    t.integer  "status",                     default: 0
-    t.integer  "price_in_cents",   limit: 8
+    t.integer  "advance_in_cents",     limit: 8, default: 0
+    t.integer  "status",                         default: 0
+    t.integer  "price_in_cents",       limit: 8
     t.text     "notes"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.date     "advance_date"
+    t.date     "advance_delivered_on"
+    t.integer  "cash_in_cents",        limit: 8, default: 0
   end
 
   add_index "sales", ["customer_id"], name: "index_sales_on_customer_id", using: :btree

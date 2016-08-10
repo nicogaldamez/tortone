@@ -87,10 +87,10 @@ class VehicleDecorator < Draper::Decorator
 
   def sale_situation_text
     if object.sale.sold?
-      "Este vehículo fue vendido el #{object.sale.sold_on}. Para ver los detalles de la venta haga click "\
+      "Vehículo vendido el #{object.sale.sold_on}. Para ver los detalles de la venta haga click "\
       "#{h.link_to('aquí', object.sale)}".html_safe
     else
-      "Este vehículo está señado. Para ver los detalles de la venta haga click "\
+      "Vehículo señado. Para ver los detalles de la venta haga click "\
       "#{h.link_to 'aquí', object.sale}".html_safe
     end
   end
