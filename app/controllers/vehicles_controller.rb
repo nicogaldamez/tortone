@@ -1,7 +1,7 @@
 class VehiclesController < ApplicationController
 
   before_filter :set_vehicle, only: [:edit, :update, :destroy, :prepare_to_publish, :publish]
-  
+
   API_KEY    = ENV['FACEBOOK_API_KEY']
   APP_SECRET = ENV['FACEBOOK_APP_SECRET']
 
@@ -25,7 +25,7 @@ class VehiclesController < ApplicationController
     @vehicle = Vehicle.new(vehicle_params)
     if @vehicle.save
       CoincidenceFinder.call(vehicle: @vehicle)
-      
+
       redirect_to @vehicle,
         notice: 'El vehículo ha sido creado correctamente.'
     else
@@ -39,7 +39,7 @@ class VehiclesController < ApplicationController
   def update
     if @vehicle.update(vehicle_params)
       CoincidenceFinder.call(vehicle: @vehicle)
-      
+
       redirect_to vehicles_path,
         notice: 'El vehículo ha sido actualizado correctamente.'
     else
@@ -56,36 +56,35 @@ class VehiclesController < ApplicationController
       redirect_to vehicles_path
     end
   end
-  
+
   # Try to gets token from Facebook to publish and redirects to /publish
   def prepare_to_publish
-    binding.pry
     manager = OauthManager.new(@vehicle)
     @oauth = manager.oauth
     redirect_to manager.url
-    
+
     rescue Exception => e
-      flash[:error] = 'No se pudo autenticar con Facebook'
+      flash[:error] = "No se pudo autenticar con Facebook. #{e}"
       redirect_to vehicles_path
   end
-  
+
   def publish
     manager = OauthManager.new(@vehicle)
     page_token = manager.get_page_access_token(facebook_params[:code])
     response = FacebookPublisher.new(@vehicle.decorate, page_token).post()
-    
+
     if response[:status] == :ok
       flash[:success] = 'El vehículo se ha publicado en Facebook exitosamente'
     else
       flash[:error] = 'Ocurrió un error al intentar conectarse con Facebook'
     end
-    
+
     redirect_to @vehicle
   end
 
 
   private
-  
+
   def facebook_params
     params.permit(:code)
   end
