@@ -10,10 +10,10 @@ class App.Coincidences
       dataType: 'json'
       success: (data) ->
         $("#js-coincidences").html(data.length) if data.length > 0
-  
-  
-  
+
+
+
 
 # --------------------------------
 $(document).on "page:change", ->
-  coincidences_badge = new App.Coincidences()
+  new App.Coincidences unless $(".user_sessions.new").length == 1
