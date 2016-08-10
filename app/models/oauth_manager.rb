@@ -9,7 +9,7 @@ class OauthManager
   attr_reader :oauth
   
   def initialize(vehicle)
-    uri = Rails.root.join('vehicles', "#{vehicle.id}", 'publish')
+    uri = Rails.application.routes.url_helpers.publish_vehicle_url(vehicle.id)
     @oauth = Koala::Facebook::OAuth.new(API_KEY, APP_SECRET, uri)
   end
   

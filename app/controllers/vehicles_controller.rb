@@ -59,6 +59,7 @@ class VehiclesController < ApplicationController
   
   # Try to gets token from Facebook to publish and redirects to /publish
   def prepare_to_publish
+    binding.pry
     manager = OauthManager.new(@vehicle)
     @oauth = manager.oauth
     redirect_to manager.url
