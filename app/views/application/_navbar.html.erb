@@ -30,7 +30,7 @@
               <%= icon 'car' %> +
             <% end %>
             <ul class="dropdown-menu">
-              <li> <%= link_to 'Vehículo propio', new_vehicle_path(is_owner: true) %>  </li>
+              <li> <%= link_to 'Vehículo propio', new_vehicle_path(vehicle: {is_owner: true}) %>  </li>
               <li> <%= link_to 'Vehículo para la venta', new_vehicle_path %>  </li>
             </ul>
           </li>

@@ -15,8 +15,10 @@
             <th>Vehículo</th>
             <th>Comprador</th>
             <th>Fecha</th>
-            <th>Precio</th>
+            <th>Precio de venta</th>
             <th>En Efectivo</th>
+            <th>Costo real</th>
+            <th>Ganancia</th>
             <th></th>
           </tr>
         </thead>
@@ -30,6 +32,8 @@
             <td colspan="3"></td>
             <td class="text-center"><b><%= @presenter.total_price %></b></td>
             <td class="text-center"><b><%= @presenter.total_cash %></b></td>
+            <td class="text-center"><b><%= @presenter.total_cost %></b></td>
+            <td class="text-center"><b><%= @presenter.total_difference %></b></td>
             <td></td>
           </tr>
         </tfoot>
