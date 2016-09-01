@@ -2,9 +2,6 @@ class VehiclesController < ApplicationController
 
   before_filter :set_vehicle, only: [:edit, :update, :destroy, :prepare_to_publish, :publish]
 
-  API_KEY    = ENV['FACEBOOK_API_KEY']
-  APP_SECRET = ENV['FACEBOOK_APP_SECRET']
-
   def index
     @presenter = VehiclesPresenter.new(params)
   end

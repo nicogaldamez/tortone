@@ -9,8 +9,8 @@
 
   <div class="box-body">
 
-    <% if f.object.is_owner %>
-      <%= f.hidden_field :is_owner, value: f.object.is_owner %>
+    <% if f.object.is_owner? %>
+      <%= f.hidden_field :is_owner, value: f.object.is_owner? %>
     <% else %>
       <div class="row">
         <div class="col-md-10">
@@ -86,7 +86,7 @@
     <div class="row">
       <div class="col-md-4">
         <fieldset class="form-group">
-          <% if @vehicle.is_owner %>
+          <% if f.object.is_owner? %>
             <%= optional_label f, :cost %>
           <% else %>
             <%= optional_label f, "Pretendido por el dueño" %>
