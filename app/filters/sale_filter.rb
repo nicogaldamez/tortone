@@ -4,8 +4,8 @@ class SaleFilter
 
   def call
     sales = Sale.all
-    sales = sales.where('sold_on >= ?', @from) if @from.present?
-    sales = sales.where('sold_on <= ?', @to) if @to.present?
+    sales = sales.where('sold_on >= ?', @from.to_date) if @from.present?
+    sales = sales.where('sold_on <= ?', @to.to_date) if @to.present?
     if @vehicle_model_id.present?
       vehicle_model = VehicleModel.find(@vehicle_model_id)
       @brand_and_model_name = "#{vehicle_model.brand.name} #{vehicle_model.name}"
