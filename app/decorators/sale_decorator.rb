@@ -59,7 +59,7 @@ class SaleDecorator < Draper::Decorator
 
   def total
     total = object.price
-    total += object.vehicle.transfer_amount
+    total += object.vehicle.transfer_amount unless object.vehicle.transfer_amount.nil?
     total
   end
 
@@ -68,7 +68,7 @@ class SaleDecorator < Draper::Decorator
   end
 
   def remaining
-    total - object.advance
+    object.advance.nil? ? total : total - object.advance
   end
 
   def remaining_in_letters
