@@ -16,7 +16,7 @@ class SalesControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:presenter)
-    assert_equal Sale.count, assigns(:presenter).send(:sales).send(:count)
+    assert_equal Sale.has_finished.count, assigns(:presenter).send(:sales).send(:count)
   end
 
   test "should filter sales by from date" do
@@ -36,7 +36,7 @@ class SalesControllerTest < ActionController::TestCase
   end
 
   test "should filter sales by to vehicle model" do
-    get :index, sale_filter: {vehicle_model_id: vehicles(:lightning_mcqueen).vehicle_model_id}
+    get :index, sale_filter: {hide_not_finished: "0", vehicle_model_id: vehicles(:lightning_mcqueen).vehicle_model_id}
     assert_response :success
 
     assert_equal 1, assigns(:presenter).send(:sales).send(:count)
