@@ -16,6 +16,9 @@
 
 class Sale < ActiveRecord::Base
 
+  # -- Scopes
+  scope :has_finished, -> { where.not(sold_on: nil) }
+
   # -- Associations
   belongs_to :customer
   belongs_to :vehicle

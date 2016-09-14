@@ -13,11 +13,10 @@
         <thead>
           <tr>
             <th>Vehículo</th>
-            <th>Comprador</th>
             <th>Fecha</th>
+            <th>Costo real</th>
             <th>Precio de venta</th>
             <th>En Efectivo</th>
-            <th>Costo real</th>
             <th>Ganancia</th>
             <th></th>
           </tr>
@@ -29,7 +28,8 @@
 
         <tfoot>
           <tr style="background: #f0f0f0;">
-            <td colspan="3"></td>
+            <td> <b> <%= @presenter.sales.count %> vehículos </b> </td>
+            <td colspan="2"></td>
             <td class="text-center"><b><%= @presenter.total_price %></b></td>
             <td class="text-center"><b><%= @presenter.total_cash %></b></td>
             <td class="text-center"><b><%= @presenter.total_cost %></b></td>

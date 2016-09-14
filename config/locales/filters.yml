@@ -21,3 +21,4 @@ es:
         from: 'Desde'
         to: 'Hasta'
         vehicle_id: 'Vehículo'
+        hide_not_finished: Ocultar señados
