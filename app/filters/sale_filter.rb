@@ -9,7 +9,7 @@ class SaleFilter
 
   def call
     sales = Sale.all
-    sales = sales.finished if @hide_not_finished
+    sales = sales.has_finished if @hide_not_finished
     sales = sales.where('sold_on >= ?', @from.to_date) if @from.present?
     sales = sales.where('sold_on <= ?', @to.to_date) if @to.present?
     if @vehicle_model_id.present?

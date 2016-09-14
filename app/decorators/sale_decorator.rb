@@ -24,19 +24,19 @@ class SaleDecorator < Draper::Decorator
   def cash
     number_to_currency(object.cash, precision: 2) || '-'
   end
-  
+
   def difference
     number_to_currency(unformatted_difference)
   end
-  
+
   def vehicle_cost
     number_to_currency(unformatted_vehicle_cost)
   end
-  
+
   def unformatted_difference
     object.price - (vehicle_decorated.cost || 0)
   end
-  
+
   def unformatted_vehicle_cost
     vehicle_decorated.cost || 0
   end
@@ -57,12 +57,22 @@ class SaleDecorator < Draper::Decorator
     object.advance
   end
 
+  def total
+    total = object.price
+    total += object.vehicle.transfer_amount
+    total
+  end
+
+  def total_in_letters
+    total.a_moneda
+  end
+
   def remaining
-    object.price - object.advance
+    total - object.advance
   end
 
   def remaining_in_letters
-    (object.price - object.advance).a_moneda
+    remaining.a_moneda
   end
 
   def notes
