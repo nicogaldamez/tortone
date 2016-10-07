@@ -22,13 +22,27 @@ class SalesPresenter
   end
 
   def total_difference
-    total = filter.call.decorate.map(&:unformatted_difference).reduce(:+)
-    number_to_currency(total)
+    return @total_difference unless @total_difference.nil?
+    @total_difference = filter.call.decorate.map(&:unformatted_difference).reduce(:+)
+    @total_difference = 0 if @total_difference.nil?
+    number_to_currency(@total_difference)
   end
 
   def total_cost
     total = filter.call.decorate.map(&:unformatted_vehicle_cost).reduce(:+)
     number_to_currency(total)
+  end
+
+  def total_expenses
+    return @total_expenses unless @total_expense.nil?
+    expense_params = filter_params
+    expense_params[:skip_defaults] = true
+    filter = ExpenseFilter.new(expense_params)
+    @total_expenses = filter.total
+  end
+
+  def total_profit
+    total_difference - total_expenses
   end
 
   private
