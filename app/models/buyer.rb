@@ -16,6 +16,9 @@
 #
 
 class Buyer < ActiveRecord::Base
+  
+  # -- Scopes
+  default_scope -> { order('created_at DESC') }
 
   # -- Associations
   has_many :buyer_interests, dependent: :destroy
