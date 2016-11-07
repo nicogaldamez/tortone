@@ -10,6 +10,8 @@ es:
         vehicle_model: "Modelo"
       buyer_filter:
         name: "Nombre"
+        from: 'Desde'
+        to: 'Hasta'
       expense_filter:
         expense_category: 'Categoría'
         from: 'Desde'

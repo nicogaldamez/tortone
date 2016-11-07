@@ -17,7 +17,7 @@ class BuyersPresenter
 
   def filter_params
     if @params[:buyer_filter]
-      parameters = @params.require(:buyer_filter).permit(:name)
+      parameters = @params.require(:buyer_filter).permit(:name, :from, :to)
     end
     parameters || {}
   end
