@@ -5,12 +5,36 @@
 
       <fieldset class="form-group">
 
-        <div class="col-md-4">
+        <div class="col-md-3">
           <%= f.label :name %>
           <%= f.search_field :name, class: 'form-control',
-                placeholder: 'Ingrese el nombre o apellido a buscar',
+                placeholder: 'Ingrese el nombre o apellido',
                 autofocus: true
           %>
+        </div>
+        
+        <div class="col-md-3">
+          <fieldset class="form-group">
+            <%= f.label :from %>
+            <div class='input-group date datepicker'>
+              <span class="input-group-addon">
+                <span class="fa fa-calendar"></span>
+              </span>
+              <%= f.text_field :from, class: 'form-control' %>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="col-md-3">
+          <fieldset class="form-group">
+            <%= f.label :to %>
+            <div class='input-group date datepicker'>
+              <span class="input-group-addon">
+                <span class="fa fa-calendar"></span>
+              </span>
+              <%= f.text_field :to, class: 'form-control' %>
+            </div>
+          </fieldset>
         </div>
 
         <div class="col-md-3">
