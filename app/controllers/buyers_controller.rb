@@ -5,6 +5,9 @@ class BuyersController < ApplicationController
   # GET /buyers
   def index
     @presenter = BuyersPresenter.new(params)
+    if @presenter.has_errors?
+      flash[:error] = @presenter.errors
+    end
   end
 
   # GET /buyers/new
