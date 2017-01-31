@@ -51,7 +51,7 @@ class AdvanceCertificate
 
   def footer
     "<div><br><br>"\
-      "Teléfono: <b> cel 221 6403041 // fijo 221 4894854 </b> <br>"\
+      "Teléfono: <b> cel 221 6426049 // fijo 221 4894854 </b> <br>"\
       "Apellido y Nombre: <b>Matías Tortone </b> <br>"\
       "Domicilio: <b>35 Nro 566 </b> <br>"\
       "DNI: <b> 29131895 </b> <br>"\
