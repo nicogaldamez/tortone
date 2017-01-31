@@ -37,9 +37,9 @@ class AdvanceCertificate
       "Marca: <b> #{vehicle.brand} </b> <br>"\
       "Tipo: <b> #{vehicle.vehicle_model} </b> <br>"\
       "Modelo: <b> #{vehicle.version} </b> <br>"\
-      "Motor marca: <b> PEUGEOT </b> <br>"\
+      "Motor marca: <b> #{vehicle.brand} </b> <br>"\
       "Número: <b> #{vehicle.motor_number} </b> <br>"\
-      "Carrocería-chasis marca: <b> PEUGEOT </b> <br>"\
+      "Carrocería-chasis marca: <b> #{vehicle.brand} </b> <br>"\
       "Número: <b> #{vehicle.chassis_number} </b> <br>"\
       "Año de fabricación: <b> #{vehicle.year} </b> <br>"\
       "Color: <b> #{vehicle.color} </b> <br>"\
