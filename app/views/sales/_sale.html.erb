@@ -1,6 +1,9 @@
 <tr id="<%= dom_id(sale) %>">
 
-  <td> <%= link_to sale.vehicle.decorate.identification, sale %> </td>
+  <td>
+    <%= link_to sale.vehicle.decorate.identification, sale %>
+    <%= sale.customer_badge %>
+   </td>
   <td> <%= sale.sold_on %> </td>
   <td class="text-center"> <%= sale.vehicle_cost %> </td>
   <td class="text-center"> <%= sale.price %> </td>
