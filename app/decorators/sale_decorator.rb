@@ -95,6 +95,13 @@ class SaleDecorator < Draper::Decorator
       "<br>Resta pagar <b> #{h.number_to_currency(remaining)} </b>".html_safe
     end
   end
+  
+  def customer_badge
+    _customer = object.customer
+    _url      = "/customers/#{_customer.id}/edit"
+    "#{h.link_to(h.content_tag(:span, _customer.decorate.full_name, class: '', style: 'margin-left: 6px;'), _url, class: 'label label-default')}".html_safe
+  end
+
 
   private
 
