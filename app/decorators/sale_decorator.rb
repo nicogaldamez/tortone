@@ -18,8 +18,11 @@ class SaleDecorator < Draper::Decorator
   end
 
   def price
-    # number_to_currency(object.price, precision: 2) || '-'
     h.best_in_place object, :price, display_with: :number_to_currency
+  end
+
+  def expenses
+    h.best_in_place object, :expenses, display_with: :number_to_currency
   end
 
   def cash
@@ -35,7 +38,7 @@ class SaleDecorator < Draper::Decorator
   end
 
   def unformatted_difference
-    object.price - (vehicle_decorated.cost || 0)
+    object.price - object.expenses - (vehicle_decorated.cost || 0)
   end
 
   def unformatted_vehicle_cost

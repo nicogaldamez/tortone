@@ -75,3 +75,13 @@ tr.is-selected td {
   border-color: 1px solid #CCC;
 
 }
+
+// Best in place
+.best_in_place {
+  border-bottom: 1px dotted #AAA;
+  padding-bottom: 3px;
+  cursor: pointer;
+}
+.best_in_place input {
+  width: 80px;
+}
