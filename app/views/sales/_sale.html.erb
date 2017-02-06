@@ -2,7 +2,6 @@
 
   <td>
     <%= link_to sale.vehicle.decorate.identification, sale %>
-    <%= sale.customer_badge %>
    </td>
   <td> <%= sale.sold_on %> </td>
   <td class="text-center">
@@ -12,9 +11,10 @@
   <td class="text-center"> <%= sale.cash %> </td>
   <td class="text-right"> <%= sale.difference %> </td>
   <td>
-    <%= link_to 'Editar', edit_sale_path(sale), class: 'btn btn-xs btn-primary' %>
-    <%= link_to 'Eliminar', sale, method: :delete,
+    <%= link_to fa_icon(:pencil), edit_sale_path(sale), class: 'btn btn-xs btn-primary' %>
+    <%= link_to fa_icon(:trash), sale, method: :delete,
         data: {confirm: '¿Está seguro?'}, class: 'btn btn-xs btn-danger' %>
+    <%= sale.customer_btn %>
   </td>
 
 </tr>

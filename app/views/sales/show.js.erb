@@ -1,1 +1,2 @@
-$('#<%= dom_id(@presenter.sale) %>').replaceWith('<%= j render @presenter.sale %>')
+$('#<%= dom_id(@presenter.sale) %>').replaceWith('<%= j render @presenter.sale %>');
+App.initTooltips($('#<%= dom_id(@presenter.sale) %>'));

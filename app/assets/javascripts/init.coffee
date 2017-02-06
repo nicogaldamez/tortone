@@ -108,6 +108,8 @@ App.init = ->
   # Ajax Modals
   App.initModals()
 
+  App.initTooltips()
+
   # Sidebar
   $('[data-controlsidebar]').on 'click', ->
     change_layout $(this).data('controlsidebar')
