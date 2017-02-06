@@ -30,7 +30,7 @@ class SaleDecorator < Draper::Decorator
   end
 
   def vehicle_cost
-    number_to_currency(unformatted_vehicle_cost)
+    h.best_in_place object.vehicle, :cost, display_with: :number_to_currency
   end
 
   def unformatted_difference

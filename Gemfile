@@ -23,7 +23,8 @@ gem 'prawn' # PDF Generator
 gem 'prawn-table' # Tables for Prawn
 gem 'momentjs-rails', '>= 2.9.0' # Datetimepicker dependency
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37' # Datetimepicker
-gem 'koala', '~> 2.2' 
+gem 'koala', '~> 2.2'
+gem 'best_in_place', '~> 3.0.1' # Edit in place
 
 # File uploader
 gem "jquery-fileupload-rails"

@@ -29,6 +29,8 @@
 //= require bootstrap-datetimepicker
 //= require cocoon
 //= require trix
+//= require best_in_place
+//= require best_in_place.jquery-ui
 
 //= require init
 //= require utilities

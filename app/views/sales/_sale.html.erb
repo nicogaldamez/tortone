@@ -1,8 +1,10 @@
-<tr id="<%= dom_id(sale) %>">
+<tr id="<%= dom_id(sale) %>" data-sale-id="<%= sale.id %>">
 
   <td> <%= link_to sale.vehicle.decorate.identification, sale %> </td>
   <td> <%= sale.sold_on %> </td>
-  <td class="text-center"> <%= sale.vehicle_cost %> </td>
+  <td class="text-center">
+    <%= sale.vehicle_cost %>
+  </td>
   <td class="text-center"> <%= sale.price %> </td>
   <td class="text-center"> <%= sale.cash %> </td>
   <td class="text-right"> <%= sale.difference %> </td>

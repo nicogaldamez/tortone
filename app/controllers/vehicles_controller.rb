@@ -34,13 +34,18 @@ class VehiclesController < ApplicationController
   end
 
   def update
-    if @vehicle.update(vehicle_params)
-      CoincidenceFinder.call(vehicle: @vehicle)
-
-      redirect_to vehicles_path,
-        notice: 'El vehículo ha sido actualizado correctamente.'
-    else
-      render :edit
+    respond_to do |format|
+      if @vehicle.update(vehicle_params)
+        CoincidenceFinder.call(vehicle: @vehicle)
+        format.json { respond_with_bip(@vehicle) }
+        format.html {
+          redirect_to vehicles_path,
+            notice: 'El vehículo ha sido actualizado correctamente.'
+        }
+      else
+        format.json { respond_with_bip(@vehicle) }
+        format.html { render :edit }
+      end
     end
   end
 
