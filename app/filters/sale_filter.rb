@@ -17,6 +17,8 @@ class SaleFilter
       @brand_and_model_name = "#{vehicle_model.brand.name} #{vehicle_model.name}"
       sales = sales.joins(:vehicle).where('vehicles.vehicle_model_id = ?', @vehicle_model_id)
     end
+    sales = sales.order(created_at: :desc)
+
     sales.includes(vehicle: [:brand, :vehicle_model, :version])
   end
 end
