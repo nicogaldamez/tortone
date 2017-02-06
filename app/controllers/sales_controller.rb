@@ -11,6 +11,10 @@ class SalesController < ApplicationController
   # GET /sales/:id
   def show
     @presenter = SalePresenter.new(@sale)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /sales/new
@@ -35,12 +39,20 @@ class SalesController < ApplicationController
 
   # PUT /sales/:id
   def update
-    if @sale.update(sale_params)
-      update_vehicle()
-      redirect_to @sale, notice: 'La venta se ha actualizado correctamente'
-    else
-      @vehicle = @sale.vehicle
-      render :edit
+    respond_to do |format|
+      if @sale.update(sale_params)
+        update_vehicle()
+        format.json { respond_with_bip(@sale) }
+        format.html {
+          redirect_to @sale, notice: 'La venta se ha actualizado correctamente'
+        }
+      else
+        format.json { respond_with_bip(@sale) }
+        format.html {
+          @vehicle = @sale.vehicle
+          render :edit
+        }
+      end
     end
   end
 
@@ -78,7 +90,7 @@ class SalesController < ApplicationController
   def sale_params
     params.require(:sale).permit(:vehicle_id, :price, :notes, :sold_on,
                                  :advance, :customer_id, :advance_delivered_on,
-                                 :cash)
+                                 :cash, :expenses)
   end
 
   def new_sale_from_vehicle

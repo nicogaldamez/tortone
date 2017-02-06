@@ -18,7 +18,11 @@ class SaleDecorator < Draper::Decorator
   end
 
   def price
-    number_to_currency(object.price, precision: 2) || '-'
+    h.best_in_place object, :price, display_with: :number_to_currency
+  end
+
+  def expenses
+    h.best_in_place object, :expenses, display_with: :number_to_currency
   end
 
   def cash
@@ -30,11 +34,11 @@ class SaleDecorator < Draper::Decorator
   end
 
   def vehicle_cost
-    number_to_currency(unformatted_vehicle_cost)
+    h.best_in_place object.vehicle, :cost, display_with: :number_to_currency
   end
 
   def unformatted_difference
-    object.price - (vehicle_decorated.cost || 0)
+    object.price - object.expenses - (vehicle_decorated.cost || 0)
   end
 
   def unformatted_vehicle_cost
@@ -95,6 +99,13 @@ class SaleDecorator < Draper::Decorator
       "<br>Resta pagar <b> #{h.number_to_currency(remaining)} </b>".html_safe
     end
   end
+
+  def customer_btn
+    _customer = object.customer
+    _url      = "/customers/#{_customer.id}/edit"
+    "#{h.link_to(h.fa_icon(:user), _url, title: _customer.decorate.full_name, class: 'btn btn-xs btn-info')}".html_safe
+  end
+
 
   private
 

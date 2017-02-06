@@ -1,3 +1,13 @@
+0.9
+En los boletos mostrar marca y motor correspondiente
+Al hacer click en el comprador desde la pantalla de vehículo se rompía
+Agregar datos del comprador a la venta
+Poder cargar nuevo vehículo desde el formulario de comprador
+Poder modificar el costo reail desde el listado de ventas
+Está mal el teléfono en el boleto de seña
+Poder modificar el precio de venta desde el listado
+Agregar una columna gasto en el listado de ventas
+
 0.8
 Agregar fecha al listado de compradores
 Filtro por fechas en compradores

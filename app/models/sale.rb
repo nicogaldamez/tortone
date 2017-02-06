@@ -35,7 +35,7 @@ class Sale < ActiveRecord::Base
 
   # Para usar field_in_cents, etc.
   def self.attributes_in_cents
-    ['price', 'advance', 'cash']
+    ['price', 'expenses', 'advance', 'cash']
   end
 
   include IntegerInCents

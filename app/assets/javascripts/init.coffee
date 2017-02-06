@@ -108,6 +108,8 @@ App.init = ->
   # Ajax Modals
   App.initModals()
 
+  App.initTooltips()
+
   # Sidebar
   $('[data-controlsidebar]').on 'click', ->
     change_layout $(this).data('controlsidebar')
@@ -127,6 +129,9 @@ App.init = ->
   # Check/uncheck all
   App.checkAll()
 
+  # Best in place
+  $(".best_in_place").best_in_place()
+
   $('.sidebar li.active').closest('.treeview').addClass('active')
 
 $(document).on "page:load", ->
@@ -138,6 +143,8 @@ $(document).on "page:change", ->
   App.initDatepicker()
   App.checkAll()
   $("select").normalSelect()
+  $(".best_in_place").best_in_place()
+
 
 $(document).on 'flash:send', (e, flashMessages) ->
   App.flash_snackbar_render flashMessages

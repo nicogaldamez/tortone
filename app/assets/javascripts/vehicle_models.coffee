@@ -1,10 +1,26 @@
 class App.VehicleModelForm
 
   constructor: () ->
-    element = $("[data-behavior~=searchBrand]")
-    element.normalSelect
-      data: element.data('data')
-      placeholder: 'Buscar Marca...'
+    @brand_select = new App.BrandSelect('#js-brand')
+    @bindEvents()
+
+  bindEvents: () ->
+    $('#js-brand').on 'select2-selecting', (e)=>
+      @onBrandChanged e.object
+
+  onBrandChanged: (brand)->
+    if brand.isNew
+      @createBrand(brand.name)
+
+  createBrand: (name)->
+    $.ajax
+      url: '/brands'
+      method: 'post'
+      data:
+        brand:
+          name: name
+      success: (data) =>
+        @brand_select.update data.data.id, name
 #
 # --------------------------------
 # --------------------------------

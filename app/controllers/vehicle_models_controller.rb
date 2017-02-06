@@ -16,7 +16,13 @@ class VehicleModelsController < ApplicationController
 
   # GET /vehicle_models/new
   def new
+    @modal_form = params[:modal] || false
     @vehicle_model = VehicleModel.new
+    if @modal_form
+      render :new, layout: nil
+    else
+      render :new
+    end
   end
 
   # POST /vehicle_models
@@ -26,6 +32,7 @@ class VehicleModelsController < ApplicationController
       if @vehicle_model.save
         format.json { render json: {result: 'success', data: @vehicle_model} }
         format.html { redirect_to vehicle_models_path, notice: 'El modelo se ha creado correctamente' }
+        format.js
       else
         format.json { render json: {result: 'error', error_messages: @vehicle_model.errors, full_error_messages: @vehicle_model.errors.full_messages} }
         format.html { render :new }

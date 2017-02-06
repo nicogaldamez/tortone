@@ -6,6 +6,10 @@ class App.SalesList
   # Binding de Eventos
   bindEvents: () ->
     $("[data-behavior~=searchBrandAndModel]").ajaxSelect()
+    $('.best_in_place').bind 'ajax:success', ->
+      sale_id = $(@).closest('tr').data('sale-id')
+      $.ajax
+        url: "sales/#{sale_id}.js"
 
 # --------------------------------
 # FORM
