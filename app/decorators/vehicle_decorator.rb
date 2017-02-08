@@ -97,10 +97,10 @@ class VehicleDecorator < Draper::Decorator
 
   def sale_advance_badge
     if object.sale && !object.sale.sold_on?
-      _customer = object.customer
+      _customer = object.sale.customer
       _url      = "/customers/#{_customer.id}/edit"
       "<span class='label label-warning' style='margin: 0px 4px 0px 4px;'> Señado </span>"\
-      "#{h.link_to(h.content_tag(:span, customer, class: '', style: 'margin: 0px 4px 0px 4px;'), _url, class: 'label label-default')}".html_safe
+      "#{h.link_to(h.content_tag(:span, _customer, class: '', style: 'margin: 0px 4px 0px 4px;'), _url, class: 'label label-default')}".html_safe
     end
   end
 
