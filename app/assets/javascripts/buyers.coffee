@@ -19,7 +19,7 @@ class App.BuyerForm
 
     $('.js-vehicle-model').on 'select2-selecting', (e)=>
       new App.VehicleModelForm()
-      # @onVehicleModelChanged e.target, e.object
+      @onVehicleModelChanged e.target, e.object
 
   onVehicleModelChanged: (element, vehicle_model) ->
     $(element).parent().find('.js-brand').val vehicle_model.brand_id
