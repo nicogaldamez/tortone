@@ -1,3 +1,6 @@
+0.9.1
+- Corrige bug que hacía que se vieran repetidos los autos con venta iniciada (agrega Distinct a la consulta SQL)
+
 0.9
 En los boletos mostrar marca y motor correspondiente
 Al hacer click en el comprador desde la pantalla de vehículo se rompía
