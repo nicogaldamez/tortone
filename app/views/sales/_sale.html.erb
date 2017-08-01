@@ -12,9 +12,9 @@
   <td class="text-center"> <%= sale.expenses %> </td>
   <td class="text-right"> <%= sale.difference %> </td>
   <td>
-    <%= link_to fa_icon(:pencil), edit_sale_path(sale), class: 'btn btn-xs btn-primary' %>
+    <%= link_to fa_icon(:pencil), edit_sale_path(sale), title: 'Editar los datos de la Venta', class: 'btn btn-xs btn-primary' %>
     <%= link_to fa_icon(:trash), sale, method: :delete,
-        data: {confirm: '¿Está seguro?'}, class: 'btn btn-xs btn-danger' %>
+        data: {confirm: '¿Está seguro?'}, title: 'Eliminar Venta', class: 'btn btn-xs btn-danger' %>
     <%= sale.customer_btn %>
   </td>
 

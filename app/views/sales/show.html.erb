@@ -28,6 +28,12 @@
                 <%= link_to @presenter.sale.customer, edit_customer_path(@sale.customer) %></span>
             </li>
             <li class="list-group-item">
+              <b>Teléfono Comprador</b>
+              <span class="text-muted pull-right">
+                <span class="text-muted"><%= @presenter.sale.customer.phones %> </span>
+            </li>
+
+            <li class="list-group-item">
               <b>Vehículo</b>
               <span class="text-muted pull-right">
                 <%= link_to @presenter.sale.vehicle.decorate.identification, @sale.vehicle %></span>
