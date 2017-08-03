@@ -1,6 +1,6 @@
 class VehicleFilter
   include ActiveModel::Model
-  attr_accessor :name, :brand, :vehicle_model, :is_owner
+  attr_accessor :name, :brand, :vehicle_model, :is_owner, :plate
 
   def call(context=false)
     vehicles = Vehicle.not_sold
@@ -17,6 +17,8 @@ class VehicleFilter
     vehicles = vehicles.joins(:vehicle_model).where(
         'vehicle_models.name ilike ?', "%#{@vehicle_model}%"
         ) if @vehicle_model.present?
+
+        vehicles = vehicles.where('plate ilike ?', "%#{@plate}%") if @plate.present?
 
     vehicles = vehicles.where(is_owner: true) if is_owner.present?
 

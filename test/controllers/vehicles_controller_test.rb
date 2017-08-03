@@ -44,6 +44,21 @@ class VehiclesControllerTest < ActionController::TestCase
     assert_includes assigns(:presenter).send(:vehicles), @vehicle.decorate
   end
 
+  test "should filter vehicles by plate" do
+    get :index, vehicle_filter: {plate: @vehicle.plate}
+    assert_response :success
+
+    assert_equal 1, assigns(:presenter).send(:vehicles).send(:count)
+    assert_includes assigns(:presenter).send(:vehicles), @vehicle.decorate
+
+    get :index, vehicle_filter: {plate: @vehicle.plate.first(3)}
+    assert_response :success
+
+    assert_equal 1, assigns(:presenter).send(:vehicles).send(:count)
+    assert_includes assigns(:presenter).send(:vehicles), @vehicle.decorate
+
+  end
+
   test "should get new vehicle" do
     get :new
     assert_not_nil assigns(:vehicle)

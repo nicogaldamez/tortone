@@ -44,6 +44,7 @@ delorean:
   is_consignment: true
   customer:       carlos
   minimum_advance_in_cents: 200
+  plate:          AB123CD
 
 batmobile:
   brand:          volkswagen
@@ -59,6 +60,7 @@ batmobile:
   is_owner:       true
   customer:       silvia
   minimum_advance_in_cents: 100
+  plate:          CD123EF
 
 lightning_mcqueen:
   brand:          ford
@@ -74,6 +76,7 @@ lightning_mcqueen:
   is_owner:       true
   customer:       silvia
   minimum_advance_in_cents: 100
+  plate:          GIG670
 
 mater:
   brand:          volkswagen
@@ -89,6 +92,7 @@ mater:
   is_owner:       true
   customer:       silvia
   minimum_advance_in_cents: 100
+  plate:          BAU335
 
 meteoro:
   brand:          volkswagen
@@ -104,3 +108,4 @@ meteoro:
   is_owner:       true
   customer:       silvia
   minimum_advance_in_cents: 100
+  plate:          DHR860
