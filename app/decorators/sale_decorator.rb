@@ -100,6 +100,14 @@ class SaleDecorator < Draper::Decorator
     end
   end
 
+  def delete_btn
+    if object.sold?
+      "#{h.link_to h.content_tag(:strong, 'Eliminar la Venta'), object, method: :delete, data: { confirm: 'Está a punto de eliminar una venta que estaba finalizada. Esto no eliminará el vehículo, pero sí el detalle de la venta. ¿Está seguro?' }, class: 'btn btn-danger btn-block'}".html_safe
+    else
+      "#{h.link_to h.content_tag(:strong, 'Eliminar la Venta (sólo fue señada)'), object, method: :delete, data: { confirm: 'Está a punto de eliminar una venta que estaba señada (no finalizada). Esto no eliminará el vehículo, pero sí el detalle de la seña. ¿Está seguro?' }, class: 'btn btn-danger btn-block'}".html_safe
+    end
+  end
+
   def customer_btn
     _customer = object.customer
     _url      = "/customers/#{_customer.id}/edit"

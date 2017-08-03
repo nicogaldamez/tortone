@@ -75,10 +75,8 @@
           <%= link_to '<b>Imprimir Boleto Compra Venta </b>'.html_safe, [:pre_print_sale_certificate, @presenter.sale],
                 disabled: !@presenter.sale.sold?,
                 class: 'btn btn-success btn-block' %>
-          <hr>
-          <%= link_to '<b>Eliminar</b>'.html_safe, @presenter.sale, method: :delete,
-                data: { confirm: '¿Seguro' },
-                class: 'btn btn-danger btn-block' %>
+              <hr>
+          <%= @presenter.sale.delete_btn %>
         </div>
       </div>
     </div>
