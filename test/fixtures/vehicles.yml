@@ -54,7 +54,7 @@ batmobile:
   color:          Rojo
   cost_in_cents:  200000
   price_in_cents: 250000
-  entered_on:     2016-01-01
+  entered_on:     2016-02-01
   year:           2010
   is_consignment: true
   is_owner:       true
@@ -70,7 +70,7 @@ lightning_mcqueen:
   color:          Rojo
   cost_in_cents:  200000
   price_in_cents: 250000
-  entered_on:     2016-01-01
+  entered_on:     2016-03-01
   year:           2010
   is_consignment: true
   is_owner:       true
@@ -86,7 +86,7 @@ mater:
   color:          Rojo
   cost_in_cents:  200000
   price_in_cents: 250000
-  entered_on:     2016-01-01
+  entered_on:     2016-04-01
   year:           2010
   is_consignment: true
   is_owner:       true
@@ -102,7 +102,7 @@ meteoro:
   color:          Rojo
   cost_in_cents:  200000
   price_in_cents: 250000
-  entered_on:     2016-01-01
+  entered_on:     2016-05-01
   year:           2010
   is_consignment: true
   is_owner:       true

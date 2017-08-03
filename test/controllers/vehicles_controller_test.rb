@@ -56,8 +56,17 @@ class VehiclesControllerTest < ActionController::TestCase
 
     assert_equal 1, assigns(:presenter).send(:vehicles).send(:count)
     assert_includes assigns(:presenter).send(:vehicles), @vehicle.decorate
-
   end
+
+  test "should order vehicles by entered_on by default" do
+    get :index
+    assert_response :success
+
+    vehicles = Vehicle.not_sold.order(entered_on: :desc, created_at: :desc)
+    assert_equal vehicles.collect(&:entered_on).max, assigns(:presenter).send(:vehicles).send(:first).send(:entered_on)
+    assert_equal vehicles.collect(&:entered_on).min, assigns(:presenter).send(:vehicles).send(:last).send(:entered_on)
+  end
+
 
   test "should get new vehicle" do
     get :new
