@@ -21,6 +21,10 @@ class SaleDecorator < Draper::Decorator
     h.best_in_place object, :price, display_with: :number_to_currency
   end
 
+  def klass
+    vehicle_decorated.klass
+  end
+
   def expenses
     h.best_in_place object, :expenses, display_with: :number_to_currency
   end
