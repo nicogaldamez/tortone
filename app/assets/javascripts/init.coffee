@@ -33,6 +33,9 @@ App.initSnackbar = ->
   if $('.snackbar-message').length > 0
     $('.snackbar-message').snackbar 'show'
 
+App.initBestInPlace = ->
+  $(".best_in_place").best_in_place()
+
 App.initDatepicker = ->
   if $('.datepicker').length > 0
     $('.datepicker').datetimepicker
@@ -130,7 +133,7 @@ App.init = ->
   App.checkAll()
 
   # Best in place
-  $(".best_in_place").best_in_place()
+  App.initBestInPlace()
 
   $('.sidebar li.active').closest('.treeview').addClass('active')
 
@@ -143,8 +146,7 @@ $(document).on "page:change", ->
   App.initDatepicker()
   App.checkAll()
   $("select").normalSelect()
-  $(".best_in_place").best_in_place()
-
+  App.initBestInPlace()
 
 $(document).on 'flash:send', (e, flashMessages) ->
   App.flash_snackbar_render flashMessages
