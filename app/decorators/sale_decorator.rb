@@ -29,24 +29,36 @@ class SaleDecorator < Draper::Decorator
     h.best_in_place object, :expenses, display_with: :number_to_currency
   end
 
+  def transfer_amount
+    h.best_in_place object, :transfer_amount, display_with: :number_to_currency, title: "El valor ingresado se comparará con el costo de transferencia que se había cargado en el vehículo, y se usará para determinar si hubo ganancias o pérdidas asociadas al pago de la transferencia"
+  end
+
   def cash
     number_to_currency(object.cash, precision: 2) || '-'
   end
 
-  def difference
-    number_to_currency(unformatted_difference)
+  def profit
+    number_to_currency(unformatted_profit)
   end
 
   def vehicle_cost
     h.best_in_place object.vehicle, :cost, display_with: :number_to_currency
   end
 
-  def unformatted_difference
-    object.price - object.expenses - (vehicle_decorated.cost || 0)
+  def unformatted_profit
+    object.price - object.expenses - (vehicle_decorated.cost || 0) + unformatted_transfer_difference
+  end
+
+  def unformatted_transfer_difference
+    (vehicle_decorated.transfer_amount || 0) - (object.transfer_amount || 0)
   end
 
   def unformatted_vehicle_cost
     vehicle_decorated.cost || 0
+  end
+
+  def unformatted_expenses
+    object.expenses || 0
   end
 
   def price_in_letters

@@ -73,6 +73,14 @@ class SalesControllerTest < ActionController::TestCase
     end
   end
 
+  test "should copy transfer amount from vehicle when creating sale" do
+    post :create, sale: @sale_new_data
+
+    sale = Sale.find_by(sold_on: @sale_new_data[:sold_on])
+    assert_equal sale.transfer_amount, sale.vehicle.transfer_amount
+  end
+
+
   test "should get edit sale" do
     get :edit, id: @sale
     assert_equal @sale, assigns(:sale)

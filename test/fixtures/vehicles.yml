@@ -60,6 +60,7 @@ batmobile:
   is_owner:       true
   customer:       silvia
   minimum_advance_in_cents: 100
+  transfer_amount_in_cents: 10000
   plate:          CD123EF
 
 lightning_mcqueen:

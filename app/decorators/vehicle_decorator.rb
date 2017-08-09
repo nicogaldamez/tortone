@@ -40,7 +40,7 @@ class VehicleDecorator < Draper::Decorator
   end
 
   def transfer_amount
-    object.transfer_amount || '-'
+    object.transfer_amount || 0
   end
 
   def minimum_advance

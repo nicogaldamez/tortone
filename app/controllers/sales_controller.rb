@@ -25,6 +25,8 @@ class SalesController < ApplicationController
   # POST /sales
   def create
     @sale = Sale.new(sale_params)
+    @sale.transfer_amount = @sale.vehicle.transfer_amount
+
     if @sale.save
       update_vehicle()
       redirect_to @sale, notice: 'La venta ha sido creada con éxito'
@@ -90,7 +92,7 @@ class SalesController < ApplicationController
   def sale_params
     params.require(:sale).permit(:vehicle_id, :price, :notes, :sold_on,
                                  :advance, :customer_id, :advance_delivered_on,
-                                 :cash, :expenses)
+                                 :cash, :expenses, :transfer_amount)
   end
 
   def new_sale_from_vehicle

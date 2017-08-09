@@ -23,9 +23,15 @@ class SalesPresenter
 
   def total_difference
     return @total_difference unless @total_difference.nil?
-    @total_difference = filter.call.decorate.map(&:unformatted_difference).reduce(:+)
+    @total_difference = unformatted_sales_difference() + unformatted_sales_expenses() 
     @total_difference = 0 if @total_difference.nil?
     number_to_currency(@total_difference)
+  end
+
+  def total_transfer_difference
+    return @transfer_difference unless @transfer_difference.nil?
+    @transfer_difference = filter.call.decorate.map(&:unformatted_transfer_difference).reduce(:+)
+    number_to_currency(@transfer_difference)
   end
 
   def total_cost
@@ -38,14 +44,29 @@ class SalesPresenter
     expense_params = filter_params
     expense_params[:skip_defaults] = true
     filter = ExpenseFilter.new(expense_params)
-    @total_expenses = filter.total
+    @total_expenses = filter.total + unformatted_sales_expenses()
   end
 
   def total_profit
     total_difference - total_expenses
   end
 
+  def total_sales_expenses
+    return @sales_expenses unless @sales_expenses.nil?
+    @sales_expenses = unformatted_sales_expenses()
+    number_to_currency(@sales_expenses)
+  end
+
+
   private
+
+  def unformatted_sales_difference
+    @sales_difference ||= filter.call.decorate.map(&:unformatted_profit).reduce(:+)
+  end
+
+  def unformatted_sales_expenses
+    @expenses ||= filter.call.decorate.map(&:unformatted_expenses).reduce(:+)
+  end
 
   def filter_params
     if @params[:sale_filter]

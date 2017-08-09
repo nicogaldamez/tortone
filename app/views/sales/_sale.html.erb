@@ -9,8 +9,9 @@
   </td>
   <td class="text-center"> <%= sale.price %> </td>
   <td class="text-center"> <%= sale.cash %> </td>
+  <td class="text-center"> <%= sale.transfer_amount %> </td>
   <td class="text-center"> <%= sale.expenses %> </td>
-  <td class="text-right"> <%= sale.difference %> </td>
+  <td class="text-right"> <%= sale.profit %> </td>
   <td>
     <%= link_to fa_icon(:pencil), edit_sale_path(sale), title: 'Editar los datos de la Venta', class: 'btn btn-xs btn-primary' %>
     <%= link_to fa_icon(:trash), sale, method: :delete,
