@@ -21,6 +21,10 @@ class SaleDecorator < Draper::Decorator
     h.best_in_place object, :price, display_with: :number_to_currency
   end
 
+  def klass
+    vehicle_decorated.klass
+  end
+
   def expenses
     h.best_in_place object, :expenses, display_with: :number_to_currency
   end
@@ -97,6 +101,14 @@ class SaleDecorator < Draper::Decorator
     else
       "Vehículo señado con <b> #{advance} </b> el <b> #{object.advance_delivered_on} </b>. "\
       "<br>Resta pagar <b> #{h.number_to_currency(remaining)} </b>".html_safe
+    end
+  end
+
+  def delete_btn
+    if object.sold?
+      "#{h.link_to h.content_tag(:strong, 'Eliminar la Venta'), object, method: :delete, data: { confirm: 'Está a punto de eliminar una venta que estaba finalizada. Esto no eliminará el vehículo, pero sí el detalle de la venta. ¿Está seguro?' }, class: 'btn btn-danger btn-block'}".html_safe
+    else
+      "#{h.link_to h.content_tag(:strong, 'Eliminar la Venta (sólo fue señada)'), object, method: :delete, data: { confirm: 'Está a punto de eliminar una venta que estaba señada (no finalizada). Esto no eliminará el vehículo, pero sí el detalle de la seña. ¿Está seguro?' }, class: 'btn btn-danger btn-block'}".html_safe
     end
   end
 

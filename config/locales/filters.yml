@@ -8,6 +8,7 @@ es:
         name: "Cliente"
         brand: "Marca"
         vehicle_model: "Modelo"
+        plate: "Patente"
       buyer_filter:
         name: "Nombre"
         from: 'Desde'

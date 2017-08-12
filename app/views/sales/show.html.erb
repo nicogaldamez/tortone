@@ -28,6 +28,12 @@
                 <%= link_to @presenter.sale.customer, edit_customer_path(@sale.customer) %></span>
             </li>
             <li class="list-group-item">
+              <b>Teléfono Comprador</b>
+              <span class="text-muted pull-right">
+                <span class="text-muted"><%= @presenter.sale.customer.phones %> </span>
+            </li>
+
+            <li class="list-group-item">
               <b>Vehículo</b>
               <span class="text-muted pull-right">
                 <%= link_to @presenter.sale.vehicle.decorate.identification, @sale.vehicle %></span>
@@ -69,10 +75,8 @@
           <%= link_to '<b>Imprimir Boleto Compra Venta </b>'.html_safe, [:pre_print_sale_certificate, @presenter.sale],
                 disabled: !@presenter.sale.sold?,
                 class: 'btn btn-success btn-block' %>
-          <hr>
-          <%= link_to '<b>Eliminar</b>'.html_safe, @presenter.sale, method: :delete,
-                data: { confirm: '¿Seguro' },
-                class: 'btn btn-danger btn-block' %>
+              <hr>
+          <%= @presenter.sale.delete_btn %>
         </div>
       </div>
     </div>

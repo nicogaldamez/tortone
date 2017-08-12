@@ -1,2 +1,6 @@
 $('#<%= dom_id(@presenter.sale) %>').replaceWith('<%= j render @presenter.sale %>');
+
+$('#js-sales-totals-row').replaceWith('<%= j render partial: 'totals', locals: { presenter: SalesPresenter.new({}) } %>');
+
+new App.SalesList(); 
 App.initTooltips($('#<%= dom_id(@presenter.sale) %>'));

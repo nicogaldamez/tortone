@@ -12,8 +12,8 @@
       <table class="table table-custom table-hover">
         <thead>
           <tr>
-            <th>Vehículo</th>
-            <th>Fecha</th>
+            <th class="pull-left">Vehículo</th>
+            <th>Fecha Venta</th>
             <th>Costo real</th>
             <th>Precio de venta</th>
             <th>En Efectivo</th>
@@ -27,29 +27,8 @@
           <%= render @presenter.sales %>
         </tbody>
 
-        <tfoot>
-          <tr style="background: #f0f0f0;">
-            <td> <b> <%= @presenter.sales.count %> vehículos </b> </td>
-            <td></td>
-            <td class="text-center"><b><%= @presenter.total_price %></b></td>
-            <td class="text-center"><b><%= @presenter.total_cash %></b></td>
-            <td class="text-center"><b><%= @presenter.total_cost %></b></td>
-            <td class="text-right"><b><%= @presenter.total_difference %></b></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="4"> </td>
-            <td class="text-right"> <b> Gastos </b> </td>
-            <td class="text-right"><b><%= number_to_currency @presenter.total_expenses %></b></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="4"> </td>
-            <td class="text-right"> <b> Ganancia Total </b> </td>
-            <td class="text-right"><b><%= number_to_currency @presenter.total_profit %></b></td>
-            <td></td>
-          </tr>
-        </tfoot>
+        <%= render partial: 'totals', locals: { presenter: @presenter } %>
+
       </table>
 
       <%= paginate @presenter.sales %>

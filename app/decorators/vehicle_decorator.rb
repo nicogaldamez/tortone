@@ -19,6 +19,10 @@ class VehicleDecorator < Draper::Decorator
     object.price
   end
 
+  def color
+    object.color.blank? ? '-' : object.color.titleize
+  end
+
   def is_consignment
     I18n.t(object.is_consignment.to_s)
   end
@@ -60,7 +64,7 @@ class VehicleDecorator < Draper::Decorator
   end
 
   def specs
-    "#{object.year} | #{kilometers} | #{object.color}"
+    "#{object.year} | #{kilometers} | #{self.color}"
   end
 
   def plate
@@ -75,7 +79,6 @@ class VehicleDecorator < Draper::Decorator
     object.chassis_number.present? ? object.chassis_number : '-'
   end
 
-  # TODO: add a class for owned vehicles
   def klass
     object.is_owner ? 'own-vehicle' : 'others-vehicle'
   end

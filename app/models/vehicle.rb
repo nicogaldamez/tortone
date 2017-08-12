@@ -32,10 +32,10 @@
 class Vehicle < ActiveRecord::Base
 
   # -- Scopes
-  default_scope -> { order(:created_at) }
+  default_scope -> { order(entered_on: :desc, created_at: :desc) }
   scope :not_sold, -> {
     joins('LEFT JOIN sales on sales.vehicle_id = vehicles.id')
-    .where('sales.id is NULL OR sales.sold_on IS NULL')
+      .where('sales.id is NULL OR sales.sold_on IS NULL').distinct
   }
 
   # -- Associations

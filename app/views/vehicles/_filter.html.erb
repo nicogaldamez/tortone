@@ -3,22 +3,30 @@
   <%= f.hidden_field :is_owner %>
 
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <fieldset class="form-group">
-        <%= f.label :brand %>
-        <%= f.search_field :brand, class: 'form-control',
-              placeholder: 'Ingrese la marca a buscar',
-              autofocus: true
+        <%= f.label :plate %>
+        <%= f.search_field :plate, class: 'form-control',
+              placeholder: 'Ingrese la patente',
+                autofocus: true
         %>
       </fieldset>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-2">
+      <fieldset class="form-group">
+        <%= f.label :brand %>
+        <%= f.search_field :brand, class: 'form-control',
+              placeholder: 'Ingrese la marca'
+        %>
+      </fieldset>
+    </div>
+
+    <div class="col-md-2">
       <fieldset class="form-group">
         <%= f.label :vehicle_model %>
         <%= f.search_field :vehicle_model, class: 'form-control',
-              placeholder: 'Ingrese el modelo a buscar',
-              autofocus: true
+              placeholder: 'Ingrese el modelo'
         %>
       </fieldset>
     </div>
@@ -27,8 +35,7 @@
       <fieldset class="form-group">
         <%= f.label :name %>
         <%= f.search_field :name, class: 'form-control',
-              placeholder: 'Ingrese nombre o apellido',
-              autofocus: true
+              placeholder: 'Ingrese nombre o apellido'
         %>
       </fieldset>
     </div>
