@@ -15,7 +15,8 @@ class VehiclesControllerTest < ActionController::TestCase
                            year: 2014,
                            is_hdi: true,
                            has_automatic_transmission: true,
-                           plate: 'NEW123'
+                           plate: 'NEW123',
+                           vehicle_type: 'new type'
                           }
     login_user(users(:ross))
   end

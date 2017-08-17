@@ -35,8 +35,8 @@ class AdvanceCertificate
       "<br><br>" \
       "Vehículo dominio: <b> #{vehicle.plate} </b> <br>"\
       "Marca: <b> #{vehicle.brand} </b> <br>"\
-      "Tipo: <b> #{vehicle.vehicle_model} </b> <br>"\
-      "Modelo: <b> #{vehicle.version} </b> <br>"\
+      "Tipo: <b> #{vehicle.vehicle_type} </b> <br>"\
+      "Modelo: <b> #{vehicle.vehicle_model} #{vehicle.version} </b> <br>"\
       "Motor marca: <b> #{vehicle.brand} </b> <br>"\
       "Número: <b> #{vehicle.motor_number} </b> <br>"\
       "Carrocería-chasis marca: <b> #{vehicle.brand} </b> <br>"\

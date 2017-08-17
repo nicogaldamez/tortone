@@ -25,6 +25,7 @@ es:
         brand_id: 'Marca'
         customer_id: 'Dueño'
         vehicle_model_id: 'Modelo'
+        vehicle_type: Tipo
         version_id: 'Versión'
         kilometers: 'Kilómetros'
         color: 'Color'

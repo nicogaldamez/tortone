@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170206215903) do
+ActiveRecord::Schema.define(version: 20170817174537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(version: 20170206215903) do
     t.boolean  "is_owner",                             default: false
     t.boolean  "has_automatic_transmission",           default: false
     t.boolean  "is_hdi",                               default: false
+    t.string   "vehicle_type"
   end
 
   add_index "vehicles", ["brand_id"], name: "index_vehicles_on_brand_id", using: :btree

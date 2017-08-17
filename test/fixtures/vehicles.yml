@@ -45,6 +45,7 @@ delorean:
   customer:       carlos
   minimum_advance_in_cents: 200
   plate:          AB123CD
+  vehicle_type: 1.8
 
 batmobile:
   brand:          volkswagen
@@ -61,6 +62,7 @@ batmobile:
   customer:       silvia
   minimum_advance_in_cents: 100
   plate:          CD123EF
+  vehicle_type: 2.0
 
 lightning_mcqueen:
   brand:          ford
@@ -77,6 +79,7 @@ lightning_mcqueen:
   customer:       silvia
   minimum_advance_in_cents: 100
   plate:          GIG670
+  vehicle_type: v1.9
 
 mater:
   brand:          volkswagen
@@ -93,6 +96,7 @@ mater:
   customer:       silvia
   minimum_advance_in_cents: 100
   plate:          BAU335
+  vehicle_type: v2.0
 
 meteoro:
   brand:          volkswagen
@@ -109,3 +113,4 @@ meteoro:
   customer:       silvia
   minimum_advance_in_cents: 100
   plate:          DHR860
+  vehicle_type: v3.0

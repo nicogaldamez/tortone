@@ -36,8 +36,8 @@ class SaleCertificate
     "LO SIGUIENTE: <b> UN AUTOMOTOR USADO </b> "\
     "<br><br><br>"\
     "MARCA <b> #{vehicle.brand.name.upcase} </b> "\
-    "MODELO <b> #{vehicle.version.name.upcase} </b> "\
-    "TIPO <b> #{vehicle.vehicle_model.name.upcase}</b><br> "\
+    "MODELO <b> #{vehicle.vehicle_model.name.upcase} #{vehicle.version.name.upcase} </b> "\
+    "TIPO <b> #{vehicle.vehicle_type.upcase unless vehicle.vehicle_type.nil?}</b><br> "\
     "MOTOR NUMERO <b> #{vehicle.motor_number} </b> "\
     "CHASIS NUMERO <b> #{vehicle.chassis_number}</b><br> "\
     "MODELO AÑO <b> #{vehicle.year} </b> "\
